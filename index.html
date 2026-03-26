@@ -553,9 +553,144 @@ tbody tr:hover { background: #f8f8fc; }
       <a class="btn btn-tech" href="fiches_indicateurs/index.html">Voir les fiches detaillees &rarr;</a>
       <button class="btn btn-outline" onclick="printDashboard()">Imprimer</button>
     </div>
-    <p class="date">Mis a jour le 26 mars 2026 &mdash; V1.2</p>
+    <p class="date">Mis a jour le 26 mars 2026 &mdash; V1.3 &mdash; Enrichi avec documents sources campus</p>
   </div>
 </header>
+
+<!-- ============================================================
+     CHIFFRES CLES & DOCUMENTS SOURCES
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Chiffres cles EPITECH &mdash; Documents sources</h2>
+
+    <!-- KPI Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:28px;">
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid var(--blue);">
+        <div style="font-family:'Anton',sans-serif;font-size:32px;color:var(--blue);line-height:1;">6 000+</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">Etudiants en formation</div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid var(--tech);">
+        <div style="font-family:'Anton',sans-serif;font-size:32px;color:var(--dark);line-height:1;">15</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">Campus en France + 6 international</div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid var(--together);">
+        <div style="font-family:'Anton',sans-serif;font-size:32px;color:var(--together);line-height:1;">3 000+</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">Entreprises partenaires</div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid #7c3aed;">
+        <div style="font-family:'Anton',sans-serif;font-size:32px;color:#7c3aed;line-height:1;">12 000+</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">Alumni dans le monde</div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid #F59E0B;">
+        <div style="font-family:'Anton',sans-serif;font-size:32px;color:#B45309;line-height:1;">16%</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">Createurs d'entreprises</div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);border-top:4px solid var(--blue);">
+        <div style="font-family:'Anton',sans-serif;font-size:32px;color:var(--blue);line-height:1;">10%</div>
+        <div style="font-size:12px;color:#666;margin-top:4px;">Travaillent a l'international</div>
+      </div>
+    </div>
+
+    <!-- Certifications RNCP -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-bottom:28px;">
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.05);border-left:5px solid var(--blue);">
+        <div style="font-family:'Anton',sans-serif;font-size:16px;color:var(--blue);text-transform:uppercase;margin-bottom:8px;">MSc ASI &mdash; RNCP38114</div>
+        <div style="font-size:13px;color:#555;line-height:1.6;">
+          <strong>Architecte de Systemes d'Information</strong> &mdash; Niveau 7<br>
+          Specialisations : IA, AR/VR, IoT, Big Data, Cybersecurite, Cloud<br>
+          100% blocs RNCP + 120 ECTS + 1 an exp. pro minimum<br>
+          Decision finale : <strong>jury de titre</strong>
+        </div>
+      </div>
+      <div style="background:var(--card-bg);border-radius:8px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.05);border-left:5px solid var(--together);">
+        <div style="font-family:'Anton',sans-serif;font-size:16px;color:var(--together);text-transform:uppercase;margin-bottom:8px;">MSc MSI &mdash; RNCP35284</div>
+        <div style="font-size:13px;color:#555;line-height:1.6;">
+          <strong>Expert en management des SI</strong> &mdash; Niveau 7<br>
+          Specialisations : Fintech, Marketing, Data Science, RH Digital, Sante/IA/IoT, Luxe &amp; Retail Tech<br>
+          100% blocs RNCP + 120 ECTS + 1 an exp. pro minimum<br>
+          Decision finale : <strong>jury de titre</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents sources -->
+    <h3 style="font-family:'Anton',sans-serif;font-size:16px;color:var(--dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">Documents sources disponibles</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Type</th>
+            <th>Indicateurs couverts</th>
+            <th>Contenu cle pour l'audit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Presentation de rentree MSC1</strong></td>
+            <td>PDF (77 pages)</td>
+            <td>I1, I5, I6, I7, I8, I9, I15, I16, I17, I19, I21</td>
+            <td>Chiffres, equipes campus, pedagogie par projets, cursus RNCP, evaluations, alternance, TOEIC</td>
+          </tr>
+          <tr>
+            <td><strong>Conference handicap THransition</strong></td>
+            <td>PDF (54 pages)</td>
+            <td>I14, I26</td>
+            <td>Loi 2005, 6 familles handicap, stats ESH, amenagements, intervenante : Maud VENDRAND</td>
+          </tr>
+          <tr>
+            <td><strong>Rapport Consolide Audit Qualiopi</strong></td>
+            <td>PDF (17 pages)</td>
+            <td>Tous</td>
+            <td>Synthese risques, organisation, questions auditeur, processus tracabilite, priorisation</td>
+          </tr>
+          <tr>
+            <td><strong>Audit interne Strasbourg 2025.10</strong></td>
+            <td>Excel</td>
+            <td>I32</td>
+            <td>Grille par indicateur, constats site, planning J1/J2, auditeurs : S. Roth &amp; A. Florin</td>
+          </tr>
+          <tr>
+            <td><strong>Suivi entreprise Paris (Web@cademie)</strong></td>
+            <td>Excel</td>
+            <td>I13</td>
+            <td>Dates de visite, nom tuteur, themes abordes, progression par apprenant</td>
+          </tr>
+          <tr>
+            <td><strong>Export satisfaction entreprise</strong></td>
+            <td>Excel</td>
+            <td>I30</td>
+            <td>Enquetes de satisfaction entreprises partenaires</td>
+          </tr>
+          <tr>
+            <td><strong>Export eval tuteur PRS201</strong></td>
+            <td>Excel</td>
+            <td>I13</td>
+            <td>Evaluations tuteur par apprenant (nom, date, resultat, observations)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Valeurs EPITECH -->
+    <div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap;">
+      <div style="background:var(--card-bg);border:2px solid var(--blue);border-radius:8px;padding:14px 20px;text-align:center;flex:1;min-width:150px;">
+        <div style="font-family:'Anton',sans-serif;font-size:18px;color:var(--blue);text-transform:uppercase;">Solidarite</div>
+        <div style="font-size:11px;color:#666;margin-top:4px;">L'equipe est plus forte que l'individu</div>
+      </div>
+      <div style="background:var(--card-bg);border:2px solid var(--together);border-radius:8px;padding:14px 20px;text-align:center;flex:1;min-width:150px;">
+        <div style="font-family:'Anton',sans-serif;font-size:18px;color:var(--together);text-transform:uppercase;">Courage</div>
+        <div style="font-size:11px;color:#666;margin-top:4px;">Sortir de sa zone de confort</div>
+      </div>
+      <div style="background:var(--card-bg);border:2px solid var(--tech);border-radius:8px;padding:14px 20px;text-align:center;flex:1;min-width:150px;">
+        <div style="font-family:'Anton',sans-serif;font-size:18px;color:var(--dark);text-transform:uppercase;">Excellence</div>
+        <div style="font-size:11px;color:#666;margin-top:4px;">Viser toujours plus haut</div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ============================================================
      VUE D'ENSEMBLE DES 3 CAMPUS
@@ -582,11 +717,11 @@ tbody tr:hover { background: #f8f8fc; }
       </div>
 
       <!-- Nantes -->
-      <div class="campus-card upcoming">
-        <span class="badge badge-upcoming">A VENIR</span>
+      <div class="campus-card upcoming" style="border-left-color: #F59E0B;">
+        <span class="badge badge-upcoming" style="background: #F59E0B;">EN PR&Eacute;PARATION</span>
         <h3>Nantes</h3>
-        <p class="dates">Date a confirmer</p>
-        <p class="campus-note">Preparation en cours &mdash; simulation planifiee</p>
+        <p class="dates">R&eacute;union de war room r&eacute;alis&eacute;e le 26 mars. Derniers ajustements en cours.</p>
+        <p class="campus-note">7 actions critiques identifi&eacute;es &mdash; Priorit&eacute;s&nbsp;: I04 (motivations), I13 (suivi entreprise), I27 (prestataires)</p>
       </div>
 
     </div>
@@ -1410,8 +1545,8 @@ tbody tr:hover { background: #f8f8fc; }
 <footer class="site-footer">
   <div class="container">
     <div class="footer-logo">{EPITECH}</div>
-    <p>Dashboard Audit Qualiopi 2026 &mdash; V1.0</p>
-    <p>Donnees issues du Rapport Consolide V1.2 (25 mars 2026)</p>
+    <p>Dashboard Audit Qualiopi 2026 &mdash; V1.3</p>
+    <p>Donnees issues du Rapport Consolide V1.2 (25 mars 2026) + Presentation rentree MSC1 + Conference handicap THransition + Audit interne Strasbourg</p>
     <p>Sebastien ROTH &amp; Luc BOURRAT</p>
     <p style="margin-top:12px;">
       <a href="https://travail-emploi.gouv.fr/IMG/pdf/guide_de_lecture_qualiopi_v9_du_8_janvier_2024.pdf" target="_blank" rel="noopener">RNQ V9</a>

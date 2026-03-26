@@ -1330,6 +1330,166 @@ Cette matrice croise les documents fournis avec les 14 missions légales du CFA 
 
 ---
 
+# PARTIE 13 — RETEX PRÉPARATION AUDIT NANTES (26 mars 2026)
+
+## Contexte
+
+Réunion de préparation intensive ("war room") avant l'audit final de Nantes. L'équipe travaille à sécuriser les preuves, anticiper les questions de l'auditeur, harmoniser le discours avec Paris et Strasbourg, et combler les trous documentaires.
+
+**Verdict de l'équipe : "On a la matière, on sait où sont les trous, et on est en position de les combler."**
+
+---
+
+## 13.1 — Les 4 blocs de travail prioritaires identifiés
+
+### Bloc 1 : Contrats d'apprentissage et échantillonnage
+
+L'équipe a travaillé sur les promotions **201, 221 et 230** pour déterminer :
+- Quelle promo est la plus simple à présenter
+- Quels profils sont exploitables (contrats pro vs apprentissage)
+- Quels contrats exclure (ruptures, cas atypiques)
+- Comment constituer un **échantillon propre et filtrable rapidement**
+
+**Décision :** Préparer un filtrage par type (apprentissage / contrat pro / ruptures) et ne pas se laisser embarquer dans des promos hors périmètre.
+
+### Bloc 2 : Indicateur 13 — Suivi entreprise / tuteurs
+
+Point le plus sensible. Travail sur :
+- Preuves de visites entreprise et points tuteurs
+- Évaluations de compétences par les tuteurs
+- Relances pour atteindre 100% de taux de réponse
+- **Cohérence des preuves selon les promotions** : Excel campus pour les 201, outils (HeadSquare/RedSquare) pour les 221/230
+
+**Risque identifié :** L'auditeur peut relever des différences de format entre promotions et demander pourquoi ce n'est pas identique partout. L'équipe prépare un argumentaire de transition.
+
+### Bloc 3 : Dossiers candidats / admissions / motivation
+
+**Constat :** Sur les anciens dossiers, la motivation n'apparaît pas toujours clairement dans Salesforce. L'information existe parfois dans des notes, entretiens ou pièces jointes non évidentes.
+
+**Risque :** L'auditeur cherche un champ "motivation" immédiatement visible. S'il doit fouiller, il peut conclure trop vite à une NC.
+
+**Décision :**
+- Compléter les champs manquants
+- Vérifier les doubles candidatures/fiches (l'info utile est parfois sur l'ancienne version)
+- S'assurer que chaque fiche a au minimum un texte de motivation exploitable
+
+### Bloc 4 : Livret d'accueil et documents de rentrée
+
+Vérifications en cours :
+- Droits et devoirs de l'apprenti
+- Règles d'émargement
+- Références aux missions locales + France Travail
+- Partenaires locaux handicap
+- Cohérence entre versions du document
+
+**Décision :** Ne pas casser ce qui est déjà diffusé, mais s'assurer que la version montrée à l'auditeur contient tous les attendus.
+
+---
+
+## 13.2 — Stratégie collective avant l'audit final
+
+### A. Maîtriser le parcours de preuve
+
+L'équipe ne cherche pas une démonstration exhaustive. Elle cible :
+- Les bons exemples / profils "propres"
+- Savoir quoi ouvrir immédiatement
+- **Éviter que l'auditeur choisisse un terrain trop risqué**
+
+### B. Répondre précisément, sans trop en dire
+
+Règle répétée plusieurs fois :
+- Répondre **précisément** à la question posée
+- Ne pas ouvrir d'autres sujets
+- Ne pas donner de réponse trop large qui déclencherait de nouvelles questions
+- Rester factuel, ne pas improviser
+
+### C. S'appuyer sur Paris et Strasbourg
+
+L'équipe compare avec ce qui a déjà fonctionné :
+- Reprendre les réponses qui ont marché
+- Anticiper les questions déjà posées par l'auditeur
+- **L'auditeur compare les campus entre eux** — le discours doit être stable
+
+---
+
+## 13.3 — Points fragiles identifiés pour Nantes
+
+| # | Fragilité | Risque | Action |
+|---|---|---|---|
+| 1 | **Écarts de pratiques historiques** : Excel vs outils, champs remplis différemment selon campus/promos | L'auditeur perçoit un désordre | Préparer un argumentaire clair sur la transition |
+| 2 | **Dates incohérentes ou ajouts récents** : des corrections faites la veille attirent l'attention | L'auditeur détecte des ajouts de dernière minute | Ne pas modifier les dates, justifier les écarts |
+| 3 | **Motivations insuffisamment lisibles** dans Salesforce : champ vide ou mal rempli | NC sur I04 si le champ n'est pas visible | Compléter chaque fiche avec un texte minimum |
+| 4 | **Dossiers tuteurs/entreprises incomplets** : contrats sans mission, suivis partiels, évaluations manquantes | NC sur I13 | Rattraper au maximum, prioriser l'échantillon présenté |
+| 5 | **CV intervenants et contrats de prestation** : pièces existantes mais mal rangées | NC sur I27 si le triptyque est incomplet | Centraliser dans un dossier par prestataire |
+| 6 | **Catégorisation des suivis dans l'outil** : certains suivis apparaissent comme "autre" au lieu de "visite entreprise" | L'auditeur voit un historique flou | Requalifier les événements avant l'audit |
+
+---
+
+## 13.4 — Dossiers prestataires — État de préparation Nantes
+
+Trois prestataires doivent être présentés. Profils évoqués :
+- **Morgane Klein**
+- **Benjamin Bourgeois**
+- **Nicol/Lionel de OnePoint**
+
+**Triptyque obligatoire par prestataire (rappel I27) :**
+
+| Pièce | État | Action |
+|---|---|---|
+| CV à jour | À vérifier — certains mal rangés | Centraliser + vérifier les dates |
+| Contrat de prestation signé | À vérifier — certains présents mais pas dans le bon dossier | Rassembler dans un dossier unique |
+| Bilan de fin d'année | À produire pour certains | Utiliser la trame standard |
+
+**Point de vigilance :** Les dates doivent être cohérentes (pas de signature un samedi/dimanche). L'auditeur est attentif aux dates.
+
+---
+
+## 13.5 — Actions restantes avant l'audit final Nantes
+
+### IMMÉDIAT (veille d'audit)
+
+| # | Action | Responsable | Indicateur |
+|---|---|---|---|
+| N1 | Compléter les champs motivation manquants dans Salesforce | Équipe campus | I04 |
+| N2 | Finaliser les dossiers des 3 prestataires (CV + contrat + bilan) | Équipe campus | I27 |
+| N3 | Consolider le fichier Excel suivi entreprise (100% des apprentis) | Équipe campus | I13 |
+| N4 | Requalifier les "autre" en "visite entreprise" dans l'outil de suivi | Équipe campus | I13 |
+| N5 | Vérifier la version du livret d'accueil (missions locales, France Travail, handicap) | Équipe campus | I14, I15, I26 |
+| N6 | Préparer le message de synthèse avec les liens directs vers chaque preuve | Équipe campus | Transversal |
+| N7 | Relancer les tuteurs pour atteindre 100% de réponse aux évaluations | Équipe campus | I13 |
+
+### PRÉPARATION JOUR J
+
+| # | Action |
+|---|---|
+| N8 | Ouvrir tous les accès nécessaires (SharePoint, Teams, outils) en avance |
+| N9 | Préparer les onglets navigateur dans l'ordre de présentation |
+| N10 | Avoir les 3-5 dossiers apprenants "propres" prêts à dérouler en fil rouge |
+| N11 | Conversation Teams dédiée pour la coordination en temps réel |
+| N12 | Backup Excel de secours si les outils ne répondent pas |
+
+---
+
+## 13.6 — Comparaison avec les audits précédents
+
+L'équipe note une nette amélioration par rapport aux audits passés :
+- **Lyon (précédent)** : très peu de préparation, documents édités en live, forte pression, situation éprouvante
+- **Nantes (actuel)** : base solide, trous identifiés, argumentaire préparé, équipe mieux coordonnée
+
+**Le message de l'équipe : "Le fond existe, il faut le mettre en scène proprement."**
+
+---
+
+## 13.7 — Ce que Nantes confirme pour la stratégie globale
+
+1. **L'harmonisation inter-campus reste le défi majeur** — les écarts historiques créent de la complexité
+2. **La visibilité des preuves dans les outils est aussi importante que leur existence** — un champ mal placé = un risque de NC
+3. **Le modèle Strasbourg (inventaire de Kevin) fonctionne** — Nantes s'en inspire pour structurer ses preuves
+4. **Les règles de conduite d'audit (RULES) sont appliquées** — l'équipe répète les principes de réponse précise et de non-improvisation
+5. **Le rattrapage de dernière minute est risqué** — les ajouts récents attirent l'attention de l'auditeur
+
+---
+
 # PRIORISATION FINALE (mise à jour post-Strasbourg)
 
 ## 🔴 IMMÉDIAT (cette semaine — avant Nantes)
