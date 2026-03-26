@@ -1,0 +1,168 @@
+Voici une version propre, exploitable et orientée équipes.
+
+Résumé à partager aux équipes
+
+Les deux séquences d’audit font ressortir un constat global plutôt positif sur le cadre Qualiopi d’EPITECH, mais avec plusieurs points de vigilance à traiter rapidement pour sécuriser la suite du cycle d’audit, en particulier sur les parcours en alternance et sur les preuves CFA.
+
+L’auditeur a d’abord confirmé le périmètre audité : actions de formation, CFA et VAE, avec une attention spécifique à la VAE portée centralement sur le Programme Grande École. L’audit de surveillance sera plus ciblé qu’un audit complet, mais certains indicateurs seront impérativement revus, notamment ceux déjà sensibles lors du précédent passage, ainsi que plusieurs obligations spécifiques CFA.
+
+Sur la partie structure et organisation, peu d’évolutions majeures ont été relevées, mais plusieurs points nécessitent une vigilance documentaire : mise à jour de la situation RNCP, transmission du dernier BPF, conservation des données Parcoursup, et préparation d’éléments de preuve matériels pour les campus non visités physiquement, notamment Nantes et Strasbourg.
+
+La revue du site internet est globalement satisfaisante, mais plusieurs ajustements sont attendus. Le point le plus sensible concerne l’affichage des indicateurs de résultats : les taux doivent être reliés à des volumes réels de candidats présentés, et certains indicateurs manquants devront être ajoutés, notamment sur les ruptures ou abandons selon les titres concernés.
+
+Le point le plus critique ressort cependant sur l’alternance. L’auditeur attend une démonstration plus claire de la progressivité du suivi en entreprise, du lien entre suivi, évaluations tuteur, portfolio ou soutenance, et acquisition des compétences. Ce qui fera foi en audit n’est pas seulement l’existence des outils, mais la capacité à démontrer un suivi réel, régulier, individualisé, tracé, et exploitable rapidement.
+
+Enfin, sur les obligations CFA, plusieurs preuves doivent être mieux consolidées : actions citoyenneté, mixité, non-discrimination, VSS, handicap, accompagnement social, droits et devoirs des apprentis, conditions de présentation aux examens, et orientation en cas de difficulté ou de rupture. Le besoin principal n’est pas forcément de créer de nouvelles actions, mais de mieux structurer, centraliser et rendre immédiatement mobilisables les preuves existantes.
+
+Message clé
+
+Le vrai enjeu n’est pas de “raconter” ce que nous faisons, mais de pouvoir le prouver simplement, rapidement et de manière cohérente, quel que soit le campus ou le dossier échantillonné.
+
+To-do list opérationnelle à transmettre
+
+Priorité 1 — Critique / à traiter immédiatement
+
+1. Sécuriser le suivi entreprise de la promo 2024-2025
+	•	Vérifier que chaque apprenant dispose d’au moins un suivi entreprise tracé, et idéalement de plusieurs.
+	•	Identifier tous les dossiers incomplets ou insuffisamment documentés.
+	•	Vérifier la complétude des suivis dans HeadSquare : date, individualisation, contenu, progression, compétences.
+	•	Compléter les dossiers faibles par relances ciblées auprès des tuteurs.
+	•	Vérifier l’existence et la consolidation des évaluations tuteur.
+	•	Préparer 3 à 5 dossiers exemplaires, tout en étant capables d’ouvrir n’importe quel dossier demandé en audit.
+
+2. Reconstituer et consolider le dossier indicateur 14 / obligations CFA
+	•	Produire un document unique recensant les actions menées sur :
+citoyenneté, mixité, non-discrimination, VSS, diversité, handicap, accompagnement social.
+	•	Prévoir une version exploitable pour Paris, Nantes et Strasbourg.
+	•	Éviter les preuves dispersées entre souvenirs, mails, posts LinkedIn ou recherches de dernière minute.
+
+3. Clarifier le schéma global des outils
+	•	Formaliser un support simple expliquant le rôle de :
+Intra, RedSquare, HeadSquare et des exports Excel.
+	•	Indiquer clairement ce que chaque outil porte comme preuve :
+suivi entreprise, portfolio, sondages tuteur, comptes rendus, évaluations, consolidation.
+	•	Aligner le discours de toutes les équipes pour éviter les explications contradictoires en audit.
+
+Priorité 2 — Très importante / à finaliser rapidement
+
+4. Renforcer la démonstration de la progressivité de l’alternance
+	•	Mieux montrer que l’évaluation repose sur plusieurs temps de suivi et pas uniquement sur un rendu final.
+	•	Formaliser le lien entre centre de formation, entreprise, montée en compétences et évaluation.
+	•	Préparer une présentation claire de la logique globale :
+suivi entreprise → évaluation tuteur → compléments via appels → portfolio ou soutenance finale.
+
+5. Consolider la partie portfolio
+	•	Clarifier le rôle exact du portfolio dans l’évaluation.
+	•	Mieux relier :
+missions en entreprise, traces dans le portfolio et évaluation finale.
+	•	Mieux faire apparaître la validation ou l’appréciation du tuteur sur les travaux réalisés.
+	•	Préparer une formulation solide montrant que le portfolio reflète une progression et non un simple livrable terminal.
+
+6. Renforcer la traçabilité des évaluations tuteur
+	•	Maintenir les sondages tuteur.
+	•	Formaliser la relance des non-répondants.
+	•	Tracer les compléments obtenus par téléphone ou visio.
+	•	Montrer clairement la logique :
+sondage = base, Excel = consolidation, appel = complétude.
+
+7. Valoriser et sécuriser les visites / suivis entreprise
+	•	Conserver une trace claire de tous les points entreprise, qu’ils soient physiques, téléphoniques ou en visio.
+	•	Employer une formulation qui ne laisse pas penser que tout repose sur des visites physiques.
+	•	Montrer que ces suivis sont réguliers, individualisés, utiles à l’évaluation et exploitables en audit.
+
+8. Sécuriser les comptes rendus des 45 premiers jours
+	•	Vérifier que la visite ou le point entreprise des 45 premiers jours est identifiable.
+	•	Vérifier que la preuve est facilement retrouvable.
+	•	S’assurer qu’elle est stockée dans le bon outil et mobilisable immédiatement.
+
+Priorité 3 — Structuration documentaire
+
+9. Mieux présenter les différences entre parcours
+	•	Préparer une explication simple entre :
+Web Academy avec logique portfolio,
+MSc / Bac+5 avec évaluations de compétences et soutenance finale.
+	•	Formaliser les équivalences de preuve entre parcours.
+	•	Expliquer pourquoi certaines évaluations finales ne sont pas encore disponibles quand le cycle n’est pas terminé.
+
+10. Consolider les preuves d’accompagnement social
+	•	Formaliser les actions d’accompagnement socio-professionnel.
+	•	Mettre en avant le Programme Z.
+	•	Documenter précisément ce qu’il couvre :
+logement, aides, démarches administratives, préparation aux entretiens, soutien matériel.
+	•	Compléter avec une liste de partenaires externes mobilisables.
+
+11. Formaliser les contacts utiles en cas de difficulté ou rupture
+	•	Préparer une liste claire :
+missions locales, France Travail, relais de réorientation, partenaires logement, aide sociale, accompagnement.
+	•	Rendre cette liste accessible dans les documents remis aux apprenants.
+	•	Pouvoir démontrer rapidement comment un apprenti en difficulté est orienté.
+
+12. Structurer les preuves sur mixité et femmes dans la tech
+	•	Recenser noir sur blanc les actions menées.
+	•	Mettre en avant :
+STEM4ALL, Margaret Awards, Amazon Future Engineer et autres partenariats.
+	•	Préparer une synthèse simple :
+action / objectif / public / preuve.
+
+13. Structurer les preuves sur VSS, discrimination, inclusion et handicap
+	•	Lister conférences, sensibilisations, supports et outils existants.
+	•	Mettre en avant la plateforme signaler.epitech.eu.
+	•	Organiser les preuves avec une logique simple :
+date / action / public / support / preuve.
+
+Priorité 4 — Conformité documentaire et audit campus
+
+14. Sécuriser l’information sur les droits et devoirs des apprentis
+	•	Vérifier que les supports de rentrée couvrent bien :
+statut salarié, congés, rémunération, protection sociale, obligations, cadre du contrat.
+	•	Identifier les extraits précis à présenter en audit.
+	•	Vérifier aussi les cas de bascule vers l’alternance.
+
+15. Préparer la partie “conditions de présentation aux examens”
+	•	Rassembler les règlements pédagogiques utiles.
+	•	Identifier les passages sur :
+contrôle des connaissances, épreuves, jurys, validations, conditions de présentation.
+	•	Préparer les extraits spécifiques aux parcours concernés.
+
+16. Préparer les audits campus de Nantes et Strasbourg
+	•	Constituer à l’avance les dossiers de preuve campus.
+	•	Préparer les éléments sur moyens techniques et matériels :
+photos, plans, listes d’équipements, présentation synthétique des sites.
+	•	Anticiper les vérifications lourdes :
+attentes et besoins, motivations, fiches mission, cohérence mission/diplôme, suivis entreprise, évaluations tuteur, évaluations finales.
+
+17. Mettre à jour le site internet et les indicateurs publics
+	•	Vérifier la présence et la conformité du certificat Qualiopi et du logo.
+	•	Vérifier les informations obligatoires :
+prérequis, objectifs, modalités d’accès, délais, tarifs, méthodes, évaluations, handicap, RNCP.
+	•	Revoir les indicateurs affichés pour faire apparaître clairement les volumes de candidats présentés.
+	•	Ajouter les taux manquants, notamment sur rupture ou abandon là où nécessaire.
+
+18. Sécuriser les éléments réglementaires et administratifs
+	•	Transmettre le dernier BPF.
+	•	Suivre les évolutions de déclaration BPF.
+	•	Mettre à jour la documentation RNCP et sécuriser le suivi des échéances.
+	•	Veiller à l’archivage des données Parcoursup utiles à la preuve.
+
+Priorisation finale à communiquer
+
+Rouge — immédiat
+	1.	Suivi entreprise 24-25 complet, traçable et présentable.
+	2.	Dossier indicateur 14 / obligations CFA consolidé.
+	3.	Schéma clair et partagé des outils.
+	4.	Mise en cohérence de la progressivité alternance / portfolio / évaluation.
+
+Orange — très rapide
+	5.	Partenaires sociaux et orientation en cas de rupture.
+	6.	Droits et devoirs des apprentis.
+	7.	Conditions de présentation aux examens.
+	8.	Dossiers campus Nantes / Strasbourg.
+
+Jaune — à finaliser dans la foulée
+	9.	Mise à jour site internet et indicateurs.
+	10.	Consolidation RNCP / BPF / Parcoursup.
+	11.	Classement plus robuste des preuves mixité, VSS, inclusion, handicap.
+
+Formulation courte à envoyer aux équipes
+
+Suite aux deux séquences d’audit Qualiopi, le niveau global est satisfaisant, mais plusieurs chantiers doivent être finalisés rapidement pour sécuriser la suite. Le point le plus sensible concerne la capacité à démontrer un suivi entreprise réel, progressif, individualisé et traçable, notamment sur la promo 2024-2025. En parallèle, nous devons consolider l’ensemble des preuves CFA, clarifier le rôle de nos outils, structurer nos dossiers campus et fiabiliser la documentation réglementaire et publique. L’enjeu n’est pas seulement d’avoir les actions, mais de pouvoir les prouver simplement et immédiatement en audit.

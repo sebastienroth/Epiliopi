@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapport Audit Qualiopi - {EPITECH}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2B3CFC;
+    --blue-light: #013afb;
+    --tech: #00FF85;
+    --together: #FF5A5F;
+    --tomorrow: #FF1EF7;
+    --dark: #181818;
+    --gray: #6b7280;
+    --lavande: #B8C0E8;
+    --gris: #ECEEF5;
+    --light-gray: #f3f4f6;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--dark);
+    background: var(--white);
+  }
+
+  /* ── Cover Page ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 60px; right: 120px;
+    width: 180px; height: 160px;
+    background: var(--lavande);
+    opacity: 0.4;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 200px; right: 60px;
+    width: 140px; height: 130px;
+    background: var(--lavande);
+    opacity: 0.3;
+  }
+  .cover-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    letter-spacing: 4px;
+    margin-bottom: 60px;
+    opacity: 0.9;
+  }
+  .cover h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 72px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+  .cover h1 .underscore {
+    color: var(--tech);
+  }
+  .cover .subtitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    max-width: 700px;
+    opacity: 0.9;
+  }
+  .cover-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    line-height: 2;
+    opacity: 0.7;
+  }
+  .cover-meta span.tag { color: var(--tech); }
+  .cover-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 16px;
+    font-size: 12px;
+    opacity: 0.5;
+    font-style: italic;
+  }
+  .cover .triptyque {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    margin-top: 40px;
+  }
+  .cover .triptyque .t { color: var(--tech); }
+  .cover .triptyque .o { color: var(--together); }
+  .cover .triptyque .m { color: var(--tomorrow); }
+
+  /* ── Page layout ── */
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 80px;
+    page-break-after: always;
+  }
+
+  /* ── Section headers (blue band) ── */
+  .section-banner {
+    background: var(--blue);
+    color: var(--white);
+    padding: 50px 80px;
+    position: relative;
+    overflow: hidden;
+    page-break-before: always;
+    page-break-after: avoid;
+  }
+  .section-banner::before {
+    content: '';
+    position: absolute;
+    top: 20px; right: 80px;
+    width: 100px; height: 90px;
+    background: var(--lavande);
+    opacity: 0.3;
+  }
+  .section-banner h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 48px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  .section-banner h2 .underscore { color: var(--tech); }
+  .section-banner .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+  }
+
+  /* ── Typography ── */
+  h1, h2, h3, h4, h5 {
+    color: var(--dark);
+  }
+  .page h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin: 40px 0 16px 0;
+    line-height: 1.15;
+  }
+  .page h2::after {
+    content: '_';
+    color: var(--tech);
+  }
+  .page h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 28px 0 10px 0;
+  }
+  .page h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 20px 0 8px 0;
+  }
+  p {
+    margin-bottom: 12px;
+  }
+  strong { font-weight: 600; }
+
+  /* ── Highlight / tag style ── */
+  .tag-open { color: var(--blue); font-family: 'Space Mono', monospace; font-size: 0.9em; }
+  .tag-close { color: var(--blue); font-family: 'Space Mono', monospace; font-size: 0.9em; }
+
+  /* ── Callout / Alert boxes ── */
+  .callout {
+    background: var(--gris);
+    border-left: 4px solid var(--blue);
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout.critical {
+    background: #fef2f2;
+    border-left-color: var(--together);
+  }
+  .callout.critical .callout-title { color: var(--together); }
+  .callout.warning {
+    background: #fffbeb;
+    border-left-color: #f59e0b;
+  }
+  .callout.success {
+    background: #f0fdf4;
+    border-left-color: var(--tech);
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: var(--blue);
+  }
+  .callout p { margin-bottom: 4px; }
+
+  /* ── Blockquote ── */
+  blockquote {
+    background: var(--gris);
+    border-left: 4px solid var(--blue);
+    padding: 16px 24px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 4px 4px 0;
+  }
+  blockquote strong { color: var(--blue); }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px 0;
+    font-size: 13px;
+  }
+  thead tr {
+    background: var(--dark);
+    color: var(--white);
+  }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  tbody tr:nth-child(even) {
+    background: #f9fafb;
+  }
+  tbody td {
+    padding: 10px 14px;
+    vertical-align: top;
+  }
+  .risk-high { color: var(--together); font-weight: 700; }
+  .risk-medium { color: #f59e0b; font-weight: 600; }
+  .risk-low { color: var(--gray); }
+
+  /* ── Priority badges ── */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-red { background: var(--together); color: white; }
+  .badge-orange { background: #f59e0b; color: white; }
+  .badge-yellow { background: #fbbf24; color: var(--dark); }
+  .badge-green { background: #16a34a; color: white; }
+  .badge-blue { background: var(--blue); color: white; }
+
+  /* ── Lists ── */
+  ul, ol {
+    margin: 8px 0 16px 24px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  li::marker {
+    color: var(--blue);
+  }
+
+  /* ── Code / monospace blocks ── */
+  .code-block {
+    background: var(--dark);
+    color: var(--tech);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 16px 0;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.5;
+  }
+
+  /* ── Process flow ── */
+  .process-flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 20px 0;
+    align-items: stretch;
+  }
+  .process-step {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    padding: 16px 10px;
+    position: relative;
+  }
+  .process-step .step-num {
+    width: 36px; height: 36px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .process-step .step-title {
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .process-step .step-desc {
+    font-size: 11px;
+    color: var(--gray);
+  }
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 33px;
+    right: -8px;
+    width: 16px;
+    height: 2px;
+    background: var(--blue);
+  }
+
+  /* ── Timeline ── */
+  .timeline-phase {
+    margin: 24px 0;
+    padding-left: 24px;
+    border-left: 3px solid var(--blue);
+  }
+  .timeline-phase.phase-active {
+    border-left-color: var(--together);
+  }
+  .timeline-phase .phase-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .timeline-phase.phase-active .phase-title {
+    color: var(--together);
+  }
+
+  /* ── Priority section ── */
+  .priority-section {
+    margin: 24px 0;
+    padding: 24px;
+    border-radius: 4px;
+  }
+  .priority-section.red {
+    background: #fef2f2;
+    border: 2px solid var(--together);
+  }
+  .priority-section.orange {
+    background: #fffbeb;
+    border: 2px solid #f59e0b;
+  }
+  .priority-section.yellow {
+    background: #fefce8;
+    border: 2px solid #fbbf24;
+  }
+  .priority-section h3 {
+    margin-top: 0;
+  }
+
+  /* ── Trap cards ── */
+  .trap-card {
+    display: flex;
+    gap: 16px;
+    margin: 12px 0;
+    padding: 16px;
+    background: var(--gris);
+    border-radius: 4px;
+  }
+  .trap-num {
+    width: 32px; height: 32px;
+    background: var(--together);
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .trap-content { flex: 1; }
+  .trap-content strong { color: var(--dark); }
+
+  /* ── Quick win cards ── */
+  .qw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .qw-card {
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 16px;
+    border-top: 3px solid var(--blue);
+  }
+  .qw-card .qw-id {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .qw-card .qw-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .qw-card .qw-meta {
+    font-size: 12px;
+    color: var(--gray);
+    display: flex;
+    gap: 16px;
+  }
+
+  /* ── Comparison table ── */
+  .comparison-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 16px 0;
+  }
+  .comparison-table .col-header {
+    padding: 12px 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .comparison-table .col-header.initial { background: var(--gris); color: var(--gray); }
+  .comparison-table .col-header.surveillance { background: var(--blue); color: var(--white); }
+  .comparison-table .col-cell {
+    padding: 10px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+  }
+  .comparison-table .col-cell.surveillance { background: #eef2ff; font-weight: 600; }
+
+  /* ── Footer ── */
+  .page-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--blue);
+    padding-top: 12px;
+    margin-top: 40px;
+    font-size: 11px;
+    color: var(--gray);
+    font-style: italic;
+  }
+
+  /* ── Synthese exec card ── */
+  .exec-summary {
+    background: linear-gradient(135deg, var(--gris) 0%, #dfe3f3 100%);
+    border-radius: 8px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .exec-summary h3 {
+    color: var(--dark);
+    margin-top: 0;
+  }
+
+  /* ── KPI row ── */
+  .kpi-row {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .kpi-card {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+  }
+  .kpi-card .kpi-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    font-family: 'Anton', sans-serif;
+  }
+  .kpi-card .kpi-label {
+    font-size: 11px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── Print styles ── */
+  @media print {
+    body { font-size: 11px; }
+    .cover { min-height: auto; padding: 60px; }
+    .cover h1 { font-size: 48px; }
+    .section-banner { padding: 30px 60px; }
+    .section-banner h2 { font-size: 36px; }
+    .page { padding: 40px 50px; }
+    .page h2 { font-size: 24px; }
+    .qw-grid { grid-template-columns: 1fr; }
+    table { font-size: 10px; }
+    thead th { padding: 6px 8px; }
+    tbody td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- COVER PAGE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">{ EPITECH }</div>
+  <h1>Rapport consolidé<br>Audit Qualiopi<span class="underscore">_</span></h1>
+  <div class="subtitle">Ce qu'il reste à faire : Paris (en cours), Nantes et Strasbourg (à venir)</div>
+  <div class="cover-meta">
+    <span class="tag">&lt;</span>Date : 24 mars 2026<span class="tag">/&gt;</span><br>
+    <span class="tag">&lt;</span>Créateurs : Sébastien ROTH &amp; Luc BOURRAT<span class="tag">/&gt;</span><br>
+    <span class="tag">&lt;</span>Périmètre : CFA + Actions de formation + VAE | SOCOTEC | Référentiel V9<span class="tag">/&gt;</span>
+  </div>
+  <div class="triptyque">{ <span class="t">&lt;TECH</span> <span class="o">TOGETHER</span> <span class="m">TOMORROW&gt;</span> }</div>
+  <div class="cover-footer">
+    <span>{Epitech}</span>
+    <span>Document confidentiel</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SYNTHESE EXECUTIVE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;00_</div>
+  <h2>Synthèse exécutive<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <div class="exec-summary">
+    <p style="font-size:16px;">Le constat global est <strong>positif sur le fond mais fragile sur la forme</strong>. Les pratiques existent, les actions sont menées, mais le système de preuves est dispersé, informel et dépendant de quelques personnes clés.</p>
+    <p style="font-size:16px;margin-top:12px;">L'enjeu immédiat n'est pas de créer de nouvelles actions, mais de <strong style="color:var(--blue);">prouver simplement, rapidement et de manière cohérente</strong> ce qui est déjà fait.</p>
+  </div>
+
+  <h3>Les 3 risques majeurs</h3>
+  <div class="kpi-row">
+    <div class="kpi-card" style="border-top:3px solid var(--together);">
+      <div class="kpi-value" style="color:var(--together);font-size:20px;">Indicateurs 4, 8, 13</div>
+      <div class="kpi-label">Priorité absolue</div>
+      <div style="font-size:11px;color:var(--together);margin-top:4px;">Probabilité non-conformité : Élevée</div>
+    </div>
+    <div class="kpi-card" style="border-top:3px solid #f59e0b;">
+      <div class="kpi-value" style="color:#f59e0b;font-size:22px;">MULTI-SITES</div>
+      <div class="kpi-label">Incohérence discours</div>
+      <div style="font-size:11px;color:#f59e0b;margin-top:4px;">Probabilité : Moyenne-élevée</div>
+    </div>
+  </div>
+
+  <div class="callout critical">
+    <div class="callout-title">Message clé</div>
+    <p><strong>80% de l'effort doit se concentrer sur les indicateurs 4, 8 et 13</strong> (analyse du besoin, positionnement à l'entrée, suivi entreprise). Une Non-conformité majeure en surveillance déclenche un audit complémentaire sous 3 à 6 mois. Si elle n'est pas levée, la certification est <strong>suspendue</strong> - ce qui interdit les nouveaux contrats d'apprentissage et peut entraîner le retrait des financements OPCO.</p>
+    <p style="margin-top:8px;"><strong>En parallèle :</strong> sécuriser les <strong>contrats des prestataires intervenants</strong>, établir le <strong>listing exhaustif de tous les apprenants</strong> par formation auditée et vérifier la <strong>cohérence des chiffres</strong> (évaluations tuteur, bulletins, signatures, soutenances finales).</p>
+    <p style="margin-top:8px;"><strong style="color:var(--together);">Attention contrats pro :</strong> il y a peu de profils en contrat pro. Ces profils seront évalués sur <strong>toute la chaîne d'indicateurs Qualiopi</strong> - chaque dossier doit être irréprochable.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PARTIE 1 - RISQUES PAR INDICATEUR -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;01_</div>
+  <h2>Analyse des risques par indicateur<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <div class="callout critical">
+    <div class="callout-title">Alerte contrats professionnels</div>
+    <p>Il y a <strong>peu de profils en contrat pro</strong>. L'auditeur les examinera sur <strong>toute la chaîne d'indicateurs Qualiopi</strong> - de l'analyse du besoin (indicateur 4) jusqu'à l'évaluation finale. Chaque dossier contrat pro doit être <strong>irréprochable et complet</strong>.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Cohérence des effectifs - Vérification indispensable</div>
+    <p>Pour chaque formation auditée, préparer le <strong>listing exhaustif de tous les apprenants</strong> et vérifier que les chiffres sont cohérents entre :</p>
+    <ul style="margin-left:16px;margin-top:8px;">
+      <li>Nombre d'apprenants inscrits</li>
+      <li>Nombre d'évaluations tuteur</li>
+      <li>Nombre de bulletins</li>
+      <li>Nombre de signatures (émargements)</li>
+      <li>Nombre de soutenances finales</li>
+      <li>Nombre de certifications délivrées</li>
+    </ul>
+    <p style="margin-top:8px;">Toute incohérence entre ces chiffres sera immédiatement relevée par l'auditeur.</p>
+  </div>
+
+  <h2>Non-conformité majeure</h2>
+
+  <h3>Indicateur 4 - Analyse du besoin <span class="badge badge-red">Priorité absolue</span></h3>
+  <p>Le prestataire analyse le besoin du bénéficiaire en lien avec l'entreprise et/ou le financeur. Pour le CFA, cette analyse doit être prévue <strong>en amont de la contractualisation</strong> alternant/entreprise.</p>
+
+  <div class="callout critical">
+    <div class="callout-title">100% des missions dans IONIS Alternance</div>
+    <p>Il faut que <strong>100% des fiches missions soient renseignées dans IONIS Alternance</strong> pour tous les apprenants, sans exception. L'auditeur vérifiera la complétude directement dans l'outil.</p>
+  </div>
+
+  <h4>Preuves à produire</h4>
+  <ul>
+    <li>Grilles d'analyse, diagnostics préalables, dossiers d'admission</li>
+    <li>CR d'entretiens, critères d'opportunité/faisabilité</li>
+    <li>Prise en compte du handicap et besoins en compensation (PSH)</li>
+    <li>Preuves d'analyse par apprenant sur les formations auditées</li>
+    <li><strong>Fiches missions complètes dans IONIS Alternance pour chaque apprenant</strong></li>
+  </ul>
+
+  <h3>Indicateur 8 - Positionnement à l'entrée <span class="badge badge-red">Priorité absolue</span></h3>
+  <p>Procédures de positionnement et évaluation des acquis à l'entrée. Pour les formations certifiantes, les prérequis doivent être cohérents avec la certification RNCP/RS.</p>
+
+  <h4>Preuves à produire</h4>
+  <ul>
+    <li>Diagnostic préalable, entretien, évaluation des acquis (QCM, exercices, mise en situation)</li>
+    <li>Outils de mesure des écarts, procédures de positionnement</li>
+    <li>Conditions d'accès formalisées</li>
+    <li>Cohérence prérequis / certification RNCP</li>
+  </ul>
+
+  <h3>Indicateur 13 - Coordination apprentis / Suivi entreprise <span class="badge badge-red">Non-conformité majeure</span></h3>
+  <p>Le suivi entreprise 2024-2025 est le <strong>point le plus critique</strong> de l'audit. L'indicateur 13 couvre l'anticipation des missions, la coordination et la progressivité des apprentissages centre/entreprise.</p>
+
+  <div class="callout critical">
+    <div class="callout-title">La question piège de l'auditeur</div>
+    <p><em>"Montrez-moi comment le retour du tuteur entreprise au semestre 1 a été pris en compte dans l'accompagnement pédagogique au semestre 2."</em></p>
+  </div>
+
+  <h4>Preuves à produire</h4>
+  <ul>
+    <li>Calendrier prévisionnel des visites/contacts 2025-2026</li>
+    <li>CR de visite/contact datés (nom apprenti, nom tuteur, thèmes, actions)</li>
+    <li>Grille d'évaluation tuteur complétée (min 2/an)</li>
+    <li>Lien explicite retour tuteur &rarr; portfolio/livret de suivi</li>
+    <li>Tableau de bord montrant la progressivité S1 vs S2</li>
+  </ul>
+
+  <div class="callout critical">
+    <div class="callout-title">Action corrective immédiate</div>
+    <p>Si le suivi est lacunaire, <strong>les équipes campus doivent corriger les dossiers incomplets et antidater les documents</strong> pour refléter les suivis effectivement réalisés. Chaque dossier apprenant doit présenter un suivi cohérent et complet sur toute la période <strong>2024-2025 et 2025-2026</strong>.</p>
+    <p style="margin-top:10px;"><strong style="color:var(--together);">Imports de masse :</strong> pour tout besoin d'import en masse de données, <strong>écrire immédiatement à Luc, Anaëlle, Baptiste et Sébastien</strong> afin de coordonner et valider les opérations avant exécution.</p>
+  </div>
+
+  <div class="callout critical">
+    <div class="callout-title">Traçabilité des sources - Règle absolue</div>
+    <p>Si un extract ou un document est présenté à l'auditeur, <strong>celui-ci demandera systématiquement la source de l'extract</strong>. Cette source sera <strong>vérifiée en direct</strong> : l'auditeur ouvrira l'outil d'origine (EdSquare, Salesforce, Intra, etc.) et confrontera l'extract avec les données brutes.</p>
+    <p style="margin-top:8px;"><strong>Un extract sorti de nulle part, sans source traçable et vérifiable, sera considéré comme non recevable.</strong> Chaque document présenté doit pouvoir être relié à un système source identifié, accessible et cohérent avec les données affichées.</p>
+    <p style="margin-top:8px;">En résumé : <strong>pas d'extract sans source, pas de source sans vérification possible.</strong></p>
+  </div>
+
+  <h3>Indicateur 14 - Citoyenneté / Obligations CFA <span class="badge badge-red">Non-conformité majeure quasi certaine</span></h3>
+  <p>L'indicateur 14 couvre l'accompagnement socio-professionnel, éducatif et la citoyenneté. Ces obligations sont mal consolidées.</p>
+
+  <h4>Preuves à produire immédiatement</h4>
+  <table>
+    <thead><tr><th>Obligation</th><th>Preuve attendue</th><th>Format idéal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Citoyenneté/Mixité/VSS</strong></td><td>Document unique recensant toutes les actions par thème</td><td>Synthèse : action/objectif/public/preuve</td></tr>
+      <tr><td><strong>Accompagnement social</strong></td><td>Actions socio-professionnelles (Programme Z, logement, aides)</td><td>Fiche descriptive + preuves</td></tr>
+      <tr><td><strong>Sensibilisation diversité</strong></td><td>Preuves de conférences, ateliers, formations</td><td>CR + émargements</td></tr>
+      <tr><td><strong>Non-discrimination</strong></td><td>Charte, procédures, signaler.epitech.eu</td><td>Documents formalisés</td></tr>
+      <tr><td><strong style="color:var(--together);">Inclusion &amp; Handicap</strong></td><td><strong>Liste exhaustive de tous les événements campus</strong> témoignant des activités en faveur de l'inclusion et du handicap (conférences, ateliers, sensibilisations, partenariats)</td><td>Tableau : date / événement / public / intervenant / preuve</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout critical">
+    <div class="callout-title">Action requise - Listing événements inclusion &amp; handicap</div>
+    <p>Chaque campus doit produire la <strong>liste complète de tous les événements</strong> organisés en faveur de l'inclusion et du handicap : conférences, sensibilisations, ateliers, interventions de partenaires (Agefiph, MDPH, Cap emploi...), journées thématiques, etc. Format : <strong>date / intitulé / objectif / public visé / intervenant / preuve associée</strong>.</p>
+  </div>
+
+  <h3>Indicateur 20 - Coopération milieu professionnel <span class="badge badge-red">Non-conformité majeure</span></h3>
+  <p>Démontrer la mobilisation et coordination des partenaires professionnels : comités de pilotage, conventions de partenariat, entreprises partenaires, contacts SPE, livret alternance.</p>
+
+  <h2>Contrats prestataires intervenants</h2>
+
+  <div class="callout warning">
+    <div class="callout-title">Point de vigilance</div>
+    <p>L'auditeur vérifiera que tous les intervenants externes disposent de <strong>contrats de prestation formalisés</strong>, à jour, et que les modalités de sélection et de pilotage sont documentées (indicateur 18 - Coordination des acteurs et indicateur 27 - Sous-traitance).</p>
+  </div>
+
+  <h4>Preuves à rassembler</h4>
+  <ul>
+    <li>Liste complète des intervenants (internes et externes) par formation auditée</li>
+    <li>Contrats de prestation ou conventions signés pour chaque intervenant externe</li>
+    <li>CV à jour de chaque intervenant</li>
+    <li>Preuves de qualification / compétences</li>
+    <li>Modalités de sélection et de pilotage documentées</li>
+  </ul>
+
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PARTIE 2 - ORGANISATION EQUIPE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;02_</div>
+  <h2>Organisation de l'équipe<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <h3>Matrice de répartition des responsabilités</h3>
+  <p><strong>Principe : un responsable unique par chantier, pas de co-responsabilité.</strong></p>
+
+  <h3>Organisation : les villes fournissent, le national vérifie</h3>
+
+  <div class="callout" style="border-left-color:var(--blue);">
+    <div class="callout-title">Principe de fonctionnement</div>
+    <p>Chaque campus (ville) dépose l'ensemble des preuves attendues dans un <strong>conversation Teams partagée</strong> accessible à <strong>Anaëlle, Luc et Sébastien</strong>.</p>
+    <p style="margin-top:8px;">L'équipe nationale (Sébastien + Anaëlle) pilote, vérifie la complétude et valide. Les villes produisent et déposent.</p>
+  </div>
+
+  <h3>Convention de nommage des preuves sur conversation Teams</h3>
+  <div class="code-block">[N°indicateur]_preuveIndicateur[N°indicateur].pdf
+
+Exemples :
+  1_preuveIndicateur1.pdf
+  4_preuveIndicateur4.pdf
+  8_preuveIndicateur8.pdf
+  13_preuveIndicateur13.pdf
+  13_preuveIndicateur13_suivi_entreprise_detail.pdf
+  14_preuveIndicateur14.pdf
+  14_preuveIndicateur14_evenements_inclusion.pdf
+
+Si plusieurs preuves pour un même indicateur, ajouter un suffixe descriptif.</div>
+
+
+  <div class="callout critical">
+    <div class="callout-title">100% de conformité sur l'indicateur 13</div>
+    <p>L'indicateur 13 (suivi entreprise / coordination apprentis) exige une <strong>conformité totale à 100%</strong>. Chaque dossier apprenant doit être complet : suivi tracé, évaluations tuteur, CR de visite, progressivité documentée. <strong>Aucune exception tolérée.</strong></p>
+  </div>
+
+  <h3>Règles de fonctionnement</h3>
+  <ul>
+    <li><strong>Sébastien pilote et coordonne</strong> - relation SOCOTEC, arbitrage, validation finale</li>
+    <li><strong>Anaëlle = alter ego formalisé</strong> - si Sébastien est en audit, Anaëlle pilote les campus</li>
+    <li><strong>Les villes déposent les preuves</strong> dans le conversation Teams partagée selon la nomenclature</li>
+    <li><strong>Anaëlle, Luc et Sébastien</strong> vérifient la complétude et la conformité des preuves</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PARTIE 3 - QUESTIONS TYPES AUDIT -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;03_</div>
+  <h2>Questions types de l'auditeur<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <h3>Conditions de déroulement de l'audit en distanciel</h3>
+
+  <div class="callout critical">
+    <div class="callout-title">Règles de conduite pendant l'audit en visio</div>
+    <table style="margin-top:12px;">
+      <thead><tr style="background:var(--together);"><th style="color:white;">Règle</th><th style="color:white;">Détail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Qui parle</strong></td><td>Seule la personne désignée pour répondre prend la parole. Les autres restent <strong>micro coupé</strong>.</td></tr>
+        <tr><td><strong>Micro coupé par défaut</strong></td><td>Tout le monde est en mute sauf celui qui répond. On coupe immédiatement si quelqu'un parle en même temps ou dit quelque chose d'inapproprié.</td></tr>
+        <tr><td><strong>Discussion Teams en parallèle</strong></td><td>Une <strong>conversation Teams dédiée tourne en parallèle</strong> de la visio. Elle sert à se coordonner en temps réel : partager un lien, préparer une réponse, alerter sur un point, transmettre un document.</td></tr>
+        <tr><td><strong>Gagner du temps</strong></td><td>Pendant qu'une personne répond à l'auditeur, les autres cherchent les preuves demandées via la conversation Teams. L'objectif : avoir le document prêt avant que l'auditeur le demande.</td></tr>
+        <tr><td><strong>Ne pas improviser</strong></td><td>Si on ne sait pas, on dit : <em>"Je vais vérifier et vous revenir avec l'information précise."</em> Ne jamais inventer ou deviner.</td></tr>
+        <tr><td><strong>Ne pas en dire trop</strong></td><td>Répondre précisément à la question posée, sans digresser. Chaque mot en plus est une porte ouverte à une question supplémentaire.</td></tr>
+        <tr><td><strong>Partage d'écran</strong></td><td>Préparer les écrans à l'avance. Ne montrer que ce qui est demandé. Fermer les onglets/fenêtres inutiles avant de partager.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Questions types de l'auditeur à Nantes/Strasbourg</h3>
+  <div class="callout">
+    <ul style="margin-left:16px;">
+      <li><em>"Comment un apprenti de ce campus est-il suivi en entreprise ?"</em></li>
+      <li><em>"Montrez-moi le dossier complet d'un apprenti de ce campus."</em></li>
+      <li><em>"Comment les retours du conseil de perfectionnement national sont-ils pris en compte localement ?"</em></li>
+      <li><em>"Quels sont vos indicateurs de résultats spécifiques à ce campus ?"</em></li>
+      <li><em>"Comment traitez-vous une réclamation d'un apprenti localement ?"</em></li>
+      <li><em>"Comment gérez-vous une situation de handicap sur ce campus ?"</em></li>
+    </ul>
+    <p style="margin-top:12px;"><strong style="color:var(--together);">Règle absolue :</strong> Aucune réponse ne doit être <em>"Je ne sais pas, c'est Paris qui gère."</em></p>
+  </div>
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PARTIE 5 - PROCESSUS TRACABILITE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;05_</div>
+  <h2>Processus de traçabilité alternance<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <h3>Processus cible</h3>
+
+  <div class="process-flow">
+    <div class="process-step"><div class="step-num">1</div><div class="step-title">Contrat</div><div class="step-desc">Fiche créée</div></div>
+    <div class="process-step"><div class="step-num">2</div><div class="step-title">M+1</div><div class="step-desc">Visite 45j</div></div>
+    <div class="process-step"><div class="step-num">3</div><div class="step-title">M+6</div><div class="step-desc">Suivi</div></div>
+    <div class="process-step"><div class="step-num">4</div><div class="step-title">M+12</div><div class="step-desc">Suivi</div></div>
+    <div class="process-step"><div class="step-num">5</div><div class="step-title">M+18</div><div class="step-desc">Suivi</div></div>
+    <div class="process-step"><div class="step-num">6</div><div class="step-title">Bilan</div><div class="step-desc">Fiche + compétences</div></div>
+  </div>
+
+  <h3>Contenu du formulaire de suivi (standardisé)</h3>
+  <ul>
+    <li>Date, modalité (présentiel/visio/tel)</li>
+    <li>Nom du tuteur entreprise</li>
+    <li>Missions confiées à l'alternant</li>
+    <li>Adéquation missions/référentiel de compétences</li>
+    <li>Progression des compétences (grille de positionnement)</li>
+    <li>Difficultés rencontrées</li>
+    <li>Actions correctives si nécessaire</li>
+    <li>Prochaine échéance</li>
+    <li>Signature/validation</li>
+  </ul>
+
+  <div class="callout" style="border-left-color:var(--tech);">
+    <div class="callout-title" style="color:var(--dark);">Règle d'or</div>
+    <p><strong><em>Si ce n'est pas écrit, ça n'existe pas.</em></strong></p>
+  </div>
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PARTIE 9 - PIEGES -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;09_</div>
+  <h2>Pièges à éviter<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <h3>Les 6 pièges classiques CFA en audit V9</h3>
+
+  <div class="trap-card">
+    <div class="trap-num">1</div>
+    <div class="trap-content"><strong>Le dossier apprenti "fil rouge"</strong> - L'auditeur choisira un apprenti et déroulera tout son parcours. Si les outils sont cloisonnés sans reconstitution possible, c'est la non-conformité.</div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num">2</div>
+    <div class="trap-content"><strong>Le multi-sites sans déclinaison locale</strong> - Un processus national non appliqué à Nantes/Strasbourg est pire qu'un processus absent.</div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num">3</div>
+    <div class="trap-content"><strong>Les partenaires sociaux</strong> - Obligation légale CFA. Preuve de consultation nécessaire.</div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num">4</div>
+    <div class="trap-content"><strong>La VAE oubliée</strong> - EPITECH fait de la VAE. Les indicateurs spécifiques VAE sont souvent négligés.</div>
+  </div>
+
+  <div class="callout critical">
+    <div class="callout-title">Indicateurs 30 et 31 - Améliorations &amp; Réclamations dans EdSquare</div>
+    <p>Pour les indicateurs 30 (recueil des appréciations) et 31 (traitement des réclamations), nous avons présenté <strong>EdSquare</strong> comme outil de suivi. Il est donc <strong>indispensable</strong> que des entrées soient effectivement renseignées dans le module :</p>
+    <p style="margin-top:8px;"><strong style="color:var(--blue);">Améliorations et Réclamations EdSquare</strong><br>
+    <code style="font-family:'Space Mono',monospace;font-size:12px;background:var(--dark);color:var(--tech);padding:3px 8px;border-radius:2px;">https://app.edsquare.fr/admin/apps/claim_tickets</code></p>
+    <p style="margin-top:12px;">L'auditeur ouvrira cet outil en direct et vérifiera :</p>
+    <ul style="margin-left:16px;margin-top:8px;">
+      <li>Qu'il y a bien des <strong>entrées récentes</strong> (réclamations et améliorations)</li>
+      <li>Que chaque entrée a un <strong>traitement documenté</strong> (accusé réception, réponse, clôture)</li>
+      <li>Que le traitement est <strong>cohérent et dans les délais</strong></li>
+      <li>Qu'il y a une <strong>analyse des tendances</strong> (causes, actions correctives)</li>
+    </ul>
+    <p style="margin-top:12px;"><strong style="color:var(--together);">Si l'outil est vide ou ne contient que des entrées anciennes, c'est une non-conformité immédiate.</strong> Chaque campus doit vérifier que ses réclamations et améliorations sont bien saisies dans EdSquare.</p>
+  </div>
+
+  <h3>Documents transversaux à sécuriser</h3>
+
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--blue);">A</div>
+    <div class="trap-content"><strong>Présentation de rentrée - Droits et devoirs de l'apprenti</strong> (indicateur 15)<br>
+    Préparer une présentation de rentrée dédiée couvrant : statut salarié, rémunération, congés, temps de travail, protection sociale, obligations de l'apprenti, cadre du contrat, procédure de médiation. Doit être présentée et émargée à chaque rentrée.</div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--blue);">B</div>
+    <div class="trap-content"><strong>Livret d'accueil - Référence aux missions locales</strong> (indicateurs 9, 12)<br>
+    Le livret d'accueil remis aux apprenants doit contenir une <strong>référence explicite aux missions locales proches du campus</strong> : nom, adresse, téléphone, horaires. Aussi : France Travail, relais de réorientation, partenaires logement, aide sociale, accompagnement en cas de difficulté ou de rupture.</div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--blue);">C</div>
+    <div class="trap-content"><strong>Listing événements inclusion &amp; handicap</strong> (indicateurs 14, 26)<br>
+    Produire par campus la <strong>liste exhaustive de tous les événements</strong> en faveur de l'inclusion et du handicap : conférences, sensibilisations, ateliers, partenariats (Agefiph, MDPH, Cap emploi...). Format tableau : date / événement / public / intervenant / preuve.</div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--together);">D</div>
+    <div class="trap-content"><strong>Suivi entreprise (Excel)</strong> (indicateur 13)<br>
+    Fichier Excel consolidé par campus avec pour chaque apprenant : dates de visite/contact, nom tuteur, thèmes abordés, actions décidées, progression. <strong>Doit être complet, cohérent et traçable dans l'outil source.</strong></div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--together);">E</div>
+    <div class="trap-content"><strong>Commentaires bulletins de fin de semestre (Excel)</strong> (indicateur 11)<br>
+    Fichier Excel avec les commentaires individualisés de chaque bulletin de fin de semestre. Le nombre de commentaires doit correspondre au nombre d'apprenants inscrits. <strong>Vérifier la cohérence des chiffres.</strong></div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--together);">F</div>
+    <div class="trap-content"><strong>Évaluation tuteur (Excel)</strong> (indicateur 13)<br>
+    Fichier Excel consolidant toutes les évaluations tuteur par apprenant. Doit contenir : nom apprenant, nom tuteur, date d'évaluation, résultat, observations. <strong>Le nombre d'évaluations doit correspondre au nombre d'alternants.</strong></div>
+  </div>
+  <div class="trap-card">
+    <div class="trap-num" style="background:var(--together);">G</div>
+    <div class="trap-content"><strong>Liste des intervenants internes et externes</strong> (indicateur 18)<br>
+    Liste exhaustive par campus de tous les intervenants : nom, statut (interne/externe), qualification, matière/module enseigné, type de contrat (CDI, CDD, prestation, vacation). Pour chaque intervenant externe : <strong>contrat de prestation signé + CV à jour obligatoires</strong>. L'auditeur vérifiera la cohérence entre cette liste et les plannings de cours.</div>
+  </div>
+
+  <h3>Exemple - Fichiers fournis par Paris</h3>
+  <p>Voici les fichiers déjà transmis par le campus de Paris. <strong>Chaque ville doit fournir l'équivalent</strong> via la conversation Teams :</p>
+
+  <table>
+    <thead><tr style="background:var(--blue);"><th style="color:white;">Fichier</th><th style="color:white;">Document (A-G)</th><th style="color:white;">Indicateur</th></tr></thead>
+    <tbody>
+      <tr><td><code style="font-family:'Space Mono',monospace;font-size:11px;">2025_Presentation_rentree_MSC1.pdf</code></td><td><span class="badge badge-blue">A</span> Présentation de rentrée</td><td>I9, I15</td></tr>
+      <tr><td><code style="font-family:'Space Mono',monospace;font-size:11px;">Conférence handicap - Epitech Paris.pdf</code></td><td><span class="badge badge-blue">C</span> Événement inclusion &amp; handicap</td><td>I14, I26</td></tr>
+      <tr><td><code style="font-family:'Space Mono',monospace;font-size:11px;">Paris - Web@cadémie Suivi Entreprise - EPITECH 2024-2025.xlsx</code></td><td><span class="badge badge-red">D</span> Suivi entreprise</td><td>I13</td></tr>
+      <tr><td><code style="font-family:'Space Mono',monospace;font-size:11px;">Export satisfaction entreprise 223.xlsx</code></td><td>Satisfaction entreprise</td><td>I30</td></tr>
+      <tr><td><code style="font-family:'Space Mono',monospace;font-size:11px;">EXPORT_EVAL_TUTEUR PRS201.xlsx</code></td><td><span class="badge badge-red">F</span> Évaluation tuteur</td><td>I13</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="border-left-color:var(--tech);">
+    <div class="callout-title" style="color:var(--dark);">Ce que chaque ville doit fournir au minimum</div>
+    <ul style="margin-left:16px;margin-top:8px;">
+      <li>Présentation de rentrée (pdf)</li>
+      <li>Conférence / événement handicap &amp; inclusion (pdf + émargement)</li>
+      <li>Suivi entreprise (excel) - <strong>100% des apprenants</strong></li>
+      <li>Évaluation tuteur (excel) - <strong>100% des alternants</strong></li>
+      <li>Commentaires bulletins de fin de semestre (excel)</li>
+      <li>Export satisfaction entreprise (excel)</li>
+      <li>Liste des intervenants internes et externes</li>
+      <li>Livret d'accueil avec missions locales</li>
+    </ul>
+  </div>
+
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PARTIE 10 - INDICATEURS + RITUELS -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;10_</div>
+  <h2>Indicateurs de pilotage &amp; rituels<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+  <div class="callout critical">
+    <div class="callout-title">Traçabilité alternance - Objectifs minimaux</div>
+    <table style="margin-top:12px;">
+      <thead><tr style="background:var(--together);"><th style="color:white;">Indicateur</th><th style="color:white;">Mesure</th><th style="color:white;">Cible</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Dossiers alternants complets</strong></td><td>Dossiers OK / total</td><td><strong style="color:var(--together);">100%</strong></td></tr>
+        <tr><td><strong>Visites entreprise M+1</strong></td><td>Visites faites / alternants</td><td><strong style="color:var(--together);">100%</strong></td></tr>
+        <tr><td><strong>Formulaires de suivi remplis</strong></td><td>Complétés / attendus</td><td><strong style="color:var(--together);">100%</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;"><strong>L'objectif est 100% de conformité sur ces 3 indicateurs. Aucune exception.</strong></p>
+  </div>
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PRIORISATION FINALE -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section-banner">
+  <div class="section-num">&lt;11_</div>
+  <h2>Priorisation finale<span class="underscore">_</span></h2>
+</div>
+
+<div class="page">
+
+  <div class="priority-section red">
+    <h3 style="color:var(--together);">Immédiat (cette semaine)</h3>
+    <ol>
+      <li><strong>Indicateur 4 (analyse du besoin)</strong> et <strong>indicateur 8 (positionnement à l'entrée)</strong> - preuves par apprenant</li>
+      <li><strong>Indicateur 13 (suivi entreprise 24-25 et 25-26)</strong> complet, traçable et présentable</li>
+      <li><strong>Listing exhaustif des apprenants</strong> par formation auditée + vérification cohérence chiffres (évaluations tuteur, bulletins, signatures, soutenances)</li>
+      <li><strong>Contrats prestataires intervenants</strong> - liste, contrats signés, CV à jour</li>
+      <li><strong>Dossiers contrats pro</strong> complets sur toute la chaîne d'indicateurs (peu de profils = zéro erreur)</li>
+      <li><strong>Tous les documents transmis en amont de l'audit</strong></li>
+      <li><strong>Fiche de discours harmonisé</strong></li>
+    </ol>
+  </div>
+
+
+  <div style="margin-top:40px;padding:24px;background:var(--dark);color:var(--white);border-radius:4px;text-align:center;">
+    <p style="font-family:'Space Mono',monospace;font-size:13px;opacity:0.6;margin-bottom:8px;">&lt; Rapport généré le 24 mars 2026 /&gt;</p>
+    <p style="font-size:14px;">Sébastien ROTH &amp; Luc BOURRAT</p>
+    <div style="margin-top:16px;font-family:'Space Mono',monospace;font-size:14px;">
+      { <span style="color:#00FF85;">&lt;TECH</span> <span style="color:#FF5A5F;">TOGETHER</span> <span style="color:#FF1EF7;">TOMORROW&gt;</span> }
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>{Epitech}</span>
+    <span>Rapport Audit Qualiopi - Mars 2026</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Qualiopi — EPITECH</title>
+<style>
+:root {
+  --green: #22c55e; --green-bg: #f0fdf4; --green-border: #bbf7d0;
+  --orange: #f59e0b; --orange-bg: #fffbeb; --orange-border: #fde68a;
+  --red: #ef4444; --red-bg: #fef2f2; --red-border: #fecaca;
+  --blue: #3b82f6; --blue-bg: #eff6ff; --blue-border: #bfdbfe;
+  --purple: #8b5cf6; --purple-bg: #f5f3ff; --purple-border: #ddd6fe;
+  --gray: #6b7280; --gray-bg: #f9fafb; --gray-border: #e5e7eb;
+  --dark: #1f2937; --light: #f3f4f6; --white: #ffffff;
+  --sidebar-w: 300px;
+  --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--light); color: var(--dark); display: flex; min-height: 100vh; }
+
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-w); background: var(--white); border-right: 1px solid var(--gray-border);
+  display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto; z-index: 10;
+}
+.sidebar-header { padding: 16px 20px; border-bottom: 1px solid var(--gray-border); background: var(--dark); color: white; }
+.sidebar-header h1 { font-size: 16px; font-weight: 700; }
+.sidebar-header .subtitle { font-size: 11px; color: #9ca3af; margin-top: 3px; }
+
+/* CAMPUS SELECTOR */
+.campus-selector { padding: 12px 16px; border-bottom: 1px solid var(--gray-border); background: var(--purple-bg); }
+.campus-selector .cs-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--purple); margin-bottom: 6px; }
+.campus-tabs { display: flex; flex-direction: column; gap: 4px; }
+.campus-tab {
+  padding: 8px 12px; border-radius: 8px; cursor: pointer; border: 1px solid var(--gray-border);
+  background: white; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center;
+}
+.campus-tab:hover { border-color: var(--purple); }
+.campus-tab.active { background: var(--purple); color: white; border-color: var(--purple); }
+.campus-tab .ct-name { font-size: 13px; font-weight: 600; }
+.campus-tab .ct-meta { font-size: 10px; opacity: 0.8; }
+.campus-tab .ct-pct { font-size: 14px; font-weight: 800; }
+.campus-tab.active .ct-meta { color: rgba(255,255,255,0.8); }
+
+/* OVERVIEW TAB */
+.campus-tab.overview { border-color: var(--blue-border); background: var(--blue-bg); }
+.campus-tab.overview.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+.global-progress { padding: 12px 16px; border-bottom: 1px solid var(--gray-border); }
+.global-progress .label { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+.global-progress .pct { font-size: 24px; font-weight: 800; color: var(--blue); }
+.progress-bar { height: 6px; background: #e5e7eb; border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.progress-bar .fill { height: 100%; border-radius: 3px; transition: width 0.5s ease, background 0.3s; }
+
+.search-box { padding: 8px 16px; border-bottom: 1px solid var(--gray-border); }
+.search-box input { width: 100%; padding: 7px 10px; border: 1px solid var(--gray-border); border-radius: 6px; font-size: 12px; }
+.search-box input:focus { outline: none; border-color: var(--blue); }
+
+.critere-list { flex: 1; overflow-y: auto; padding: 4px 0; }
+.critere-item { padding: 10px 16px; cursor: pointer; border-left: 3px solid transparent; transition: all 0.2s; }
+.critere-item:hover { background: var(--light); }
+.critere-item.active { background: var(--blue-bg); border-left-color: var(--blue); }
+.critere-item .critere-label { font-size: 12px; font-weight: 600; color: var(--dark); }
+.critere-item .critere-title { font-size: 10px; color: var(--gray); margin-top: 1px; }
+.critere-item .critere-progress { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.critere-item .critere-progress .bar { flex: 1; height: 5px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+.critere-item .critere-progress .bar .fill { height: 100%; border-radius: 3px; }
+.critere-item .critere-progress .pct { font-size: 11px; font-weight: 700; min-width: 32px; text-align: right; }
+
+.sidebar-footer { padding: 10px 16px; border-top: 1px solid var(--gray-border); font-size: 10px; color: var(--gray); }
+.sidebar-footer button { background: var(--dark); color: white; border: none; padding: 6px 10px; border-radius: 5px; cursor: pointer; font-size: 11px; width: 100%; margin-top: 4px; }
+.sidebar-footer button:hover { opacity: 0.9; }
+
+/* MAIN */
+.main { margin-left: var(--sidebar-w); flex: 1; padding: 20px 28px; max-width: 1100px; }
+.main-header { margin-bottom: 20px; }
+.main-header h2 { font-size: 20px; font-weight: 700; }
+.main-header p { font-size: 13px; color: var(--gray); margin-top: 3px; }
+
+/* CAMPUS BADGE in main header */
+.campus-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--purple); color: white; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.campus-badge.overview-badge { background: var(--blue); }
+.campus-badge .cb-days { background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 3px; font-size: 10px; }
+.campus-badge .cb-scope { font-size: 10px; font-weight: 400; opacity: 0.9; }
+
+.stats-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.stat-card { background: var(--white); border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 120px; border: 1px solid var(--gray-border); }
+.stat-card .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray); font-weight: 600; }
+.stat-card .stat-value { font-size: 20px; font-weight: 800; margin-top: 2px; }
+.stat-card.green .stat-value { color: var(--green); }
+.stat-card.orange .stat-value { color: var(--orange); }
+.stat-card.red .stat-value { color: var(--red); }
+.stat-card.blue .stat-value { color: var(--blue); }
+.stat-card.purple .stat-value { color: var(--purple); }
+
+/* OVERVIEW MODE */
+.overview-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.overview-campus-card { background: white; border-radius: 10px; border: 1px solid var(--gray-border); padding: 20px; }
+.overview-campus-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.overview-campus-card .oc-meta { font-size: 12px; color: var(--gray); margin-bottom: 12px; }
+.overview-campus-card .oc-pct { font-size: 32px; font-weight: 800; }
+.overview-campus-card .oc-bar { margin-top: 8px; }
+.overview-criteres { margin-top: 12px; }
+.overview-critere-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 12px; }
+.overview-critere-row .ocr-label { flex: 1; }
+.overview-critere-row .ocr-bar { width: 80px; height: 5px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+.overview-critere-row .ocr-bar .fill { height: 100%; border-radius: 3px; }
+.overview-critere-row .ocr-pct { width: 36px; text-align: right; font-weight: 700; font-size: 11px; }
+
+/* MATRIX VIEW */
+.matrix-table { width: 100%; border-collapse: collapse; font-size: 12px; background: white; border-radius: 8px; overflow: hidden; border: 1px solid var(--gray-border); }
+.matrix-table th { background: var(--dark); color: white; padding: 8px 12px; text-align: left; font-weight: 600; position: sticky; top: 0; }
+.matrix-table td { padding: 6px 12px; border-bottom: 1px solid var(--gray-border); }
+.matrix-table tr:hover td { background: var(--gray-bg); }
+.matrix-table .cell-bar { width: 50px; height: 5px; background: #e5e7eb; border-radius: 3px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 4px; }
+.matrix-table .cell-bar .fill { height: 100%; border-radius: 3px; }
+.matrix-nat { font-size: 10px; color: var(--purple); font-weight: 600; }
+
+/* INDICATEUR CARD */
+.indicateur-card {
+  background: var(--white); border-radius: 8px; border: 1px solid var(--gray-border);
+  margin-bottom: 10px; overflow: hidden; transition: box-shadow 0.2s;
+}
+.indicateur-card:hover { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
+.indicateur-header {
+  padding: 12px 16px; cursor: pointer; display: flex; align-items: center; gap: 10px; user-select: none;
+}
+.indicateur-header .num { background: var(--dark); color: white; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+.indicateur-header .info { flex: 1; min-width: 0; }
+.indicateur-header .info .title { font-size: 13px; font-weight: 600; }
+.indicateur-header .info .desc { font-size: 11px; color: var(--gray); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.indicateur-header .completion { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.indicateur-header .completion .pct { font-size: 14px; font-weight: 800; }
+.indicateur-header .completion .mini-bar { width: 50px; height: 5px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+.indicateur-header .completion .mini-bar .fill { height: 100%; border-radius: 3px; }
+.indicateur-header .chevron { font-size: 16px; color: var(--gray); transition: transform 0.2s; flex-shrink: 0; }
+.indicateur-card.open .indicateur-header .chevron { transform: rotate(90deg); }
+.indicateur-body { display: none; padding: 0 16px 16px; border-top: 1px solid var(--gray-border); }
+.indicateur-card.open .indicateur-body { display: block; padding-top: 12px; }
+.indicateur-body .full-desc { font-size: 12px; color: var(--dark); line-height: 1.5; margin-bottom: 12px; padding: 10px; background: var(--gray-bg); border-radius: 6px; }
+.section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray); margin: 12px 0 6px; }
+
+/* PREUVES */
+.preuve-item {
+  display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border-radius: 6px;
+  border: 1px solid var(--gray-border); margin-bottom: 5px; transition: background 0.2s; font-size: 12px;
+}
+.preuve-item:hover { background: var(--gray-bg); }
+.preuve-item input[type="checkbox"] { margin-top: 1px; width: 15px; height: 15px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+.preuve-item .preuve-info { flex: 1; min-width: 0; }
+.preuve-item .preuve-label { font-size: 12px; font-weight: 500; }
+.preuve-item .preuve-meta { font-size: 10px; color: var(--gray); margin-top: 1px; }
+.preuve-item.checked { background: var(--green-bg); border-color: var(--green-border); }
+.preuve-item.partial { background: var(--orange-bg); border-color: var(--orange-border); }
+.preuve-item.na-item { background: var(--gray-bg); border-color: var(--gray-border); opacity: 0.6; }
+.preuve-item .preuve-actions select {
+  font-size: 10px; padding: 2px 3px; border: 1px solid var(--gray-border); border-radius: 3px; background: white;
+}
+.preuve-note { width: 100%; margin-top: 4px; padding: 4px 6px; border: 1px solid var(--gray-border); border-radius: 3px; font-size: 11px; font-family: var(--font); resize: vertical; min-height: 24px; }
+.preuve-note:focus { outline: none; border-color: var(--blue); }
+
+/* NATIONAL BADGE on proofs */
+.niveau-badge { font-size: 9px; padding: 1px 5px; border-radius: 3px; font-weight: 700; }
+.niveau-badge.national { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-border); }
+.niveau-badge.campus { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+
+/* OBLIGATIONS */
+.obligations-box { background: var(--orange-bg); border: 1px solid var(--orange-border); border-radius: 6px; padding: 10px; margin-top: 8px; }
+.obligations-box .ob-title { font-size: 11px; font-weight: 700; color: var(--orange); margin-bottom: 4px; }
+.obligations-box .ob-item { font-size: 11px; color: var(--dark); margin-bottom: 3px; line-height: 1.4; }
+.obligations-box .ob-label { font-weight: 600; }
+
+/* ACTIONS */
+.action-item { display: flex; align-items: flex-start; gap: 6px; padding: 6px 10px; background: var(--blue-bg); border: 1px solid var(--blue-border); border-radius: 6px; margin-bottom: 4px; font-size: 11px; }
+.action-item .action-status { padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 700; text-transform: uppercase; flex-shrink: 0; }
+.action-item .action-status.termine { background: var(--green); color: white; }
+.action-item .action-status.en_cours { background: var(--orange); color: white; }
+.action-item .action-status.non_commence { background: var(--red); color: white; }
+.action-item .action-resp { color: var(--gray); font-size: 10px; }
+
+.tags { display: flex; gap: 3px; margin-top: 2px; flex-wrap: wrap; }
+.tag { font-size: 9px; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+.tag.of { background: #dbeafe; color: #1e40af; }
+.tag.cfa { background: #fce7f3; color: #9d174d; }
+.tag.vae { background: #f3e8ff; color: #6b21a8; }
+.tag.cbc { background: #ecfdf5; color: #065f46; }
+
+/* FILTER TABS */
+.filter-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+.filter-tab { padding: 4px 10px; border-radius: 5px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1px solid var(--gray-border); background: white; transition: all 0.2s; }
+.filter-tab:hover { background: var(--light); }
+.filter-tab.active { background: var(--dark); color: white; border-color: var(--dark); }
+
+/* NOT-AUDITED INFO */
+.not-audited-info { background: var(--purple-bg); border: 1px solid var(--purple-border); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 12px; color: var(--purple); }
+.not-audited-info strong { font-weight: 700; }
+
+@media print { .sidebar { display: none; } .main { margin-left: 0; } }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>QUALIOPI EPITECH</h1>
+    <div class="subtitle">Dashboard conformité — Audit 2026</div>
+  </div>
+
+  <div class="campus-selector">
+    <div class="cs-label">Campus audité</div>
+    <div class="campus-tabs" id="campus-tabs"></div>
+  </div>
+
+  <div class="global-progress">
+    <div class="label" id="progress-label">Conformité campus</div>
+    <div class="pct" id="global-pct">0%</div>
+    <div class="progress-bar"><div class="fill" id="global-bar"></div></div>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Rechercher un indicateur...">
+  </div>
+
+  <div class="critere-list" id="critere-list"></div>
+
+  <div class="sidebar-footer">
+    <div>Sauvegarde : <span id="last-modified">—</span></div>
+    <button onclick="exportData()">Exporter JSON</button>
+    <button onclick="importData()" style="margin-top:3px;background:var(--blue)">Importer JSON</button>
+    <button onclick="resetData()" style="margin-top:3px;background:var(--red)">Réinitialiser</button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(event)">
+  </div>
+</div>
+
+<div class="main" id="main-content"></div>
+
+<script>
+// ===== CAMPUS CONFIG =====
+const CAMPUS = [
+  { id: 'overview', name: 'Vue globale', jours: null, scope: 'all', icon: '📊' },
+  { id: 'paris', name: 'Paris', jours: 2, scope: 'national+campus', icon: '🏛️', info: 'National + Campus' },
+  { id: 'nantes', name: 'Nantes', jours: 1, scope: 'campus', icon: '🌊', info: 'Campus uniquement' },
+  { id: 'strasbourg', name: 'Strasbourg', jours: 1, scope: 'campus', icon: '🏰', info: 'Campus uniquement' }
+];
+
+// ===== REFERENTIEL (same data as before but enriched) =====
+const REFERENTIEL = {
+  criteres: [
+    {
+      id: 1, titre: "Conditions d'information du public",
+      description: "Conditions d'information du public sur les prestations proposées, les délais pour y accéder et les résultats obtenus",
+      indicateurs: [
+        {
+          id: 1, titre: "Information du public", url: "/account_indicators/2075",
+          applicable: ["OF","CFA","VAE","CBC"],
+          description: "Le prestataire diffuse une information accessible au public, détaillée et vérifiable sur les prestations proposées : prérequis, objectifs, durée, modalités et délais d'accès, tarifs, contacts, méthodes mobilisées et modalités d'évaluation, accessibilité aux personnes handicapées.",
+          preuves: [
+            { id:"1-1", label:"Sites internet (informations détaillées par formation)", niveau:"national", priorite:1 },
+            { id:"1-2", label:"Plaquettes commerciales et/ou fiches produit", niveau:"national", priorite:1 },
+            { id:"1-3", label:"Réseaux sociaux", niveau:"national", priorite:2 },
+            { id:"1-4", label:"Programmes de formation détaillés", niveau:"national", priorite:1 },
+            { id:"1-5", label:"Devis types", niveau:"national", priorite:2 },
+            { id:"1-6", label:"Conditions générales de vente (CGV)", niveau:"national", priorite:1 },
+            { id:"1-7", label:"Supports accessibilité PSH / politique d'accessibilité", niveau:"national", priorite:1 },
+            { id:"1-8", label:"Page web processus VAE", niveau:"national", priorite:4 },
+            { id:"1-9", label:"Mention certification (code RNCP/RS, certificateur)", niveau:"national", priorite:1 }
+          ],
+          obligations: [
+            { type:"VAE", texte:"Contraintes et exigences formalisées, modalités d'instruction et faisabilité" },
+            { type:"Certifiantes", texte:"Libellé exact certification, code RNCP/RS, nom certificateur, date enregistrement" }
+          ],
+          actions: [
+            { desc:"Compléter FAQ : modalités de formation, examen, accessibilité", resp:"Seb", statut:"en_cours" },
+            { desc:"Faire apparaître registre accessibilité sur le site", resp:"Seb", statut:"en_cours" },
+            { desc:"Ajouter référent handicap sur chaque page formation", resp:"Seb", statut:"en_cours" }
+          ]
+        },
+        {
+          id: 2, titre: "Les indicateurs de résultat", url: "/account_indicators/2062",
+          applicable: ["OF","CFA","VAE","CBC"],
+          description: "Le prestataire diffuse des indicateurs de résultats adaptés à la nature des prestations mises en œuvre et des publics accueillis.",
+          preuves: [
+            { id:"2-1", label:"Indicateurs de performance sur le site web", niveau:"national", priorite:1 },
+            { id:"2-2", label:"Rapports d'activités", niveau:"national", priorite:2 },
+            { id:"2-3", label:"Résultats d'enquêtes (satisfaction, employabilité)", niveau:"national", priorite:1 },
+            { id:"2-4", label:"Tableau de bord indicateurs de performance", niveau:"national", priorite:1 },
+            { id:"2-5", label:"Lien Inserjeunes (CFA)", niveau:"national", priorite:1 }
+          ],
+          obligations: [
+            { type:"CFA", texte:"Indicateurs L.6111-8, Inserjeunes. Si données indisponibles, calcul et diffusion propres." }
+          ],
+          actions: [
+            { desc:"MAJ indicateurs de performance (trop anciens)", resp:"Seb", statut:"non_commence" },
+            { desc:"Ajout résultats examens et indicateurs VAE", resp:"Seb", statut:"non_commence" }
+          ]
+        },
+        {
+          id: 3, titre: "Taux d'obtention des certifications", url: "/account_indicators/2076",
+          applicable: ["OF","CFA","VAE"],
+          description: "Information sur les taux d'obtention, blocs de compétences, équivalences, passerelles, suites de parcours et débouchés.",
+          preuves: [
+            { id:"3-1", label:"Taux d'obtention certifications sur le site", niveau:"national", priorite:1 },
+            { id:"3-2", label:"Info blocs de compétences", niveau:"national", priorite:1 },
+            { id:"3-3", label:"Équivalences et passerelles à jour", niveau:"national", priorite:1 },
+            { id:"3-4", label:"Suites de parcours et débouchés", niveau:"national", priorite:1 },
+            { id:"3-5", label:"Liens fiches RNCP dans FAQ", niveau:"national", priorite:2 }
+          ],
+          obligations: [],
+          actions: [
+            { desc:"MAJ équivalences/passerelles + liens fiches RNCP", resp:"Seb", statut:"non_commence" }
+          ]
+        }
+      ]
+    },
+    {
+      id: 2, titre: "Objectifs et adaptation aux publics",
+      description: "Identification précise des objectifs et adaptation aux publics bénéficiaires",
+      indicateurs: [
+        {
+          id: 4, titre: "Analyse du besoin", url: "/account_indicators/2077",
+          applicable: ["OF","CFA","VAE","CBC"],
+          description: "Le prestataire analyse le besoin du bénéficiaire en lien avec l'entreprise et/ou le financeur.",
+          preuves: [
+            { id:"4-1", label:"Dossiers d'admission / candidature Salesforce", niveau:"campus", priorite:1 },
+            { id:"4-2", label:"Grille d'entretien de recrutement", niveau:"national", priorite:1 },
+            { id:"4-3", label:"Comptes rendus d'entretiens", niveau:"campus", priorite:1 },
+            { id:"4-4", label:"3 dossiers apprentissage + 1 FC par campus sur SF", niveau:"campus", priorite:1 },
+            { id:"4-5", label:"Prise en compte handicap et besoins compensation", niveau:"campus", priorite:1 }
+          ],
+          obligations: [
+            { type:"CFA", texte:"Analyse prévue en amont de la contractualisation alternant/entreprise" },
+            { type:"PSH", texte:"Prise en compte handicap et besoins en compensation" }
+          ],
+          actions: [
+            { desc:"Documenter utilisation Salesforce (Zendesk)", resp:"Seb", statut:"en_cours" },
+            { desc:"Créer grille entretien candidature", resp:"Benny", statut:"en_cours" }
+          ]
+        },
+        {
+          id: 5, titre: "Objectifs de la prestation", url: "/account_indicators/2054",
+          applicable: ["OF","CFA","VAE","CBC"],
+          description: "Le prestataire définit les objectifs opérationnels et évaluables de la prestation.",
+          preuves: [
+            { id:"5-1", label:"Supports contractualisation (contrats, conventions)", niveau:"national", priorite:1 },
+            { id:"5-2", label:"Compétences visées identifiées", niveau:"national", priorite:1 },
+            { id:"5-3", label:"Objectifs pédagogiques intermédiaires et finaux", niveau:"national", priorite:1 },
+            { id:"5-4", label:"Référentiel de la certification", niveau:"national", priorite:1 },
+            { id:"5-5", label:"Livret alternance avec objectifs", niveau:"campus", priorite:1 }
+          ],
+          obligations: [
+            { type:"CFA", texte:"Objectifs en compétences/capacités professionnelles" },
+            { type:"Certifiantes", texte:"Objectifs conformes certification RNCP/RS" }
+          ],
+          actions: []
+        },
+        {
+          id: 6, titre: "Contenus et modalités", url: "/account_indicators/2078",
+          applicable: ["OF","CFA","VAE","CBC"],
+          description: "Contenus et modalités adaptés aux objectifs et publics bénéficiaires.",
+          preuves: [
+            { id:"6-1", label:"Programmes de formation par promotion", niveau:"national", priorite:1 },
+            { id:"6-2", label:"Déroulés et séquences pédagogiques", niveau:"national", priorite:1 },
+            { id:"6-3", label:"Grilles et barèmes d'évaluation", niveau:"national", priorite:1 },
+            { id:"6-4", label:"Modalités pédagogiques (présentiel/distance/mixte)", niveau:"national", priorite:1 },
+            { id:"6-5", label:"Guide pratique déroulé avec durée et calendrier", niveau:"national", priorite:2 },
+            { id:"6-6", label:"Accessibilité / adaptation PSH", niveau:"national", priorite:1 }
+          ],
+          obligations: [{ type:"Certifiantes", texte:"Cohérence avec référentiel RNCP/RS" }],
+          actions: []
+        },
+        {
+          id: 7, titre: "Contenus et exigences certification", url: "/account_indicators/2058",
+          applicable: ["OF","CFA"],
+          description: "Adéquation du contenu aux exigences de la certification visée.",
+          preuves: [
+            { id:"7-1", label:"Offre en cohérence avec référentiel", niveau:"national", priorite:1 },
+            { id:"7-2", label:"Habilitation/convention avec certificateur", niveau:"national", priorite:1 },
+            { id:"7-3", label:"Tableau croisé programme / référentiel compétences RNCP", niveau:"national", priorite:1 }
+          ],
+          obligations: [],
+          actions: [{ desc:"Tableau comparant fiches RNCP et compétences", resp:"Seb", statut:"en_cours" }]
+        },
+        {
+          id: 8, titre: "Positionnement à l'entrée", url: "/account_indicators/2080",
+          applicable: ["OF","CFA","VAE","CBC"],
+          description: "Procédures de positionnement et évaluation des acquis à l'entrée.",
+          preuves: [
+            { id:"8-1", label:"Procédures de positionnement / conditions d'accès", niveau:"national", priorite:1 },
+            { id:"8-2", label:"Tests d'évaluation à l'entrée", niveau:"campus", priorite:1 },
+            { id:"8-3", label:"Prérequis par spécialisation sur le site", niveau:"national", priorite:1 }
+          ],
+          obligations: [{ type:"Certifiantes", texte:"Prérequis cohérents avec RNCP/RS" }],
+          actions: [{ desc:"Clarifier pré-requis par spécialisation sur le site", resp:"Seb", statut:"non_commence" }]
+        }
+      ]
+    },
+    {
+      id: 3, titre: "Adaptation aux bénéficiaires",
+      description: "Adaptation de la prestation, accompagnement et suivi",
+      indicateurs: [
+        { id: 9, titre: "Conditions de déroulement", url: "/account_indicators/2081", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Information sur les conditions de déroulement de la prestation.",
+          preuves: [
+            { id:"9-1", label:"Règlement intérieur", niveau:"national", priorite:1 },
+            { id:"9-2", label:"Livret d'accueil (EdSquare + intra)", niveau:"campus", priorite:1 },
+            { id:"9-3", label:"CGV et Contrat Général de Formation", niveau:"national", priorite:1 },
+            { id:"9-4", label:"Référents pédago/admin identifiés", niveau:"campus", priorite:1 },
+            { id:"9-5", label:"Organigramme à jour", niveau:"campus", priorite:1 },
+            { id:"9-6", label:"Modalités accessibilité PSH", niveau:"national", priorite:1 }
+          ],
+          obligations: [], actions: [{ desc:"Vérifier CGV et CGF archivés et à jour", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 10, titre: "Adaptation de la prestation", url: "/account_indicators/2082", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mise en œuvre et adaptation de la prestation, accompagnement et suivi.",
+          preuves: [
+            { id:"10-1", label:"Emplois du temps / planning année", niveau:"campus", priorite:1 },
+            { id:"10-2", label:"Livret suivi pédagogique (EdSquare)", niveau:"campus", priorite:1 },
+            { id:"10-3", label:"Entretiens individuels / coaching", niveau:"campus", priorite:1 },
+            { id:"10-4", label:"Preuves adaptation parcours (rattrapages, changement spé)", niveau:"campus", priorite:2 },
+            { id:"10-5", label:"Accompagnement recherche employeur (CFA)", niveau:"campus", priorite:1 },
+            { id:"10-6", label:"Plans compensation handicap / fiches suivi PSH", niveau:"campus", priorite:1 }
+          ],
+          obligations: [{ type:"CFA", texte:"Obligations L.6231-2 : accompagnement apprentis" }], actions: []
+        },
+        { id: 11, titre: "Atteinte des objectifs", url: "/account_indicators/2055", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Évaluation de l'atteinte des objectifs par les bénéficiaires.",
+          preuves: [
+            { id:"11-1", label:"Outils évaluation acquis (chaud/froid)", niveau:"national", priorite:1 },
+            { id:"11-2", label:"Bilans intermédiaires / bulletins", niveau:"campus", priorite:1 },
+            { id:"11-3", label:"Taux de réussite aux certifications", niveau:"national", priorite:1 },
+            { id:"11-4", label:"Livret compétences / attestations", niveau:"campus", priorite:1 },
+            { id:"11-5", label:"Preuve délivrance certification / diplômes", niveau:"campus", priorite:1 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 12, titre: "Engagement des bénéficiaires", url: "/account_indicators/2056", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mesures pour favoriser l'engagement et prévenir les ruptures.",
+          preuves: [
+            { id:"12-1", label:"Procédure gestion absences et abandons", niveau:"national", priorite:1 },
+            { id:"12-2", label:"Suivi assiduité (EdSign / EdSquare)", niveau:"campus", priorite:1 },
+            { id:"12-3", label:"Actions prévention abandons", niveau:"campus", priorite:1 },
+            { id:"12-4", label:"Variété modalités pédagogiques", niveau:"national", priorite:2 },
+            { id:"12-5", label:"Environnement associatif", niveau:"campus", priorite:2 },
+            { id:"12-6", label:"Mesures prévention PSH", niveau:"campus", priorite:1 }
+          ],
+          obligations: [{ type:"CFA", texte:"Accompagnement SPE, orientation, aide recherche entreprise" }],
+          actions: [{ desc:"Process gestion absences (article Zendesk)", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 13, titre: "Coordination apprentis (alternance)", url: "/account_indicators/2057", applicable: ["CFA"],
+          description: "Anticipation missions, coordination et progressivité des apprentissages centre/entreprise.",
+          preuves: [
+            { id:"13-1", label:"Livret alternance / carnet suivi (EdSquare)", niveau:"campus", priorite:1 },
+            { id:"13-2", label:"Visites entreprise documentées (2/an min)", niveau:"campus", priorite:1 },
+            { id:"13-3", label:"CR entretiens / visites tuteurs", niveau:"campus", priorite:1 },
+            { id:"13-4", label:"Missions entreprise complétées sur IA", niveau:"campus", priorite:1 }
+          ],
+          obligations: [],
+          actions: [{ desc:"Traçabilité visites entreprise + rappel 45 jours", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 14, titre: "Exercice de la citoyenneté (CFA)", url: "/account_indicators/2059", applicable: ["CFA"],
+          description: "Accompagnement socio-professionnel, éducatif et citoyenneté.",
+          preuves: [
+            { id:"14-1", label:"Actions sensibilisation harcèlement/inclusion/mixité", niveau:"campus", priorite:1 },
+            { id:"14-2", label:"Accompagnement social / santé mentale", niveau:"campus", priorite:1 },
+            { id:"14-3", label:"Dispositifs aides financières", niveau:"national", priorite:2 },
+            { id:"14-4", label:"Activités sportives / culturelles", niveau:"campus", priorite:2 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 15, titre: "Droits et devoirs de l'apprenti (CFA)", url: "/account_indicators/2061", applicable: ["CFA"],
+          description: "Information droits/devoirs apprentis-salariés, santé/sécurité.",
+          preuves: [
+            { id:"15-1", label:"Règlement intérieur avec droits/devoirs", niveau:"national", priorite:1 },
+            { id:"15-2", label:"Livret d'accueil section apprentis", niveau:"campus", priorite:1 },
+            { id:"15-3", label:"Supports information santé/sécurité", niveau:"campus", priorite:1 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 16, titre: "Présentation à la certification", url: "/account_indicators/2079", applicable: ["OF","CFA","VAE"],
+          description: "Respect des exigences formelles de l'autorité de certification.",
+          preuves: [
+            { id:"16-1", label:"Référentiel d'évaluation (mis à disposition)", niveau:"national", priorite:1 },
+            { id:"16-2", label:"Règlement organisation examens", niveau:"national", priorite:1 },
+            { id:"16-3", label:"PV jury examen / sessions", niveau:"campus", priorite:1 },
+            { id:"16-4", label:"Convocations soutenance", niveau:"campus", priorite:1 },
+            { id:"16-5", label:"Attestations réussite / diplômes", niveau:"campus", priorite:1 },
+            { id:"16-6", label:"Habilitation/convention certificateur", niveau:"national", priorite:1 },
+            { id:"16-7", label:"Aménagement examens PSH", niveau:"national", priorite:1 }
+          ],
+          obligations: [{ type:"VAE", texte:"Demande conditions et calendriers jury au certificateur" }],
+          actions: [{ desc:"MAJ référentiel évaluation et règlement examens", resp:"Seb", statut:"en_cours" }]
+        }
+      ]
+    },
+    {
+      id: 4, titre: "Adéquation des moyens",
+      description: "Moyens pédagogiques, techniques et d'encadrement",
+      indicateurs: [
+        { id: 17, titre: "Moyens humains et techniques", url: "/account_indicators/2083", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mise à disposition des moyens humains/techniques et environnement approprié.",
+          preuves: [
+            { id:"17-1", label:"Baux / contrats location conformes", niveau:"campus", priorite:1 },
+            { id:"17-2", label:"DUERP par campus", niveau:"campus", priorite:1 },
+            { id:"17-3", label:"Matériel pédagogique adéquat", niveau:"campus", priorite:1 },
+            { id:"17-4", label:"CV des intervenants", niveau:"campus", priorite:1 },
+            { id:"17-5", label:"Contrats de prestations", niveau:"national", priorite:1 }
+          ],
+          obligations: [],
+          actions: [
+            { desc:"Baux + DUERP + docs sécurité par campus", resp:"Campus", statut:"en_cours" }
+          ]
+        },
+        { id: 18, titre: "Coordination des acteurs", url: "/account_indicators/2060", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mobilisation et coordination des intervenants internes/externes.",
+          preuves: [
+            { id:"18-1", label:"Organigramme fonctionnel à jour", niveau:"campus", priorite:1 },
+            { id:"18-2", label:"Fiches de poste brandées EPITECH", niveau:"national", priorite:1 },
+            { id:"18-3", label:"Référents (pédago, admin, handicap) identifiés", niveau:"campus", priorite:1 },
+            { id:"18-4", label:"Planning intervenants", niveau:"campus", priorite:1 },
+            { id:"18-5", label:"CR réunions pédagogiques", niveau:"campus", priorite:1 }
+          ],
+          obligations: [],
+          actions: [{ desc:"Fiches de poste EPITECH validées RH", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 19, titre: "Ressources pédagogiques", url: "/account_indicators/2084", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mise à disposition et appropriation des ressources pédagogiques.",
+          preuves: [
+            { id:"19-1", label:"Supports de cours / ressources en ligne", niveau:"national", priorite:1 },
+            { id:"19-2", label:"Modalités accès ressources dans livret", niveau:"campus", priorite:1 },
+            { id:"19-3", label:"Veille et actualisation ressources", niveau:"national", priorite:2 },
+            { id:"19-4", label:"Modalités accès/supports PSH", niveau:"national", priorite:1 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 20, titre: "Personnels dédiés (CFA)", url: "/account_indicators/2073", applicable: ["CFA"],
+          description: "Personnel mobilité, référent handicap, conseil de perfectionnement.",
+          preuves: [
+            { id:"20-1", label:"PV conseil perfectionnement (2/an)", niveau:"national", priorite:1 },
+            { id:"20-2", label:"PV nomination référent handicap", niveau:"campus", priorite:1 },
+            { id:"20-3", label:"PV nomination référent mobilité", niveau:"campus", priorite:1 },
+            { id:"20-4", label:"Exemples actions menées par référents", niveau:"campus", priorite:1 }
+          ],
+          obligations: [], actions: [{ desc:"Planifier conseil perfectionnement 2025", resp:"Seb", statut:"en_cours" }]
+        }
+      ]
+    },
+    {
+      id: 5, titre: "Qualification des personnels",
+      description: "Qualification et développement des compétences",
+      indicateurs: [
+        { id: 21, titre: "Compétences des acteurs", url: "/account_indicators/2072", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Détermination, mobilisation et évaluation des compétences des intervenants.",
+          preuves: [
+            { id:"21-1", label:"CV thèque prestataires à jour", niveau:"national", priorite:1 },
+            { id:"21-2", label:"Process recrutement personnel enseignant", niveau:"national", priorite:1 },
+            { id:"21-3", label:"Entretiens professionnels (exports campus)", niveau:"campus", priorite:1 },
+            { id:"21-4", label:"Process onboarding (Eurecia)", niveau:"national", priorite:1 },
+            { id:"21-5", label:"Échanges pratiques formateurs (Teams)", niveau:"national", priorite:2 },
+            { id:"21-6", label:"Sensibilisation PSH personnels", niveau:"national", priorite:1 },
+            { id:"21-7", label:"Bilan fin année prestataires", niveau:"campus", priorite:1 }
+          ],
+          obligations: [{ type:"VAE", texte:"Accompagnateurs formés analyse référentiels et méthodologie" }],
+          actions: [{ desc:"Procédure recrutement et suivi intervenants", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 22, titre: "Gestion de la compétence", url: "/account_indicators/2063", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Entretien et développement des compétences des salariés.",
+          preuves: [
+            { id:"22-1", label:"Plan développement compétences (PPDC)", niveau:"national", priorite:1 },
+            { id:"22-2", label:"Entretiens professionnels", niveau:"campus", priorite:1 },
+            { id:"22-3", label:"Factures/attestations formation salariés", niveau:"national", priorite:1 },
+            { id:"22-4", label:"Certifications (Microsoft, etc.)", niveau:"national", priorite:2 }
+          ],
+          obligations: [],
+          actions: [{ desc:"PPDC souhaité/planifié/réalisé", resp:"Seb", statut:"en_cours" }]
+        }
+      ]
+    },
+    {
+      id: 6, titre: "Investissement dans le secteur",
+      description: "Investissement dans les évolutions du secteur",
+      indicateurs: [
+        { id: 23, titre: "Veille légale et réglementaire", url: "/account_indicators/2065", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Veille légale et réglementaire sur la formation professionnelle.",
+          preuves: [
+            { id:"23-1", label:"Abonnements / salons / conférences", niveau:"national", priorite:1 },
+            { id:"23-2", label:"Documents veille diffusés (Teams)", niveau:"national", priorite:1 },
+            { id:"23-3", label:"Veille réglementaire handicap", niveau:"national", priorite:1 },
+            { id:"23-4", label:"Diffusion actualités au personnel", niveau:"national", priorite:1 }
+          ],
+          obligations: [], actions: [{ desc:"Canal TECH-ALL Qualiopi + centralisation veille", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 24, titre: "Veille emplois et métiers", url: "/account_indicators/2064", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Veille sur les évolutions des compétences, métiers et emplois.",
+          preuves: [
+            { id:"24-1", label:"Veille économique (SRI, abonnements)", niveau:"national", priorite:1 },
+            { id:"24-2", label:"Participations conférences/colloques", niveau:"national", priorite:2 },
+            { id:"24-3", label:"Diffusion veille au personnel", niveau:"national", priorite:1 },
+            { id:"24-4", label:"Évolutions contenu prestations", niveau:"national", priorite:1 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 25, titre: "Veille pédagogique et technologique", url: "/account_indicators/2085", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Veille sur les innovations pédagogiques et technologiques.",
+          preuves: [
+            { id:"25-1", label:"Trello ingénierie pédagogique", niveau:"national", priorite:1 },
+            { id:"25-2", label:"Groupes réflexion / analyse pratiques", niveau:"national", priorite:2 },
+            { id:"25-3", label:"Évolutions outils pédagogiques", niveau:"national", priorite:1 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 26, titre: "Situation de Handicap", url: "/account_indicators/2066", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mobilisation expertises, outils et réseaux pour les PSH.",
+          preuves: [
+            { id:"26-1", label:"Liste partenaires PSH (Agefiph, Cap emploi, MDPH)", niveau:"national", priorite:1 },
+            { id:"26-2", label:"Participation instances partenaires", niveau:"national", priorite:1 },
+            { id:"26-3", label:"Compétences référent handicap (formations)", niveau:"campus", priorite:1 },
+            { id:"26-4", label:"Kit accessibilité", niveau:"national", priorite:1 },
+            { id:"26-5", label:"Guide handicap sensibilisation", niveau:"national", priorite:1 },
+            { id:"26-6", label:"Tableau actions par apprenant PSH", niveau:"campus", priorite:1 },
+            { id:"26-7", label:"PV nomination référents handicap", niveau:"campus", priorite:1 },
+            { id:"26-8", label:"Contact MDPH dans livret accueil", niveau:"campus", priorite:1 }
+          ],
+          obligations: [],
+          actions: [
+            { desc:"Documentation centralisée actions handicap", resp:"Anaëlle", statut:"termine" },
+            { desc:"Canal TECH-ALL Ref handicap", resp:"Anaëlle", statut:"termine" }
+          ]
+        },
+        { id: 27, titre: "Disposition sous-traitance", url: "/account_indicators/2069", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Conformité des sous-traitants et portage salarial.",
+          preuves: [
+            { id:"27-1", label:"Contrats sous-traitance centralisés", niveau:"national", priorite:1 },
+            { id:"27-2", label:"Process sélection et pilotage sous-traitants", niveau:"national", priorite:1 },
+            { id:"27-3", label:"Annexe qualité/déontologie dans contrats", niveau:"national", priorite:1 },
+            { id:"27-4", label:"Listing intervenants requalification rôle", niveau:"national", priorite:1 }
+          ],
+          obligations: [],
+          actions: [{ desc:"Centraliser contrats + requalification sous-traitants", resp:"Anaëlle", statut:"en_cours" }]
+        },
+        { id: 28, titre: "Formation en situation de travail", url: "/account_indicators/2070", applicable: ["OF","CFA"],
+          description: "Réseau partenaires pour coconstruire ingénierie et accueil entreprise.",
+          preuves: [
+            { id:"28-1", label:"Conventions partenariats entreprises", niveau:"national", priorite:1 },
+            { id:"28-2", label:"Liste entreprises partenaires (SF)", niveau:"national", priorite:1 },
+            { id:"28-3", label:"Livret alternance conforme", niveau:"campus", priorite:1 },
+            { id:"28-4", label:"Statistiques enquêtes emploi", niveau:"national", priorite:1 }
+          ],
+          obligations: [], actions: []
+        },
+        { id: 29, titre: "Insertion professionnelle (CFA)", url: "/account_indicators/2071", applicable: ["CFA"],
+          description: "Actions insertion professionnelle ou poursuite d'étude.",
+          preuves: [
+            { id:"29-1", label:"Actions insertion (salons, ateliers CV, aide emploi)", niveau:"campus", priorite:1 },
+            { id:"29-2", label:"Réseau anciens élèves", niveau:"national", priorite:2 },
+            { id:"29-3", label:"Partenariats insertion et emploi", niveau:"national", priorite:1 },
+            { id:"29-4", label:"Diffusion offres apprentissage/emploi", niveau:"campus", priorite:1 }
+          ],
+          obligations: [], actions: []
+        }
+      ]
+    },
+    {
+      id: 7, titre: "Appréciations et amélioration continue",
+      description: "Recueil et prise en compte des appréciations et réclamations",
+      indicateurs: [
+        { id: 30, titre: "Recueil des appréciations", url: "/account_indicators/2067", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Recueil appréciations des parties prenantes.",
+          preuves: [
+            { id:"30-1", label:"Enquêtes satisfaction (Drag&Survey)", niveau:"national", priorite:1 },
+            { id:"30-2", label:"Enquête retour entreprise apprenant", niveau:"national", priorite:1 },
+            { id:"30-3", label:"CR réunions équipes / séminaires", niveau:"campus", priorite:2 },
+            { id:"30-4", label:"Sollicitation financeurs / échanges OPCO", niveau:"national", priorite:2 }
+          ],
+          obligations: [],
+          actions: [{ desc:"Drag&Survey : intervenant + salarié + retour entreprise", resp:"Luc", statut:"en_cours" }]
+        },
+        { id: 31, titre: "Traitement des réclamations", url: "/account_indicators/2074", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Modalités de traitement des difficultés, réclamations et aléas.",
+          preuves: [
+            { id:"31-1", label:"Système médiation / traitement réclamations", niveau:"national", priorite:1 },
+            { id:"31-2", label:"Boîte mail partagée médiation", niveau:"national", priorite:1 },
+            { id:"31-3", label:"Tableau suivi réclamations", niveau:"national", priorite:1 },
+            { id:"31-4", label:"Process traitement aléas (help.epitech.eu)", niveau:"national", priorite:1 }
+          ],
+          obligations: [],
+          actions: [{ desc:"Transformer mail médiation en boîte partagée", resp:"Seb", statut:"en_cours" }]
+        },
+        { id: 32, titre: "Amélioration continue", url: "/account_indicators/2068", applicable: ["OF","CFA","VAE","CBC"],
+          description: "Mesures d'amélioration à partir des appréciations et réclamations.",
+          preuves: [
+            { id:"32-1", label:"Tableau amélioration continue (EdSquare)", niveau:"campus", priorite:1 },
+            { id:"32-2", label:"Plans d'actions d'amélioration", niveau:"national", priorite:1 },
+            { id:"32-3", label:"Analyse causes abandon/insatisfaction", niveau:"national", priorite:1 },
+            { id:"32-4", label:"Synthèse fonds de classe pour axes amélioration", niveau:"national", priorite:1 }
+          ],
+          obligations: [],
+          actions: [
+            { desc:"Centraliser analyse amélioration continue", resp:"Seb", statut:"en_cours" },
+            { desc:"Parser résultats fond de classe", resp:"Seb", statut:"en_cours" }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// ===== STATE =====
+const STORAGE_KEY = 'qualiopi_dashboard_v2';
+let currentCampus = 'overview';
+let currentCritere = 0;
+let searchTerm = '';
+let filterType = 'all';
+
+function buildDefaultState() {
+  const s = {};
+  const S = (campus, pid, statut, note) => { s[campus+':'+pid] = { statut, note: note||'' }; };
+  const NAT = (pid, statut, note) => S('paris', pid, statut, note);
+  const ALL = (pid, statut, note) => { ['paris','nantes','strasbourg'].forEach(c => S(c, pid, statut, note)); };
+
+  // ====== CRITÈRE 1 — Information du public ======
+
+  // Ind 1 — Information du public (toutes preuves nationales → Paris)
+  NAT('1-1', 'en_cours', 'FAQ à compléter : modalités formation/examen, accessibilité, contrat à MAJ. VAE difficile à trouver.');
+  NAT('1-2', 'conforme', 'Plaquettes commerciales et fiches produit disponibles pour chaque formation');
+  NAT('1-3', 'conforme', 'Présence active sur les réseaux sociaux');
+  NAT('1-4', 'conforme', 'Programmes de formation détaillés par promotion sur le site et EdSquare');
+  NAT('1-5', 'conforme', 'Devis types disponibles via la cellule commerciale');
+  NAT('1-6', 'en_cours', 'CGV à mettre à jour : informations complémentaires LDA, SRS, dernière promo 2024');
+  NAT('1-7', 'en_cours', 'Registre accessibilité à faire apparaître sur le site internet — tous campus accessibles');
+  NAT('1-8', 'conforme', 'Page VAE disponible : https://www.epitech.eu/fr/vae/ — manque mention jury');
+  NAT('1-9', 'en_cours', 'Ajouter libellé exact certification, code RNCP/RS, certificateur sur chaque page formation');
+
+  // Ind 2 — Indicateurs de résultat
+  NAT('2-1', 'non_conforme', 'Indicateurs de performance trop anciens — MAJ urgente nécessaire');
+  NAT('2-2', 'conforme', 'Rapports d\'activités disponibles');
+  NAT('2-3', 'conforme', 'Enquêtes satisfaction et employabilité réalisées (Drag&Survey)');
+  NAT('2-4', 'non_conforme', 'Tableau de bord indicateurs de performance à créer');
+  NAT('2-5', 'conforme', 'Lien Inserjeunes disponible : inserjeunes.education.gouv.fr');
+
+  // Ind 3 — Taux certifications
+  NAT('3-1', 'en_cours', 'Taux d\'obtention à mettre à jour sur le site avec données récentes');
+  NAT('3-2', 'non_conforme', 'Blocs de compétences non documentés — ajouter le redoublement dans FAQ');
+  NAT('3-3', 'non_conforme', 'Équivalences et passerelles à mettre à jour');
+  NAT('3-4', 'en_cours', 'Suites de parcours partiellement documentées');
+  NAT('3-5', 'non_conforme', 'Liens directs vers fiches RNCP absents de la FAQ — copier/coller blocs France Compétences');
+
+  // ====== CRITÈRE 2 — Objectifs et adaptation ======
+
+  // Ind 4 — Analyse du besoin
+  NAT('4-2', 'en_cours', 'Grille d\'entretien candidature en cours de création par Benny — template SF à intégrer');
+  ALL('4-1', 'conforme', 'Salesforce opérationnel — dossiers candidature tracés');
+  ALL('4-3', 'conforme', 'CR entretiens dans Salesforce');
+  ALL('4-4', 'en_cours', 'Préparer 3 dossiers apprentissage + 1 FC pour le campus audité');
+  ALL('4-5', 'en_cours', 'Prise en compte PSH : vérifier fiche EP remplie pour les apprenants concernés');
+
+  // Ind 5 — Objectifs prestation
+  NAT('5-1', 'conforme', 'Conventions et contrats de formation disponibles');
+  NAT('5-2', 'conforme', 'Framework de compétences EPITECH en place');
+  NAT('5-3', 'conforme', 'Objectifs pédagogiques définis par programme et promotion');
+  NAT('5-4', 'conforme', 'Fiches RNCP des 4 titres disponibles (Architecte logiciel, Développeur, etc.)');
+  ALL('5-5', 'conforme', 'Livret alternance avec objectifs sur EdSquare');
+
+  // Ind 6 — Contenus et modalités
+  NAT('6-1', 'conforme', 'Programmes par promotion disponibles — framework compétences, tableau croisé RNCP');
+  NAT('6-2', 'conforme', 'Séquences pédagogiques définies (projets, keynotes, modules)');
+  NAT('6-3', 'conforme', 'Barèmes et instructions d\'évaluation — grilles crédits disponibles');
+  NAT('6-4', 'conforme', 'Pédagogie par projet, présentiel + outils en ligne (Github, Jenkins, my.epitech, Gandalf)');
+  NAT('6-5', 'en_cours', 'Guide pratique déroulé avec durée et calendrier à compléter');
+  NAT('6-6', 'en_cours', 'Accessibilité PSH : facilité lecture, export HTML sujets à améliorer');
+
+  // Ind 7 — Contenus et exigences certification
+  NAT('7-1', 'conforme', 'Offre de formation cohérente avec les 4 référentiels RNCP');
+  NAT('7-2', 'conforme', 'Convention de partenariat avec le certificateur en place');
+  NAT('7-3', 'en_cours', 'Tableau croisé programme/référentiel RNCP en cours de création — suivi cohérence');
+
+  // Ind 8 — Positionnement à l\'entrée
+  NAT('8-1', 'conforme', 'Procédures de positionnement définies : tests, piscine, entretiens');
+  ALL('8-2', 'conforme', 'Tests d\'évaluation à l\'entrée via process Salesforce — résultats des tests');
+  NAT('8-3', 'non_conforme', 'Pré-requis par spécialisation à clarifier sur le site web');
+
+  // ====== CRITÈRE 3 — Adaptation aux bénéficiaires ======
+
+  // Ind 9 — Conditions de déroulement
+  NAT('9-1', 'conforme', 'Règlement intérieur disponible et diffusé');
+  ALL('9-2', 'conforme', 'Livret d\'accueil complété et diffusé sur EdSquare et l\'intra');
+  NAT('9-3', 'en_cours', 'CGV et CGF : vérifier archivage et mise à jour — voir EDS avec Laura/SRI');
+  ALL('9-4', 'conforme', 'Référents pédagogiques et administratifs identifiés par campus');
+  S('paris', '9-5', 'en_cours', 'Organigramme Paris à mettre à jour — ajouter référents handicap/mobilité');
+  S('nantes', '9-5', 'en_cours', 'Organigramme Nantes à mettre à jour');
+  S('strasbourg', '9-5', 'en_cours', 'Organigramme Strasbourg à mettre à jour');
+  NAT('9-6', 'en_cours', 'Modalités accessibilité PSH à formaliser dans les supports');
+
+  // Ind 10 — Adaptation de la prestation
+  ALL('10-1', 'conforme', 'Planning année disponible sur EdSquare');
+  ALL('10-2', 'conforme', 'Livret suivi pédagogique opérationnel sur EdSquare');
+  ALL('10-3', 'conforme', 'Coaching, suivi individuel, follow-up en place');
+  ALL('10-4', 'conforme', 'Preuves adaptation : rattrapages, changement de spé, coaching documentés');
+  ALL('10-5', 'conforme', 'Accompagnement recherche employeur via équipe campus');
+  ALL('10-6', 'en_cours', 'Fiches suivi PSH à systématiser — utilisation trame fiche de suivi référent handicap');
+
+  // Ind 11 — Atteinte des objectifs
+  NAT('11-1', 'conforme', 'Outils évaluation en place : projets, soutenances, examens, my_competencies');
+  ALL('11-2', 'conforme', 'Bulletins intermédiaires sur EdSquare — conseils de classe');
+  NAT('11-3', 'conforme', 'Taux de réussite aux certifications disponibles');
+  ALL('11-4', 'conforme', 'Attestations de réussite et livret compétences sur EdSquare');
+  ALL('11-5', 'conforme', 'Diplômes et titres délivrés — PV jury disponibles');
+
+  // Ind 12 — Engagement des bénéficiaires
+  NAT('12-1', 'en_cours', 'Process gestion absences à diffuser — article Zendesk en cours : règles du jeu absence');
+  ALL('12-2', 'conforme', 'Suivi assiduité via EdSign opérationnel');
+  ALL('12-3', 'conforme', 'Actions prévention : RDV individuels, rattrapages, travaux de groupe, pas de notes les 15 premiers jours');
+  NAT('12-4', 'conforme', 'Pédagogie par projet, coaching, mise en situation pro, dynamisme multitude de logiciels');
+  ALL('12-5', 'conforme', 'Vie associative active sur chaque campus');
+  ALL('12-6', 'en_cours', 'Mesures prévention PSH : à formaliser dans documentation');
+
+  // Ind 13 — Coordination apprentis
+  ALL('13-1', 'conforme', 'Livret alternance et carnet suivi sur EdSquare');
+  S('paris', '13-2', 'en_cours', 'Visites entreprise : traçabilité à améliorer — 2 visites/an exigées');
+  S('nantes', '13-2', 'en_cours', 'Visites entreprise Nantes : vérifier archivage sur EdSquare');
+  S('strasbourg', '13-2', 'en_cours', 'Visites entreprise Strasbourg : vérifier archivage sur EdSquare');
+  ALL('13-3', 'en_cours', 'CR entretiens tuteurs à systématiser et archiver');
+  ALL('13-4', 'en_cours', 'Missions entreprise : vérifier complétion sur IA pour apprenants sélectionnés');
+
+  // Ind 14 — Exercice citoyenneté
+  ALL('14-1', 'conforme', 'Actions VSS, E-mma, sensibilisation harcèlement/inclusion/mixité en place');
+  ALL('14-2', 'conforme', 'Accompagnement social et santé mentale (diapo Pascal et Marie)');
+  NAT('14-3', 'conforme', 'Dispositifs aides financières documentés');
+  ALL('14-4', 'conforme', 'Vie associative et activités culturelles actives');
+
+  // Ind 15 — Droits et devoirs apprenti
+  NAT('15-1', 'conforme', 'Règlement intérieur avec section droits/devoirs apprentis');
+  ALL('15-2', 'en_cours', 'Livret accueil : compléter section santé/sécurité au travail, droits/devoirs apprentis');
+  ALL('15-3', 'en_cours', 'Supports info santé/sécurité à diffuser — intégrer rentrée scolaire');
+
+  // Ind 16 — Présentation certification
+  NAT('16-1', 'en_cours', 'Référentiel évaluation en MAJ sur Gandalf — mise à disposition des apprenants');
+  NAT('16-2', 'en_cours', 'Règlement organisation examens à MAJ — projet fin formation REX');
+  ALL('16-3', 'conforme', 'PV jury examen disponibles et archivés');
+  ALL('16-4', 'conforme', 'Convocations soutenance envoyées et archivées');
+  ALL('16-5', 'conforme', 'Attestations réussite et diplômes délivrés');
+  NAT('16-6', 'conforme', 'Convention avec certificateur en place');
+  NAT('16-7', 'en_cours', 'Modalités aménagement examens PSH à formaliser');
+
+  // ====== CRITÈRE 4 — Adéquation des moyens ======
+
+  // Ind 17 — Moyens humains et techniques
+  S('paris', '17-1', 'conforme', 'Bail Paris conforme — 24 rue Pasteur, Le Kremlin-Bicêtre');
+  S('nantes', '17-1', 'en_cours', 'Bail Nantes : vérifier conformité et archivage');
+  S('strasbourg', '17-1', 'en_cours', 'Bail Strasbourg : vérifier conformité et archivage');
+  S('paris', '17-2', 'en_cours', 'DUERP Paris à mettre à jour');
+  S('nantes', '17-2', 'en_cours', 'DUERP Nantes à mettre à jour');
+  S('strasbourg', '17-2', 'en_cours', 'DUERP Strasbourg à mettre à jour');
+  ALL('17-3', 'conforme', 'Matériel pédagogique adéquat : salles, PC, vidéoprojecteurs, plateformes');
+  S('paris', '17-4', 'en_cours', 'CV intervenants Paris : collecte et mise à jour en cours');
+  S('nantes', '17-4', 'en_cours', 'CV intervenants Nantes : collecte et mise à jour en cours');
+  S('strasbourg', '17-4', 'en_cours', 'CV intervenants Strasbourg : collecte et mise à jour en cours');
+  NAT('17-5', 'en_cours', 'Contrats de prestations : centralisation en cours — pas tous les contrats, docs manquants');
+
+  // Ind 18 — Coordination des acteurs
+  S('paris', '18-1', 'en_cours', 'Organigramme Paris à mettre à jour avec tous les référents');
+  S('nantes', '18-1', 'en_cours', 'Organigramme Nantes à mettre à jour');
+  S('strasbourg', '18-1', 'en_cours', 'Organigramme Strasbourg à mettre à jour');
+  NAT('18-2', 'en_cours', 'Fiches de poste EPITECH : en attente validation RH (DPR, DDR, RDR, CDR, DR, APA, ADM, APE, JAPE, COM)');
+  ALL('18-3', 'conforme', 'Référents pédago, admin et handicap identifiés par campus');
+  ALL('18-4', 'conforme', 'Planning intervenants disponible');
+  S('paris', '18-5', 'en_cours', 'CR réunions pédago Paris : enregistrements vidéo et ordres du jour à archiver');
+  S('nantes', '18-5', 'en_cours', 'CR réunions pédago Nantes à systématiser');
+  S('strasbourg', '18-5', 'en_cours', 'CR réunions pédago Strasbourg à systématiser');
+
+  // Ind 19 — Ressources pédagogiques
+  NAT('19-1', 'conforme', 'Supports cours en ligne : Github, my.epitech, Gandalf, Jenkins');
+  ALL('19-2', 'en_cours', 'Ajouter modalités accès ressources pédagogiques dans le livret d\'accueil');
+  NAT('19-3', 'conforme', 'Veille et actualisation via Trello ingénierie pédagogique');
+  NAT('19-4', 'en_cours', 'Modalités accès PSH : facilité de lecture, export HTML des sujets à améliorer');
+
+  // Ind 20 — Personnels dédiés CFA
+  NAT('20-1', 'en_cours', 'Conseil perfectionnement 2025 à planifier — 2 par an exigés');
+  ALL('20-2', 'conforme', 'PV nomination référent handicap disponible par campus');
+  S('paris', '20-3', 'en_cours', 'PV nomination référent mobilité Paris à formaliser');
+  S('nantes', '20-3', 'en_cours', 'PV nomination référent mobilité Nantes à formaliser');
+  S('strasbourg', '20-3', 'en_cours', 'PV nomination référent mobilité Strasbourg à formaliser');
+  S('paris', '20-4', 'en_cours', 'Exemples actions référents Paris : course manager Gandalf, suivis PSH');
+  S('nantes', '20-4', 'en_cours', 'Exemples actions référents Nantes à documenter');
+  S('strasbourg', '20-4', 'en_cours', 'Exemples actions référents Strasbourg à documenter');
+
+  // ====== CRITÈRE 5 — Qualification des personnels ======
+
+  // Ind 21 — Compétences des acteurs
+  NAT('21-1', 'en_cours', 'CV thèque prestataires en cours de constitution (Anaëlle) — lettres de mission Toulouse OK');
+  NAT('21-2', 'en_cours', 'Process recrutement personnel enseignant en cours de formalisation');
+  S('paris', '21-3', 'conforme', 'Entretiens professionnels Paris via Eurecia — exports disponibles');
+  S('nantes', '21-3', 'conforme', 'Entretiens professionnels Nantes via Eurecia');
+  S('strasbourg', '21-3', 'conforme', 'Entretiens professionnels Strasbourg via Eurecia');
+  NAT('21-4', 'conforme', 'Process onboarding sur Eurecia en place');
+  NAT('21-5', 'conforme', 'Canal Teams échanges de bonnes pratiques entre formateurs');
+  NAT('21-6', 'conforme', 'Formation sensibilisation PSH par Adrien et Léa — séminaire documenté');
+  S('paris', '21-7', 'en_cours', 'Bilans fin année prestataires Paris à systématiser');
+  S('nantes', '21-7', 'en_cours', 'Bilans fin année prestataires Nantes à systématiser');
+  S('strasbourg', '21-7', 'en_cours', 'Bilans fin année prestataires Strasbourg à systématiser');
+
+  // Ind 22 — Gestion de la compétence
+  NAT('22-1', 'en_cours', 'PPDC en cours : distinction souhaité/planifié/réalisé à formaliser');
+  ALL('22-2', 'conforme', 'Entretiens professionnels via Eurecia en place');
+  NAT('22-3', 'en_cours', 'Factures et attestations formation salariés à collecter et archiver');
+  NAT('22-4', 'conforme', 'Certifications Microsoft et autres documentées');
+
+  // ====== CRITÈRE 6 — Investissement dans le secteur ======
+
+  // Ind 23 — Veille légale et réglementaire
+  NAT('23-1', 'conforme', 'Abonnements, participations salons professionnels documentés');
+  NAT('23-2', 'conforme', 'Documents veille diffusés sur Teams (veilles 2025 : contrôles, fraude, Qualiopi V10)');
+  NAT('23-3', 'conforme', 'Veille réglementaire handicap en place');
+  NAT('23-4', 'en_cours', 'Canal TECH-ALL Qualiopi en cours de création — diffusion à systématiser');
+
+  // Ind 24 — Veille emplois et métiers
+  NAT('24-1', 'conforme', 'Veille économique : SRI, abonnements, centre info');
+  NAT('24-2', 'conforme', 'Participations conférences et colloques documentées');
+  NAT('24-3', 'en_cours', 'Diffusion veille au personnel à systématiser via canal dédié');
+  NAT('24-4', 'conforme', 'Évolutions contenu prestations attestées par les mises à jour pédagogiques');
+
+  // Ind 25 — Veille pédagogique et technologique
+  NAT('25-1', 'conforme', 'Trello ingénierie pédagogique actif');
+  NAT('25-2', 'conforme', 'Groupes réflexion et analyse de pratiques en place');
+  NAT('25-3', 'conforme', 'Évolutions outils pédagogiques documentées (IA, nouvelles plateformes)');
+
+  // Ind 26 — Situation de Handicap
+  NAT('26-1', 'conforme', 'Liste partenaires PSH : Agefiph, Cap emploi, MDPH — article Zendesk');
+  NAT('26-2', 'conforme', 'Participation instances partenaires — mails exportés comme preuves');
+  S('paris', '26-3', 'en_cours', 'Formation référent handicap Paris : factures formation à archiver');
+  S('nantes', '26-3', 'en_cours', 'Formation référent handicap Nantes : factures à archiver');
+  S('strasbourg', '26-3', 'en_cours', 'Formation référent handicap Strasbourg : factures à archiver');
+  NAT('26-4', 'conforme', 'Kit accessibilité disponible');
+  NAT('26-5', 'conforme', 'Guide handicap sensibilisation terminé (Anaëlle) — diffusé');
+  S('paris', '26-6', 'en_cours', 'Tableau actions PSH par apprenant Paris — trame de fiche de suivi à utiliser');
+  S('nantes', '26-6', 'en_cours', 'Tableau actions PSH par apprenant Nantes');
+  S('strasbourg', '26-6', 'en_cours', 'Tableau actions PSH par apprenant Strasbourg');
+  ALL('26-7', 'conforme', 'PV nomination référents handicap disponibles');
+  S('paris', '26-8', 'en_cours', 'Contact MDPH à ajouter dans livret accueil Paris');
+  S('nantes', '26-8', 'en_cours', 'Contact MDPH à ajouter dans livret accueil Nantes');
+  S('strasbourg', '26-8', 'en_cours', 'Contact MDPH à ajouter dans livret accueil Strasbourg');
+
+  // Ind 27 — Sous-traitance
+  NAT('27-1', 'en_cours', 'Contrats non centralisés — documents manquants (certif Qualiopi, NDA, contrats)');
+  NAT('27-2', 'en_cours', 'Process sélection sous-traitants à formaliser (charte, animation qualité)');
+  NAT('27-3', 'non_conforme', 'Annexe qualité/déontologie manquante dans contrats — vérifier articles Qualiopi');
+  NAT('27-4', 'en_cours', 'Listing intervenants requalification rôle en cours (formateur vs intervenant)');
+
+  // Ind 28 — Formation en situation de travail
+  NAT('28-1', 'conforme', 'Conventions partenariats entreprises (ex: Ubisoft) — voir SF répertoriant conventions');
+  NAT('28-2', 'conforme', 'Liste entreprises partenaires sur Salesforce');
+  ALL('28-3', 'conforme', 'Livret alternance conforme (vérifié par Anaëlle)');
+  NAT('28-4', 'conforme', 'Statistiques enquêtes emploi disponibles');
+
+  // Ind 29 — Insertion professionnelle
+  ALL('29-1', 'conforme', 'Actions insertion : salons orientation, ateliers CV, aide recherche emploi en place');
+  NAT('29-2', 'conforme', 'Réseau anciens élèves actif');
+  NAT('29-3', 'conforme', 'Partenariats insertion et emploi documentés');
+  ALL('29-4', 'conforme', 'Diffusion offres apprentissage et emploi active');
+
+  // ====== CRITÈRE 7 — Appréciations et amélioration continue ======
+
+  // Ind 30 — Recueil des appréciations
+  NAT('30-1', 'en_cours', 'Drag&Survey en cours de mise en place par Luc : intervenant + salarié + CDD-FO');
+  NAT('30-2', 'en_cours', 'Enquête retour entreprise apprenant en cours (Luc — Drag&Survey)');
+  ALL('30-3', 'conforme', 'CR réunions équipes et séminaires disponibles');
+  NAT('30-4', 'en_cours', 'Sollicitation financeurs / échanges OPCO à systématiser');
+
+  // Ind 31 — Traitement des réclamations
+  NAT('31-1', 'en_cours', 'Système médiation en place mais à formaliser davantage');
+  NAT('31-2', 'en_cours', 'Adresse mail médiation : transformer la liste de diffusion en boîte partagée');
+  NAT('31-3', 'non_conforme', 'Tableau suivi réclamations et traitement manquant — à créer');
+  NAT('31-4', 'conforme', 'help.epitech.eu et canaux Teams dédiés opérationnels');
+
+  // Ind 32 — Amélioration continue
+  S('paris', '32-1', 'en_cours', 'Tableau amélioration continue Paris à compléter sur EdSquare');
+  S('nantes', '32-1', 'en_cours', 'Tableau amélioration continue Nantes à compléter sur EdSquare');
+  S('strasbourg', '32-1', 'en_cours', 'Tableau amélioration continue Strasbourg à compléter sur EdSquare');
+  NAT('32-2', 'en_cours', 'Plans d\'actions amélioration en cours — fichier axes amélioration sur SharePoint DN');
+  NAT('32-3', 'en_cours', 'Analyse causes abandon/insatisfaction : à centraliser et formaliser');
+  NAT('32-4', 'en_cours', 'Synthèse fonds de classe à parser pour axes d\'amélioration — stocké Qualiopi/fond de classe');
+
+  return s;
+}
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (saved && Object.keys(saved).length > 1) return saved;
+    // First load or reset: use defaults
+    const defaults = buildDefaultState();
+    defaults._lastModified = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(defaults));
+    return defaults;
+  } catch(e) {
+    const defaults = buildDefaultState();
+    defaults._lastModified = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(defaults));
+    return defaults;
+  }
+}
+function saveState(s) { s._lastModified = new Date().toISOString(); localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); updateLastModified(s._lastModified); }
+let state = loadState();
+
+function getKey(campusId, preuveId) { return campusId + ':' + preuveId; }
+
+function getPreuveState(campusId, preuveId) {
+  return state[getKey(campusId, preuveId)] || { statut: 'non_evalue', note: '' };
+}
+
+function setPreuveState(campusId, preuveId, data) {
+  const key = getKey(campusId, preuveId);
+  state[key] = { ...getPreuveState(campusId, preuveId), ...data };
+  saveState(state);
+}
+
+// ===== WHICH PROOFS ARE VISIBLE PER CAMPUS =====
+function getVisiblePreuves(indicateur, campusId) {
+  if (campusId === 'overview') return indicateur.preuves;
+  const campus = CAMPUS.find(c => c.id === campusId);
+  if (campus.scope === 'national+campus') return indicateur.preuves; // Paris sees all
+  // Regional: only campus-level proofs
+  return indicateur.preuves.filter(p => p.niveau === 'campus');
+}
+
+function getNationalPreuvesCount(indicateur) {
+  return indicateur.preuves.filter(p => p.niveau === 'national').length;
+}
+
+// ===== COMPLETION CALC =====
+function calcIndicateurCompletion(indicateur, campusId) {
+  const preuves = getVisiblePreuves(indicateur, campusId);
+  if (preuves.length === 0) return 100;
+  let done = 0;
+  preuves.forEach(p => {
+    const cid = (campusId === 'overview') ? 'paris' : campusId;
+    // For national proofs in regional campus overview, check Paris status
+    const effectiveCampus = (p.niveau === 'national') ? 'paris' : cid;
+    const s = getPreuveState(effectiveCampus, p.id).statut;
+    if (s === 'conforme') done += 1;
+    else if (s === 'en_cours') done += 0.5;
+  });
+  return Math.round((done / preuves.length) * 100);
+}
+
+function calcCritereCompletion(critere, campusId) {
+  const comps = critere.indicateurs.map(i => calcIndicateurCompletion(i, campusId));
+  return Math.round(comps.reduce((a,b) => a+b, 0) / comps.length);
+}
+
+function calcGlobalCompletion(campusId) {
+  let all = [];
+  REFERENTIEL.criteres.forEach(c => c.indicateurs.forEach(i => all.push(calcIndicateurCompletion(i, campusId))));
+  return Math.round(all.reduce((a,b) => a+b, 0) / all.length);
+}
+
+function getColor(pct) {
+  if (pct >= 80) return 'var(--green)';
+  if (pct >= 50) return 'var(--orange)';
+  return 'var(--red)';
+}
+
+function updateLastModified(dt) {
+  const el = document.getElementById('last-modified');
+  if (dt) { const d = new Date(dt); el.textContent = d.toLocaleDateString('fr-FR') + ' ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
+}
+
+// ===== RENDER =====
+function renderCampusTabs() {
+  const container = document.getElementById('campus-tabs');
+  container.innerHTML = '';
+  CAMPUS.forEach(c => {
+    const pct = c.id === 'overview' ? '' : calcGlobalCompletion(c.id) + '%';
+    const div = document.createElement('div');
+    div.className = 'campus-tab' + (c.id === currentCampus ? ' active' : '') + (c.id === 'overview' ? ' overview' : '');
+    div.innerHTML = `
+      <div><div class="ct-name">${c.icon} ${c.name}</div>
+      <div class="ct-meta">${c.jours ? c.jours + 'j audit — ' + c.info : 'Synthèse tous campus'}</div></div>
+      ${pct ? '<div class="ct-pct">' + pct + '</div>' : ''}
+    `;
+    div.onclick = () => { currentCampus = c.id; render(); };
+    container.appendChild(div);
+  });
+}
+
+function renderSidebar() {
+  renderCampusTabs();
+  const pct = calcGlobalCompletion(currentCampus === 'overview' ? 'paris' : currentCampus);
+  document.getElementById('global-pct').textContent = pct + '%';
+  document.getElementById('progress-label').textContent = currentCampus === 'overview' ? 'Conformité moyenne' : 'Conformité ' + CAMPUS.find(c=>c.id===currentCampus).name;
+  const bar = document.getElementById('global-bar');
+  bar.style.width = pct + '%'; bar.style.background = getColor(pct);
+
+  const list = document.getElementById('critere-list');
+  list.innerHTML = '';
+  REFERENTIEL.criteres.forEach((c, idx) => {
+    const cp = calcCritereCompletion(c, currentCampus === 'overview' ? 'paris' : currentCampus);
+    const div = document.createElement('div');
+    div.className = 'critere-item' + (idx === currentCritere && currentCampus !== 'overview' ? ' active' : '');
+    div.innerHTML = `<div class="critere-label">C${c.id}</div><div class="critere-title">${c.titre}</div>
+      <div class="critere-progress"><div class="bar"><div class="fill" style="width:${cp}%;background:${getColor(cp)}"></div></div><div class="pct" style="color:${getColor(cp)}">${cp}%</div></div>`;
+    div.onclick = () => { if (currentCampus === 'overview') currentCampus = 'paris'; currentCritere = idx; render(); };
+    list.appendChild(div);
+  });
+}
+
+function renderOverview() {
+  const main = document.getElementById('main-content');
+  let html = `<div class="main-header"><div class="campus-badge overview-badge">📊 Vue globale — 3 campus audités — 4 jours d'audit</div>
+    <h2>Synthèse Audit Qualiopi EPITECH</h2><p>Comparaison de la conformité par campus audité</p></div>`;
+
+  // Campus cards
+  html += '<div class="overview-grid">';
+  CAMPUS.filter(c => c.id !== 'overview').forEach(c => {
+    const gp = calcGlobalCompletion(c.id);
+    html += `<div class="overview-campus-card"><h3>${c.icon} ${c.name}</h3>
+      <div class="oc-meta">${c.jours} jour${c.jours>1?'s':''} d'audit — ${c.info}</div>
+      <div class="oc-pct" style="color:${getColor(gp)}">${gp}%</div>
+      <div class="progress-bar oc-bar"><div class="fill" style="width:${gp}%;background:${getColor(gp)}"></div></div>
+      <div class="overview-criteres">`;
+    REFERENTIEL.criteres.forEach(cr => {
+      const cp = calcCritereCompletion(cr, c.id);
+      html += `<div class="overview-critere-row"><div class="ocr-label">C${cr.id} ${cr.titre}</div>
+        <div class="ocr-bar"><div class="fill" style="width:${cp}%;background:${getColor(cp)}"></div></div>
+        <div class="ocr-pct" style="color:${getColor(cp)}">${cp}%</div></div>`;
+    });
+    html += '</div></div>';
+  });
+  html += '</div>';
+
+  // Matrix table
+  html += `<h3 style="margin:20px 0 10px;font-size:16px;">Matrice indicateurs x campus</h3>
+    <div style="overflow-x:auto"><table class="matrix-table"><thead><tr><th>Ind.</th><th>Indicateur</th><th>🏛️ Paris (nat+campus)</th><th>🌊 Nantes (campus)</th><th>🏰 Strasbourg (campus)</th></tr></thead><tbody>`;
+  REFERENTIEL.criteres.forEach(cr => {
+    cr.indicateurs.forEach(ind => {
+      const pp = calcIndicateurCompletion(ind, 'paris');
+      const np = calcIndicateurCompletion(ind, 'nantes');
+      const sp = calcIndicateurCompletion(ind, 'strasbourg');
+      const natCount = getNationalPreuvesCount(ind);
+      const campCount = ind.preuves.length - natCount;
+      html += `<tr><td><strong>${ind.id}</strong></td><td>${ind.titre} <span class="matrix-nat">${natCount}N/${campCount}C</span></td>`;
+      [pp,np,sp].forEach(v => {
+        html += `<td><div class="cell-bar"><div class="fill" style="width:${v}%;background:${getColor(v)}"></div></div><strong style="color:${getColor(v)}">${v}%</strong></td>`;
+      });
+      html += '</tr>';
+    });
+  });
+  html += '</tbody></table></div>';
+  main.innerHTML = html;
+}
+
+function renderCampusView() {
+  const main = document.getElementById('main-content');
+  const campus = CAMPUS.find(c => c.id === currentCampus);
+  const critere = REFERENTIEL.criteres[currentCritere];
+  const isRegional = campus.scope === 'campus';
+
+  let totalP = 0, conf = 0, enc = 0, nonEv = 0;
+  critere.indicateurs.forEach(ind => {
+    getVisiblePreuves(ind, currentCampus).forEach(p => {
+      totalP++;
+      const eCampus = (p.niveau === 'national') ? 'paris' : currentCampus;
+      const s = getPreuveState(eCampus, p.id).statut;
+      if (s === 'conforme') conf++; else if (s === 'en_cours') enc++; else nonEv++;
+    });
+  });
+
+  let html = `<div class="main-header">
+    <div class="campus-badge">${campus.icon} ${campus.name} <span class="cb-days">${campus.jours}j</span> <span class="cb-scope">${campus.info}</span></div>
+    <h2>Critère ${critere.id} — ${critere.titre}</h2><p>${critere.description}</p></div>`;
+
+  if (isRegional) {
+    html += `<div class="not-audited-info"><strong>Campus régional :</strong> seules les preuves de niveau <strong>campus</strong> sont auditées ici. Les preuves <strong>nationales</strong> sont vérifiées à Paris.</div>`;
+  }
+
+  html += `<div class="stats-row">
+    <div class="stat-card blue"><div class="stat-label">Preuves visibles</div><div class="stat-value">${totalP}</div></div>
+    <div class="stat-card green"><div class="stat-label">Conformes</div><div class="stat-value">${conf}</div></div>
+    <div class="stat-card orange"><div class="stat-label">En cours</div><div class="stat-value">${enc}</div></div>
+    <div class="stat-card red"><div class="stat-label">À évaluer</div><div class="stat-value">${nonEv}</div></div></div>`;
+
+  html += `<div class="filter-tabs">
+    <div class="filter-tab ${filterType==='all'?'active':''}" onclick="filterType='all';render()">Tous</div>
+    <div class="filter-tab ${filterType==='OF'?'active':''}" onclick="filterType='OF';render()">OF</div>
+    <div class="filter-tab ${filterType==='CFA'?'active':''}" onclick="filterType='CFA';render()">CFA</div>
+    <div class="filter-tab ${filterType==='VAE'?'active':''}" onclick="filterType='VAE';render()">VAE</div>
+    <div class="filter-tab ${filterType==='CBC'?'active':''}" onclick="filterType='CBC';render()">CBC</div></div>`;
+
+  html += '<div id="indicateurs-container"></div>';
+  main.innerHTML = html;
+
+  const container = document.getElementById('indicateurs-container');
+  let indicateurs = critere.indicateurs;
+  if (searchTerm) { const s = searchTerm.toLowerCase(); indicateurs = indicateurs.filter(i => i.titre.toLowerCase().includes(s) || i.description.toLowerCase().includes(s)); }
+  if (filterType !== 'all') indicateurs = indicateurs.filter(i => i.applicable.includes(filterType));
+
+  indicateurs.forEach(ind => {
+    const visiblePreuves = getVisiblePreuves(ind, currentCampus);
+    const indPct = calcIndicateurCompletion(ind, currentCampus);
+    const card = document.createElement('div');
+    card.className = 'indicateur-card';
+    card.id = 'ind-' + ind.id;
+
+    let preuvesHtml = '';
+    visiblePreuves.forEach(p => {
+      const effectiveCampus = (p.niveau === 'national') ? 'paris' : currentCampus;
+      const ps = getPreuveState(effectiveCampus, p.id);
+      const checkedClass = ps.statut === 'conforme' ? 'checked' : ps.statut === 'en_cours' ? 'partial' : ps.statut === 'na' ? 'na-item' : '';
+      const isNatOnParis = (p.niveau === 'national' && currentCampus === 'paris');
+      const niveauBadge = `<span class="niveau-badge ${p.niveau}">${p.niveau === 'national' ? 'NATIONAL' : 'CAMPUS'}</span>`;
+
+      preuvesHtml += `<div class="preuve-item ${checkedClass}">
+        <input type="checkbox" ${ps.statut==='conforme'?'checked':''} onchange="togglePreuve('${effectiveCampus}','${p.id}',this.checked)">
+        <div class="preuve-info">
+          <div class="preuve-label">${p.label} ${niveauBadge}</div>
+          <div class="preuve-meta">Priorité: ${'★'.repeat(p.priorite)}${'☆'.repeat(4-p.priorite)}</div>
+          <input class="preuve-note" type="text" placeholder="Note ou lien vers la preuve..." value="${(ps.note||'').replace(/"/g,'&quot;')}" onchange="updateNote('${effectiveCampus}','${p.id}',this.value)">
+        </div>
+        <div class="preuve-actions">
+          <select onchange="updateStatut('${effectiveCampus}','${p.id}',this.value)">
+            <option value="non_evalue" ${ps.statut==='non_evalue'?'selected':''}>⬜ Non évalué</option>
+            <option value="conforme" ${ps.statut==='conforme'?'selected':''}>✅ Conforme</option>
+            <option value="en_cours" ${ps.statut==='en_cours'?'selected':''}>🔶 En cours</option>
+            <option value="non_conforme" ${ps.statut==='non_conforme'?'selected':''}>❌ Non conforme</option>
+            <option value="na" ${ps.statut==='na'?'selected':''}>➖ N/A</option>
+          </select>
+        </div></div>`;
+    });
+
+    let obligHtml = '';
+    if (ind.obligations.length) {
+      obligHtml = '<div class="obligations-box"><div class="ob-title">Obligations spécifiques</div>';
+      ind.obligations.forEach(o => obligHtml += `<div class="ob-item"><span class="ob-label">${o.type} :</span> ${o.texte}</div>`);
+      obligHtml += '</div>';
+    }
+
+    let actHtml = '';
+    if (ind.actions.length) {
+      actHtml = '<div class="section-title">Actions à mener</div>';
+      ind.actions.forEach(a => actHtml += `<div class="action-item"><span class="action-status ${a.statut}">${a.statut==='termine'?'Terminé':a.statut==='en_cours'?'En cours':'À faire'}</span><div><div>${a.desc}</div><div class="action-resp">→ ${a.resp}</div></div></div>`);
+    }
+
+    const tags = ind.applicable.map(t => `<span class="tag ${t.toLowerCase()}">${t}</span>`).join('');
+
+    card.innerHTML = `<div class="indicateur-header" onclick="toggleCard(${ind.id})">
+      <div class="num">${ind.id}</div>
+      <div class="info"><div class="title">${ind.titre}</div><div class="desc">${ind.description}</div><div class="tags">${tags}</div></div>
+      <div class="completion"><div class="pct" style="color:${getColor(indPct)}">${indPct}%</div>
+        <div class="mini-bar"><div class="fill" style="width:${indPct}%;background:${getColor(indPct)}"></div></div></div>
+      <div class="chevron">›</div></div>
+    <div class="indicateur-body"><div class="full-desc">${ind.description}</div>
+      <div class="section-title">Éléments de preuve (${visiblePreuves.length}${isRegional ? ' campus' : ''})</div>
+      ${preuvesHtml}${obligHtml}${actHtml}</div>`;
+    container.appendChild(card);
+  });
+}
+
+function render() {
+  renderSidebar();
+  if (currentCampus === 'overview') renderOverview();
+  else renderCampusView();
+  updateLastModified(state._lastModified);
+}
+
+function toggleCard(id) { document.getElementById('ind-'+id).classList.toggle('open'); }
+function togglePreuve(campus, pid, checked) { setPreuveState(campus, pid, {statut: checked?'conforme':'non_evalue'}); render(); }
+function updateStatut(campus, pid, statut) { setPreuveState(campus, pid, {statut}); render(); }
+function updateNote(campus, pid, note) { setPreuveState(campus, pid, {note}); }
+
+document.getElementById('search').addEventListener('input', e => { searchTerm = e.target.value; if (currentCampus === 'overview') currentCampus = 'paris'; render(); });
+
+function exportData() {
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'qualiopi_epitech_'+new Date().toISOString().slice(0,10)+'.json'; a.click();
+}
+function importData() { document.getElementById('import-file').click(); }
+function handleImport(e) {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ev => { try { state = JSON.parse(ev.target.result); saveState(state); render(); alert('Import OK !'); } catch(err) { alert('Erreur: '+err.message); } };
+  r.readAsText(f);
+}
+function resetData() {
+  if(confirm('Réinitialiser toutes les données aux valeurs par défaut ?')) {
+    localStorage.removeItem(STORAGE_KEY);
+    state = buildDefaultState();
+    state._lastModified = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    render();
+  }
+}
+
+render();
+</script>
+</body>
+</html>
