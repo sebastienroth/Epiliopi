@@ -220,6 +220,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 .badge-scope.local { background:#7c3aed; color:#fff; }
 .badge-scope.national { background:rgba(255,255,255,0.2); color:#fff; border:1px solid rgba(255,255,255,0.4); }
 
+/* SURVEILLANCE BADGE */
+.surveillance-badge { background:linear-gradient(135deg,#2B3CFC,#7c3aed); color:#fff; padding:10px 16px; margin:0 24px 16px; border-radius:6px; font-size:11px; line-height:1.5; }
+.surveillance-badge strong { color:#00FF85; }
+
 /* RESPONSIVE: Tablet */
 @media (max-width:1023px) {
   .sidebar { transform:translateX(-100%); }
@@ -575,9 +579,23 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <strong>Cette section regroupe les regles de conduite pendant l'audit et la liste des documents que CHAQUE campus doit fournir.</strong> Ces elements sont transversaux et s'appliquent a tous les indicateurs.
 </div>
 
+<div class="surveillance-badge">
+  <strong>AUDIT DE SURVEILLANCE (pas initial)</strong> — L'auditeur verifie que le systeme <strong>FONCTIONNE</strong>, pas seulement qu'il existe. Il attend des <strong>RESULTATS</strong> (pas des processus decrits), la <strong>CONTINUITE</strong> d'application sur la periode, et les <strong>ACTIONS CORRECTIVES</strong> de l'audit initial effectivement mises en oeuvre.
+</div>
+
 <div class="spec-box retex">
   <div class="spec-title">Regle d'or</div>
   <div class="spec-content">Si ce n'est pas ecrit, ca n'existe pas. — Pas d'extract sans source, pas de source sans verification possible.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Teams &gt; Conversation Qualiopi_2026 | SharePoint &gt; EPITECH-Qualiopi
+  </div>
 </div>
 
 <div class="section-title">Regles de conduite pendant l'audit en visio</div>
@@ -611,6 +629,26 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   </div>
 </div>
 
+<div class="section-title" style="color:#DC2626;">Methode "Fil Rouge" de l'auditeur</div>
+<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:14px 16px;margin:0 24px 16px;font-size:12px;line-height:1.6;">
+  <p><strong style="color:#DC2626;">L'auditeur choisira un apprenti et deroulera TOUT son parcours.</strong> Si les outils sont cloisonnes sans reconstitution possible, c'est la NC.</p>
+  <p style="margin-top:8px;">Chaine a preparer pour chaque apprenant de l'echantillon :</p>
+  <table style="width:100%;margin-top:10px;border-collapse:collapse;font-size:11px;">
+    <thead><tr style="background:#DC2626;color:#fff;"><th style="padding:6px 8px;text-align:left;">Etape</th><th style="padding:6px 8px;text-align:left;">Indicateur</th><th style="padding:6px 8px;text-align:left;">Outil source</th><th style="padding:6px 8px;text-align:left;">Document</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Candidature / Admission</td><td>I04</td><td>Salesforce</td><td>Dossier candidature, motivation, projet pro</td></tr>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Positionnement</td><td>I08</td><td>Salesforce / Gandalf</td><td>Tests, entretien, resultats</td></tr>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Information droits/devoirs</td><td>I15</td><td>Presentation rentree</td><td>Livret d'accueil (emarge)</td></tr>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Adaptation parcours</td><td>I10</td><td>Gandalf</td><td>Specialisation, follow-up, recadrages</td></tr>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Suivi pedagogique</td><td>I11</td><td>Gandalf / EdSquare</td><td>Bulletins, notes, assiduite</td></tr>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Suivi entreprise</td><td>I13</td><td>EdSquare / Excel</td><td>CR visite, evaluation tuteur, missions</td></tr>
+      <tr style="border-bottom:1px solid #fecaca;"><td style="padding:6px 8px;">Handicap (si applicable)</td><td>I26</td><td>Fichier RQTH</td><td>Amenagements, referent PSH</td></tr>
+      <tr><td style="padding:6px 8px;">Certification</td><td>I16</td><td>Gandalf</td><td>Conditions examen, PV jury</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;"><strong style="color:#DC2626;">Alerte contrats pro :</strong> il y a peu de profils en contrat pro. Ces profils seront evalues sur TOUTE la chaine — chaque dossier doit etre irreprochable.</p>
+</div>
+
 <div class="status-block">
   <div class="status-item"><div class="status-label">Responsable</div><div class="status-value">Chaque directeur de campus</div></div>
   <div class="status-item"><div class="status-label">Validation</div><div class="status-value">Anaelle, Luc, Sebastien</div></div>
@@ -636,6 +674,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box">
   <div class="spec-title">Specificites applicables</div>
   <div class="spec-content">CFA : information sur les taux d'insertion et de poursuite d'etudes via InserJeunes. PSH : information sur l'accessibilite et les amenagements possibles.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>5 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Site web EPITECH (pages formation, prerequis, objectifs) | Plaquettes commerciales | Reseaux sociaux
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -715,6 +763,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">CFA : diffusion obligatoire des taux InserJeunes (insertion, poursuite d'etudes, rupture). Taux calcules sur volumes reels d'apprenants.</div>
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Site web EPITECH (page resultats) | InserJeunes | Gandalf &gt; Resultats
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I02" data-index="1"> Publier les taux de reussite par titre RNCP et par promotion</div>
@@ -743,6 +801,20 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I02" data-index="16"> Volumes d'apprenants par formation et par campus</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I02" data-index="17"> Periodes de reference des indicateurs diffuses</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I02" data-index="18"> Sources des donnees (internes, InserJeunes, enquetes)</div>
+</div>
+
+<div style="margin:0 24px 16px;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;">
+  <div style="background:#DC2626;color:#fff;padding:6px 12px;font-family:'Anton',sans-serif;font-size:12px;text-transform:uppercase;">Exemple : bon vs mauvais</div>
+  <div style="display:flex;gap:0;">
+    <div style="flex:1;padding:10px 12px;background:#fef2f2;border-right:1px solid #e5e7eb;font-size:11px;">
+      <strong style="color:#DC2626;">MAUVAIS</strong><br>
+      "Taux de reussite : 92%"
+    </div>
+    <div style="flex:1;padding:10px 12px;background:#f0fdf4;font-size:11px;">
+      <strong style="color:#16A34A;">BON</strong><br>
+      "Titre RNCP 38114 — Promotion 2024 : 34 presentes / 37 inscrits (92%) — dont 31 obtentions (84%). Source : PV jury du 15/06/2025. Taux d'insertion a 6 mois : 89% (enquete InserJeunes)."
+    </div>
+  </div>
 </div>
 
 <div class="section-title">Questions types de l'auditeur</div>
@@ -779,6 +851,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box">
   <div class="spec-title">Specificites applicables</div>
   <div class="spec-content">Certifiantes : taux par titre RNCP, blocs de competences, equivalences. CFA : taux apprentis specifiques.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Resultats &gt; PV de jury | France Competences (fiches RNCP 37985 / 38114)
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -843,6 +925,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box">
   <div class="spec-title">Specificites applicables</div>
   <div class="spec-content">CFA : analyse du besoin en amont de la contractualisation avec l'entreprise, adequation poste/formation. PSH : prise en compte systematique du handicap des l'analyse du besoin. VAE : analyse de l'experience professionnelle du candidat.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>20 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Salesforce &gt; Contacts &gt; Candidat &gt; Dossier admission | IONIS Alternance &gt; Fiches missions
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -912,6 +1004,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <strong>Description (Referentiel V9) :</strong> Le prestataire definit les objectifs operationnels et evaluables de la prestation.
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Pedagogie &gt; Module &gt; Objectifs | Syllabus par module
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I05" data-index="1"> Definir les objectifs operationnels par formation et par module</div>
@@ -973,6 +1075,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box">
   <div class="spec-title">Specificites applicables</div>
   <div class="spec-content">CFA : parcours adapte en duree et contenu a la situation de l'apprenti. PSH : adaptation des contenus et modalites aux besoins specifiques. FOAD : description des modalites a distance.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Pedagogie &gt; Parcours &gt; Architecture | Maquettes pedagogiques
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -1041,6 +1153,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">Certifiantes : adequation stricte avec le referentiel de certification. Habilitation du certificateur requise.</div>
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Pedagogie &gt; Correspondance blocs RNCP | France Competences (37985 / 38114)
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I07" data-index="1"> Verifier la coherence du contenu de formation avec chaque referentiel RNCP</div>
@@ -1101,6 +1223,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box">
   <div class="spec-title">Specificites applicables</div>
   <div class="spec-content">CFA : positionnement avant signature du contrat d'apprentissage. VAE : evaluation de l'experience et des acquis du candidat. PSH : evaluation des besoins d'amenagement.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>15 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Salesforce &gt; Tests admission, entretiens | Gandalf &gt; Positionnement
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -1172,6 +1304,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">CFA : informations specifiques apprentis (calendrier alternance, etc.). PSH : accessibilite des locaux et des supports. FOAD : conditions techniques d'acces.</div>
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    EdSquare &gt; Planning | Convocations | Livret d'accueil
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I09" data-index="1"> Mettre a jour le reglement interieur de chaque campus</div>
@@ -1241,6 +1383,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 <div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Pas de NC. L'auditeur veut des exemples CONCRETS d'adaptation, pas un discours general. Il a demande : des cas de recadrages, de projets refaits, de decisions pedagogiques individualisees. L'adaptation par specialisation (cloud, IA, data, VR, IoT, cybersecurite) est un axe fort.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>20 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Modules, projets, specialisations | EdSquare &gt; Suivi pedagogique | Follow-up
+  </div>
+</div>
 
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
@@ -1317,6 +1469,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">Certifiantes : preuve de delivrance de la certification. VAE : evaluation des acquis de l'experience.</div>
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>15 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Notes, evaluations, bulletins | EdSquare &gt; Assiduite
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I11" data-index="1"> Deployer les outils d'evaluation a chaud (fin de module/session)</div>
@@ -1344,6 +1506,20 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I11" data-index="15"> Taux de reponse aux evaluations a chaud et a froid</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I11" data-index="16"> Taux de reussite global et par certification</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I11" data-index="17"> Actions correctives suite aux ecarts identifies</div>
+</div>
+
+<div style="margin:0 24px 16px;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;">
+  <div style="background:#DC2626;color:#fff;padding:6px 12px;font-family:'Anton',sans-serif;font-size:12px;text-transform:uppercase;">Exemple : bon vs mauvais</div>
+  <div style="display:flex;gap:0;">
+    <div style="flex:1;padding:10px 12px;background:#fef2f2;border-right:1px solid #e5e7eb;font-size:11px;">
+      <strong style="color:#DC2626;">MAUVAIS</strong><br>
+      "Semestre correct. Continuez ainsi."
+    </div>
+    <div style="flex:1;padding:10px 12px;background:#f0fdf4;font-size:11px;">
+      <strong style="color:#16A34A;">BON</strong><br>
+      "Validation de 30/30 ECTS. Competences en developpement backend solides (projets C et Python valides). Point de vigilance sur le module Cloud ou un rattrapage est planifie en S2. Accompagnement follow-up prevu le 15/02."
+    </div>
+  </div>
 </div>
 
 <div class="section-title">Questions types de l'auditeur</div>
@@ -1380,6 +1556,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box">
   <div class="spec-title">Specificites applicables</div>
   <div class="spec-content">CFA : accompagnement par le SPE (Service Public de l'Emploi), orientation apres interruption de contrat. Prevention du decrochage.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    EdSquare &gt; Assiduite, absences | Gandalf &gt; Suivi engagement
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -1453,6 +1639,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">L'auditeur considere l'I13 comme l'indicateur coeur de metier pour l'alternance. Pas de NC prononcee a Strasbourg mais recommandations fortes. L'auditeur a verifie dossier par dossier (36 apprentis + 2 contrats pro), a croise bulletins/PV/fichiers de suivi, et a critique les evaluations trop generiques non reliees aux competences RNCP.</div>
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>60 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    EdSquare/RedSquare &gt; Suivi entreprise | Excel suivi visites | Excel evaluations tuteurs | Gandalf &gt; Bulletins | PV conseils de classe
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="1"> Mettre a jour le carnet/livret de suivi de l'apprenti</div>
@@ -1505,6 +1701,20 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="33"> Taux de realisation des entretiens tripartites</div>
 </div>
 
+<div style="margin:0 24px 16px;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;">
+  <div style="background:#DC2626;color:#fff;padding:6px 12px;font-family:'Anton',sans-serif;font-size:12px;text-transform:uppercase;">Exemple : bon vs mauvais</div>
+  <div style="display:flex;gap:0;">
+    <div style="flex:1;padding:10px 12px;background:#fef2f2;border-right:1px solid #e5e7eb;font-size:11px;">
+      <strong style="color:#DC2626;">MAUVAIS</strong><br>
+      "L'etudiant est ponctuel et s'investit bien dans ses missions. Il prend son travail a coeur."
+    </div>
+    <div style="flex:1;padding:10px 12px;background:#f0fdf4;font-size:11px;">
+      <strong style="color:#16A34A;">BON</strong><br>
+      "L'apprenti assure l'administration des serveurs Linux et la gestion de la virtualisation (VMware). Au S2, ses missions ont evolue vers le deploiement cloud AWS, en coherence avec sa specialisation et le bloc 2 du titre RNCP 38114."
+    </div>
+  </div>
+</div>
+
 <div class="section-title">Questions types de l'auditeur</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="34"> "Montrez-moi comment le retour du tuteur entreprise au semestre 1 a ete pris en compte dans l'accompagnement pedagogique au semestre 2."</div>
@@ -1546,6 +1756,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="spec-box retex">
   <div class="spec-title">RETEX Audit Strasbourg</div>
   <div class="spec-content">Conforme. L'auditeur a valide la demarche a condition de bien categoriser et documenter les actions existantes. Le vrai travail n'est pas de creer des actions mais de les identifier, classer par theme, documenter et relier aux indicateurs. Meme les evenements "conviviaux" peuvent alimenter l'I14 sous l'angle prevention de l'isolement.</div>
+</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>30 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Dossier Citoyennete &amp; Obligations CFA | DU_actions_citoyennete.xlsx | Livret d'accueil | signaler.epitech.eu
+  </div>
 </div>
 
 <div class="section-title">Actions a mener</div>
@@ -1633,6 +1853,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">Conforme. L'auditeur a verifie les slides de presentation de rentree et le livret d'accueil. Il a insiste sur le fait que la presence en formation est une obligation contractuelle, pas un choix.</div>
 </div>
 
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Presentation de rentree (pptx) | Livret d'accueil | Emargements rentree
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I15" data-index="1"> Verifier que le reglement interieur mentionne les droits et devoirs des apprentis-salaries</div>
@@ -1699,6 +1929,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire met en oeuvre le respect des exigences de l'autorite de certification pour la presentation des candidats a la certification.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">Certifiantes : respect strict du reglement d'examen, inscription des candidats. PSH : amenagement des examens. CFA : presentation des apprentis aux sessions de certification.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Conditions examen | Reglement pedagogique
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I16" data-index="1"> Informer les candidats du deroulement des evaluations certificatives</div>
@@ -1754,6 +1995,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire met en adequation les moyens humains et techniques requis avec les objectifs de la prestation et s'assure de la qualite de l'environnement de la prestation.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">15 campus : verification des moyens par site. PSH : accessibilite des locaux et des equipements. FOAD : moyens techniques specifiques.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    DUERP | Liste SST | Attestation assurance | Photos locaux
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I17" data-index="1"> Inventorier les equipements par campus (PC, plateaux techniques, salles)</div>
@@ -1811,6 +2063,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire mobilise et coordonne les differents intervenants internes et/ou externes (formateurs, tuteurs, intervenants exterieurs, etc.).</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">ATTENTION : verification de TOUS les contrats de travail et de prestation. 15 campus = volume important d'intervenants a coordonner.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Organigramme | CR reunions coordination | Contrats formateurs
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I18" data-index="1"> Mettre a jour l'organigramme fonctionnel (national et par campus)</div>
@@ -1865,6 +2128,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire met a disposition du beneficiaire, des financeurs et des equipes pedagogiques les ressources pedagogiques favorisant la prestation.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">PSH : accessibilite des ressources pedagogiques. FOAD : ressources adaptees au format distanciel.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Gandalf &gt; Ressources pedagogiques | LMS
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I19" data-index="1"> Inventorier les supports de cours et ressources pedagogiques</div>
@@ -1917,6 +2191,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le CFA met a disposition du public un personnel dedie a la mobilite nationale et internationale, un referent handicap et un conseil de perfectionnement.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">CFA uniquement. Trois volets obligatoires : mobilite, handicap, conseil de perfectionnement.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>15 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    PV conseil de perfectionnement | CR instances | Conventions partenariats
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="1"> Identifier et nommer la personne dediee a la mobilite (nationale et internationale)</div>
@@ -1926,6 +2211,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="5"> Documenter les actions de mobilite realisees</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="6"> Documenter les actions du referent handicap</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="7"> S'assurer que les coordonnees de ces personnes sont publiees</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="50"> OBLIGATION LEGALE : Consultation des partenaires sociaux — preuve de consultation necessaire</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="51"> Preparer le PV du dernier conseil de perfectionnement avec les decisions prises</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="52"> Identifier au moins 1 recommandation du conseil mise en oeuvre concretement (preuve a l'appui)</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="53"> Nommer le referent mobilite nationale/internationale (obligation L6231-2 mission 10)</div>
 </div>
 <div class="section-title">Documents a preparer / rassembler</div>
 <div class="checklist">
@@ -1948,6 +2237,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="19"> "Qui sont les personnels dedies au CFA sur ce campus ?"</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="20"> "Comment sont reparties les responsabilites entre fonction centrale et site local ?"</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="54"> "Quelle recommandation du dernier conseil de perfectionnement avez-vous mise en oeuvre ?"</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="55"> "Montrez-moi le PV du conseil de perfectionnement avec les decisions prises."</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I20" data-index="56"> "Comment consultez-vous les partenaires sociaux ?"</div>
 </div>
 
 <div class="status-block">
@@ -1970,6 +2262,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire determine, mobilise et evalue les competences des differents intervenants, internes et/ou externes, mobilises dans la mise en oeuvre des prestations.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">PSH : sensibilisation des acteurs au handicap. CFA : competences specifiques tuteurs/maitres d'apprentissage.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Matrice intervenants competences.xlsx | CV intervenants | Dossier intervenants
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I21" data-index="1"> Realiser l'analyse des besoins en competences par poste/fonction</div>
@@ -2022,6 +2325,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Entretien et developpement des competences des salaries en adequation avec les prestations mises en oeuvre.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">Nouveaux entrants : Audite en surveillance.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Plan de formation equipes | Attestations formations suivies
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I22" data-index="1"> Qualifier les personnels intervenant dans les prestations</div>
@@ -2069,6 +2383,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="logo">{EPITECH}</div>
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Realisation d'une veille legale et reglementaire sur le champ de la formation professionnelle et exploitation de ses resultats.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>5 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Tableau de veille reglementaire | CR reunions veille
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I23" data-index="1"> Mettre en place des abonnements veille (newsletters, flux RSS, bases juridiques)</div>
@@ -2118,6 +2443,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Realisation d'une veille sur les competences, les metiers et les emplois, et exploitation de ses resultats pour adapter les prestations.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">Nouveaux entrants : Veille mise en place des l'audit initial, impact mesure en surveillance.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>5 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Tableau de veille metiers | Partenariats entreprises
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I24" data-index="1"> Mettre en place une veille economique sur les secteurs d'activite concernes</div>
@@ -2166,6 +2502,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Realisation d'une veille sur les innovations pedagogiques et technologiques permettant d'ameliorer les prestations.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">PSH : Conferences thematiques sur les adaptations pedagogiques au handicap. Nouveaux entrants : Veille mise en place, audite en surveillance.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>5 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Tableau de veille pedagogique | CR reunions innovation
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I25" data-index="1"> Participer a des conferences et evenements sur l'innovation pedagogique</div>
@@ -2214,6 +2561,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="description"><strong>Description (Referentiel V9) :</strong> Mobilisation des expertises, outils et reseaux necessaires pour accueillir, accompagner, former ou orienter les publics en situation de handicap.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">IMPORTANT : Lister TOUS les evenements campus en faveur de l'inclusion et du handicap (date / evenement / public / intervenant / preuve). Nouveaux entrants : Audite en surveillance.</div></div>
 <div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Conforme. L'auditeur a verifie le livret d'accueil, le referent handicap, le fichier de tracabilite. Cas concrets examines : Colette (fragilites cognitives, pas d'adaptation formelle) et Dorian (deficience motrice, acces ascenseur personnel). L'auditeur veut la chaine complete : information partenaires &rarr; identification besoins &rarr; adaptation &rarr; preuve tracee.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>20 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    EPITECH_GESTION_RQTH_STG.xlsx | Partenaires PSH.xlsx | Livret d'accueil | Referent handicap
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I26" data-index="1"> Lister les partenaires handicap (Agefiph, Fiphfp, Cap emploi, MDPH) avec contacts</div>
@@ -2276,6 +2634,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Lorsque le prestataire fait appel a la sous-traitance ou au portage salarial, il s'assure du respect de la conformite de la prestation au present referentiel.</div>
 <div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Conforme. L'auditeur a verifie la chaine complete : competence &rarr; contrat &rarr; intervention &rarr; evaluation. Profils examines : Colombert (IA/data), Bozouklian (cybersecurite), Marsala (ingenieur). Absence de bilan acceptee si demarrage recent. Le NDA (numero de declaration d'activite) est un plus mais pas bloquant.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>15 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Dossier intervenants (CV + contrats + bilans) | Matrice intervenants competences.xlsx
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I27" data-index="1"> Verifier la conformite des contrats de sous-traitance</div>
@@ -2308,6 +2677,21 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I27" data-index="22"> Nombre de sous-traitants certifies Qualiopi</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I27" data-index="23"> Nombre de reunions de pilotage realisees sur la periode</div>
 </div>
+
+<div style="margin:0 24px 16px;border:1px solid #e5e7eb;border-radius:6px;overflow:hidden;">
+  <div style="background:#DC2626;color:#fff;padding:6px 12px;font-family:'Anton',sans-serif;font-size:12px;text-transform:uppercase;">Exemple : bon vs mauvais</div>
+  <div style="display:flex;gap:0;">
+    <div style="flex:1;padding:10px 12px;background:#fef2f2;border-right:1px solid #e5e7eb;font-size:11px;">
+      <strong style="color:#DC2626;">MAUVAIS</strong><br>
+      CV non date, pas de contrat signe, pas de bilan annuel.
+    </div>
+    <div style="flex:1;padding:10px 12px;background:#f0fdf4;font-size:11px;">
+      <strong style="color:#16A34A;">BON</strong><br>
+      CV de janvier 2026 montrant un Master en IA/Data + 5 ans d'experience. Contrat de prestation signe le 01/09/2025 couvrant les modules IA et Machine Learning. Bilan annuel du 15/06/2025 : appreciation positive, 2 axes d'amelioration identifies.
+    </div>
+  </div>
+</div>
+
 <div class="section-title">Questions types de l'auditeur</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I27" data-index="24"> "Montrez-moi le CV de cet intervenant. Quelle est l'adequation avec le module enseigne ?"</div>
@@ -2334,6 +2718,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="logo">{EPITECH}</div>
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Mobilisation d'un reseau de partenaires pour coconstruire l'ingenierie de formation et organiser l'accueil en entreprise.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>5 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Conventions partenariats entreprises | Livret alternance
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I28" data-index="1"> Organiser des comites de pilotage avec les partenaires</div>
@@ -2382,6 +2777,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire met en oeuvre des actions favorisant l'insertion professionnelle ou la poursuite d'etudes par voie de l'apprentissage ou par toute autre voie.</div>
 <div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Conforme. Dispositif juge complet et bien anime. Canaux presents : Teams, Discord, JobTeaser, career meetings, job datings, ateliers CV, simulations d'entretien, photos professionnelles, partenariats entreprises.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    JobTeaser | Discord | Teams | Calendrier evenements insertion
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I29" data-index="1"> Organiser des salons d'orientation et forums emploi</div>
@@ -2440,6 +2846,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="logo">{EPITECH}</div>
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Recueil des appreciations des parties prenantes : beneficiaires, financeurs, equipes pedagogiques, entreprises d'accueil.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    EdSquare &gt; app.edsquare.fr/admin/apps/claim_tickets | Enquetes satisfaction
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="1"> Deployer des enquetes de satisfaction aupres des beneficiaires</div>
@@ -2493,6 +2910,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="logo">{EPITECH}</div>
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Mise en oeuvre de modalites de traitement des difficultes rencontrees par les parties prenantes, des reclamations exprimees et des aleas survenus en cours de prestation.</div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    EdSquare &gt; app.edsquare.fr/admin/apps/claim_tickets | Suivi traitement reclamations
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I31" data-index="1"> Formaliser les modalites de traitement (accuse reception, delais de reponse)</div>
@@ -2543,6 +2971,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Mise en oeuvre de mesures d'amelioration a partir de l'analyse des appreciations et des reclamations formulees par les parties prenantes.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">Nouveaux entrants : Audite en surveillance.</div></div>
+
+<div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
+  <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
+    <strong style="color:#fff;">TEMPS ESTIME</strong><br>10 min
+  </div>
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;padding:8px 14px;border-radius:6px;font-size:11px;flex:1;min-width:200px;">
+    <strong>OU TROUVER LES PREUVES</strong><br>
+    Plan d'amelioration continue | Tableau suivi actions | PV conseil perfectionnement
+  </div>
+</div>
+
 <div class="section-title">Actions a mener</div>
 <div class="checklist">
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I32" data-index="1"> Identifier les causes d'abandon et d'insatisfaction</div>
