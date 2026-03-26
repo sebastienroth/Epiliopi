@@ -67,6 +67,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 }
 .filter-reset.visible { display:inline-block; }
 .filter-reset:hover { background:var(--tech); color:var(--dark); }
+.filter-tag, .filter-reset { font-family:'Space Mono',monospace; }
 .fiche.filtered-out { display:none !important; }
 .sidebar-item.filtered-out { display:none !important; }
 .sidebar-group.filtered-out { display:none !important; }
@@ -152,6 +153,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 /* CONTENT */
 .content {
   margin-left:var(--sidebar-w); padding:24px 32px; min-height:100vh;
+  max-width:1400px;
 }
 .fiche {
   background:#fff; padding:0 0 20px 0; margin-bottom:24px;
@@ -207,8 +209,14 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   font-family:'Space Mono',monospace; font-size:10px; color:#888; text-align:center;
 }
 
+/* FOCUS VISIBLE */
+.check-input:focus-visible { outline:2px solid var(--tech); outline-offset:2px; }
+.sidebar-item:focus-visible { outline:2px solid var(--tech); outline-offset:-2px; }
+.filter-tag:focus-visible, .filter-reset:focus-visible { outline:2px solid var(--tech); outline-offset:2px; }
+.btn-print:focus-visible { outline:2px solid var(--tech); outline-offset:2px; }
+
 /* RESPONSIVE: Tablet */
-@media (max-width:1024px) {
+@media (max-width:1023px) {
   .sidebar { transform:translateX(-100%); }
   .sidebar.open { transform:translateX(0); }
   .hamburger { display:flex; }
@@ -295,6 +303,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   .check-input:checked::before {
     content:'\2611';
   }
+  .check-input::after { content:none !important; }
   .fiche-footer {
     -webkit-print-color-adjust:exact !important;
     print-color-adjust:exact !important;
@@ -305,6 +314,8 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   /* Print all */
   body.print-all .fiche { display:block !important; page-break-after:always; }
   body.print-all .fiche:last-child { page-break-after:auto; }
+  .fiche .check-item, .fiche .status-block { break-inside:avoid; }
+  .fiche .section-title { break-after:avoid; }
 }
 </style>
 </head>
@@ -327,15 +338,16 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="filter-bar">
     <div class="filter-label">Filtres rapides</div>
     <div class="filter-tags">
-      <span class="filter-tag" data-filter="critique" data-active-class="active-red">Critiques</span>
-      <span class="filter-tag" data-filter="nc-majeure" data-active-class="active-red">NC Maj.</span>
-      <span class="filter-tag" data-filter="nc-mineure" data-active-class="active-orange">NC Min.</span>
-      <span class="filter-tag" data-filter="retex" data-active-class="active-retex">RETEX</span>
-      <span class="filter-tag" data-filter="cfa" data-active-class="active">CFA</span>
-      <span class="filter-tag" data-filter="vae" data-active-class="active">VAE</span>
-      <span class="filter-tag" data-filter="psh" data-active-class="active-psh">PSH</span>
-      <span class="filter-tag" data-filter="of" data-active-class="active">OF</span>
-      <span class="filter-reset" id="filterReset">Tout afficher</span>
+      <button class="filter-tag" data-filter="critique" data-active-class="active-red">Critiques</button>
+      <button class="filter-tag" data-filter="nc-majeure" data-active-class="active-red">NC Maj.</button>
+      <button class="filter-tag" data-filter="nc-mineure" data-active-class="active-orange">NC Min.</button>
+      <button class="filter-tag" data-filter="retex" data-active-class="active-retex">RETEX</button>
+      <button class="filter-tag" data-filter="cfa" data-active-class="active">CFA</button>
+      <button class="filter-tag" data-filter="vae" data-active-class="active">VAE</button>
+      <button class="filter-tag" data-filter="psh" data-active-class="active-psh">PSH</button>
+      <button class="filter-tag" data-filter="of" data-active-class="active">OF</button>
+      <button class="filter-tag" data-filter="unchecked" data-active-class="active">Non cochés</button>
+      <button class="filter-reset" id="filterReset">Tout afficher</button>
     </div>
   </div>
   <div class="sidebar-nav">
@@ -486,7 +498,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     <span class="sidebar-title">Situation de Handicap</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I26">0/29</span>
   </a>
-  <a href="#I27" class="sidebar-item" data-indicator="I27" data-tags="of cfa vae nc-majeure">
+  <a href="#I27" class="sidebar-item" data-indicator="I27" data-tags="of cfa vae nc-majeure retex">
     <span class="sidebar-num">I27</span>
     <span class="sidebar-title">Sous-traitance</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I27">0/27</span>
@@ -525,8 +537,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="sidebar-footer">
     <div class="global-progress" id="globalProgress">0 / 698</div>
     <div class="progress-bar"><div class="progress-bar-fill" id="globalBar" style="width:0%"></div></div>
-    <button class="btn-print btn-print-single" onclick="printSingle()">Imprimer cette fiche</button>
+    <button class="btn-print btn-print-single" id="btnPrintSingle" onclick="printSingle()">Imprimer cette fiche</button>
     <button class="btn-print btn-print-all" onclick="printAll()">Imprimer tout</button>
+    <button class="btn-print btn-print-single" onclick="exportChecks()" style="margin-top:8px;background:var(--dark);border:1px solid var(--tech);">Exporter progression</button>
+    <button class="btn-print btn-print-all" onclick="document.getElementById('importFile').click()">Importer progression</button>
+    <input type="file" id="importFile" accept=".json" style="display:none">
   </div>
 </nav>
 
@@ -2156,7 +2171,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I27" class="fiche" data-indicator="I27" data-tags="of cfa vae nc-majeure" data-total="27">
+<section id="I27" class="fiche" data-indicator="I27" data-tags="of cfa vae nc-majeure retex" data-total="27">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I27</div>
@@ -2498,7 +2513,8 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     } catch(e) { return {}; }
   }
   function saveChecks(ind, data) {
-    localStorage.setItem('qualiopi_checks_' + ind, JSON.stringify(data));
+    try { localStorage.setItem('qualiopi_checks_' + ind, JSON.stringify(data)); }
+    catch(e) { console.warn('Sauvegarde impossible:', e); }
   }
   
   // === RESTORE STATE ===
@@ -2548,6 +2564,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     document.querySelectorAll('.sidebar-item').forEach(el => {
       el.classList.toggle('active', el.dataset.indicator === id);
     });
+    const activeEl = document.querySelector('.sidebar-item.active');
+    if (activeEl) activeEl.scrollIntoView({ block:'nearest', behavior:'smooth' });
+    const btn = document.getElementById('btnPrintSingle');
+    if (btn) btn.textContent = 'Imprimer ' + id;
   }
   
   // Sidebar clicks
@@ -2575,13 +2595,14 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   window.addEventListener('scroll', function() {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(function() {
-      const fiches = document.querySelectorAll('.fiche');
-      let current = 'I01';
+      const fiches = document.querySelectorAll('.fiche:not(.filtered-out)');
+      let current = null;
       for (const f of fiches) {
         const rect = f.getBoundingClientRect();
         if (rect.top <= 120) current = f.dataset.indicator;
       }
-      if (current !== activeIndicator) {
+      if (!current && fiches.length > 0) current = fiches[0].dataset.indicator;
+      if (current && current !== activeIndicator) {
         setActive(current);
         history.replaceState(null, '', '#' + current);
       }
@@ -2603,18 +2624,20 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   // Keyboard nav
   document.addEventListener('keydown', function(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    const ids = Object.keys(INDICATORS);
-    const idx = ids.indexOf(activeIndicator);
-    if (e.key === 'ArrowDown' && idx < ids.length - 1) {
+    const visibleFiches = Array.from(document.querySelectorAll('.fiche:not(.filtered-out)'));
+    const visibleIds = visibleFiches.map(f => f.dataset.indicator);
+    const idx = visibleIds.indexOf(activeIndicator);
+    if (idx === -1) return;
+    if (e.key === 'ArrowDown' && idx < visibleIds.length - 1) {
       e.preventDefault();
-      const next = ids[idx + 1];
+      const next = visibleIds[idx + 1];
       setActive(next);
       document.getElementById(next).scrollIntoView({ behavior:'smooth', block:'start' });
       history.replaceState(null, '', '#' + next);
     }
     if (e.key === 'ArrowUp' && idx > 0) {
       e.preventDefault();
-      const prev = ids[idx - 1];
+      const prev = visibleIds[idx - 1];
       setActive(prev);
       document.getElementById(prev).scrollIntoView({ behavior:'smooth', block:'start' });
       history.replaceState(null, '', '#' + prev);
@@ -2627,19 +2650,21 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     document.body.classList.remove('print-all');
     const target = document.getElementById(activeIndicator);
     if (target) target.classList.add('print-target');
-    window.print();
-    setTimeout(() => {
+    window.onafterprint = function() {
       document.body.classList.remove('print-single');
       if (target) target.classList.remove('print-target');
-    }, 500);
+      window.onafterprint = null;
+    };
+    window.print();
   };
   window.printAll = function() {
     document.body.classList.add('print-all');
     document.body.classList.remove('print-single');
-    window.print();
-    setTimeout(() => {
+    window.onafterprint = function() {
       document.body.classList.remove('print-all');
-    }, 500);
+      window.onafterprint = null;
+    };
+    window.print();
   };
   
   // === FILTERS ===
@@ -2658,6 +2683,31 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
       if (ft.dataset.filter === tag) ft.classList.add(ft.dataset.activeClass);
     });
     filterReset.classList.add('visible');
+    if (tag === 'unchecked') {
+      // Show only fiches that have unchecked items
+      allFiches.forEach(f => {
+        const ind = f.dataset.indicator;
+        const checks = getChecks(ind);
+        const total = INDICATORS[ind] || 0;
+        const checked = Object.values(checks).filter(v => v).length;
+        f.classList.toggle('filtered-out', checked >= total);
+      });
+      allSidebarItems.forEach(si => {
+        const ind = si.dataset.indicator;
+        const fiche = document.getElementById(ind);
+        si.classList.toggle('filtered-out', fiche && fiche.classList.contains('filtered-out'));
+      });
+      allSidebarGroups.forEach(sg => {
+        const vis = sg.querySelectorAll('.sidebar-item:not(.filtered-out)');
+        sg.classList.toggle('filtered-out', vis.length === 0);
+      });
+      const first = document.querySelector('.fiche:not(.filtered-out)');
+      if (first) {
+        first.scrollIntoView({ behavior:'smooth', block:'start' });
+        setActive(first.dataset.indicator);
+      }
+      return;
+    }
     allFiches.forEach(f => {
       const t = (f.dataset.tags || '').split(' ');
       f.classList.toggle('filtered-out', !t.includes(tag));
@@ -2686,6 +2736,37 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   }
   filterTags.forEach(ft => ft.addEventListener('click', () => applyFilter(ft.dataset.filter)));
   filterReset.addEventListener('click', clearFilter);
+
+  // === EXPORT / IMPORT ===
+  window.exportChecks = function() {
+    const data = {};
+    for (const ind of Object.keys(INDICATORS)) {
+      data[ind] = getChecks(ind);
+    }
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'qualiopi_progression_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click(); URL.revokeObjectURL(url);
+  };
+  document.getElementById('importFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        const data = JSON.parse(ev.target.result);
+        for (const [ind, checks] of Object.entries(data)) {
+          if (INDICATORS[ind]) saveChecks(ind, checks);
+        }
+        restoreAll();
+        updateProgress();
+        alert('Progression importée avec succès.');
+      } catch(err) { alert('Fichier invalide.'); }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
 
   // === INIT ===
   restoreAll();
