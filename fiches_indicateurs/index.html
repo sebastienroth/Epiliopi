@@ -215,6 +215,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 .filter-tag:focus-visible, .filter-reset:focus-visible { outline:2px solid var(--tech); outline-offset:2px; }
 .btn-print:focus-visible { outline:2px solid var(--tech); outline-offset:2px; }
 
+/* SCOPE BADGES */
+.badge-scope { font-size:9px; padding:2px 6px; border-radius:3px; font-weight:700; font-family:'Space Mono',monospace; display:inline-block; margin-left:8px; vertical-align:middle; }
+.badge-scope.local { background:#7c3aed; color:#fff; }
+.badge-scope.national { background:rgba(255,255,255,0.2); color:#fff; border:1px solid rgba(255,255,255,0.4); }
+
 /* RESPONSIVE: Tablet */
 @media (max-width:1023px) {
   .sidebar { transform:translateX(-100%); }
@@ -346,6 +351,8 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
       <button class="filter-tag" data-filter="vae" data-active-class="active">VAE</button>
       <button class="filter-tag" data-filter="psh" data-active-class="active-psh">PSH</button>
       <button class="filter-tag" data-filter="of" data-active-class="active">OF</button>
+      <button class="filter-tag" data-filter="local" data-active-class="active-psh">Local</button>
+      <button class="filter-tag" data-filter="national" data-active-class="active">National</button>
       <button class="filter-tag" data-filter="unchecked" data-active-class="active">Non cochés</button>
       <button class="filter-reset" id="filterReset">Tout afficher</button>
     </div>
@@ -361,17 +368,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
     <div class="sidebar-group">
   <div class="sidebar-critere">C1 — Conditions d'information du public</div>
-  <a href="#I01" class="sidebar-item" data-indicator="I01" data-tags="of cfa vae">
+  <a href="#I01" class="sidebar-item" data-indicator="I01" data-tags="of cfa vae national">
     <span class="sidebar-num">I01</span>
     <span class="sidebar-title">Information du public</span>
     <span class="sidebar-progress" id="prog-I01">0/23</span>
   </a>
-  <a href="#I02" class="sidebar-item" data-indicator="I02" data-tags="of cfa vae nc-majeure">
+  <a href="#I02" class="sidebar-item" data-indicator="I02" data-tags="of cfa vae nc-majeure national">
     <span class="sidebar-num">I02</span>
     <span class="sidebar-title">Indicateurs de resultats</span>
     <span class="sidebar-progress" id="prog-I02">0/21</span>
   </a>
-  <a href="#I03" class="sidebar-item" data-indicator="I03" data-tags="of cfa vae nc-mineure">
+  <a href="#I03" class="sidebar-item" data-indicator="I03" data-tags="of cfa vae nc-mineure national">
     <span class="sidebar-num">I03</span>
     <span class="sidebar-title">Taux d'obtention des certifications</span>
     <span class="sidebar-progress" id="prog-I03">0/19</span>
@@ -379,27 +386,27 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C2 — Objectifs et adaptation</div>
-  <a href="#I04" class="sidebar-item" data-indicator="I04" data-tags="of cfa vae retex critique">
+  <a href="#I04" class="sidebar-item" data-indicator="I04" data-tags="of cfa vae retex critique local">
     <span class="sidebar-num">I04</span>
     <span class="sidebar-title">Analyse du besoin</span>
     <span class="sidebar-progress" id="prog-I04">0/23</span>
   </a>
-  <a href="#I05" class="sidebar-item" data-indicator="I05" data-tags="of cfa vae retex">
+  <a href="#I05" class="sidebar-item" data-indicator="I05" data-tags="of cfa vae retex national">
     <span class="sidebar-num">I05</span>
     <span class="sidebar-title">Objectifs de la prestation</span>
     <span class="sidebar-progress" id="prog-I05">0/18</span>
   </a>
-  <a href="#I06" class="sidebar-item" data-indicator="I06" data-tags="of cfa vae retex psh">
+  <a href="#I06" class="sidebar-item" data-indicator="I06" data-tags="of cfa vae retex psh national">
     <span class="sidebar-num">I06</span>
     <span class="sidebar-title">Contenus et modalites de mise en oeuvre</span>
     <span class="sidebar-progress" id="prog-I06">0/21</span>
   </a>
-  <a href="#I07" class="sidebar-item" data-indicator="I07" data-tags="of cfa vae retex">
+  <a href="#I07" class="sidebar-item" data-indicator="I07" data-tags="of cfa vae retex national">
     <span class="sidebar-num">I07</span>
     <span class="sidebar-title">Contenus et exigences de la certification</span>
     <span class="sidebar-progress" id="prog-I07">0/17</span>
   </a>
-  <a href="#I08" class="sidebar-item" data-indicator="I08" data-tags="of cfa vae critique nc-mineure">
+  <a href="#I08" class="sidebar-item" data-indicator="I08" data-tags="of cfa vae critique nc-mineure local">
     <span class="sidebar-num">I08</span>
     <span class="sidebar-title">Positionnement a l'entree</span>
     <span class="sidebar-progress" id="prog-I08">0/21</span>
@@ -407,42 +414,42 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C3 — Adaptation prestation beneficiaires</div>
-  <a href="#I09" class="sidebar-item" data-indicator="I09" data-tags="of cfa vae">
+  <a href="#I09" class="sidebar-item" data-indicator="I09" data-tags="of cfa vae local">
     <span class="sidebar-num">I09</span>
     <span class="sidebar-title">Conditions de deroulement</span>
     <span class="sidebar-progress" id="prog-I09">0/23</span>
   </a>
-  <a href="#I10" class="sidebar-item" data-indicator="I10" data-tags="of cfa vae retex psh">
+  <a href="#I10" class="sidebar-item" data-indicator="I10" data-tags="of cfa vae retex psh national">
     <span class="sidebar-num">I10</span>
     <span class="sidebar-title">Adaptation de la prestation</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I10">0/30</span>
   </a>
-  <a href="#I11" class="sidebar-item" data-indicator="I11" data-tags="of cfa vae retex">
+  <a href="#I11" class="sidebar-item" data-indicator="I11" data-tags="of cfa vae retex national">
     <span class="sidebar-num">I11</span>
     <span class="sidebar-title">Atteinte des objectifs</span>
     <span class="sidebar-progress" id="prog-I11">0/20</span>
   </a>
-  <a href="#I12" class="sidebar-item" data-indicator="I12" data-tags="of cfa psh">
+  <a href="#I12" class="sidebar-item" data-indicator="I12" data-tags="of cfa psh local">
     <span class="sidebar-num">I12</span>
     <span class="sidebar-title">Engagement des beneficiaires</span>
     <span class="sidebar-progress" id="prog-I12">0/21</span>
   </a>
-  <a href="#I13" class="sidebar-item" data-indicator="I13" data-tags="cfa retex critique nc-majeure">
+  <a href="#I13" class="sidebar-item" data-indicator="I13" data-tags="cfa retex critique nc-majeure local">
     <span class="sidebar-num">I13</span>
     <span class="sidebar-title">Coordination alternance — Suivi entreprise</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I13">0/38</span>
   </a>
-  <a href="#I14" class="sidebar-item" data-indicator="I14" data-tags="cfa retex critique nc-majeure psh">
+  <a href="#I14" class="sidebar-item" data-indicator="I14" data-tags="cfa retex critique nc-majeure psh local">
     <span class="sidebar-num">I14</span>
     <span class="sidebar-title">Citoyennete — Accompagnement CFA</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I14">0/38</span>
   </a>
-  <a href="#I15" class="sidebar-item" data-indicator="I15" data-tags="cfa retex nc-mineure">
+  <a href="#I15" class="sidebar-item" data-indicator="I15" data-tags="cfa retex nc-mineure local">
     <span class="sidebar-num">I15</span>
     <span class="sidebar-title">Droits et devoirs des apprentis</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I15">0/30</span>
   </a>
-  <a href="#I16" class="sidebar-item" data-indicator="I16" data-tags="of cfa vae retex nc-mineure">
+  <a href="#I16" class="sidebar-item" data-indicator="I16" data-tags="of cfa vae retex nc-mineure national">
     <span class="sidebar-num">I16</span>
     <span class="sidebar-title">Presentation a la certification</span>
     <span class="sidebar-progress" id="prog-I16">0/22</span>
@@ -450,22 +457,22 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C4 — Adequation des moyens</div>
-  <a href="#I17" class="sidebar-item" data-indicator="I17" data-tags="of cfa vae">
+  <a href="#I17" class="sidebar-item" data-indicator="I17" data-tags="of cfa vae national">
     <span class="sidebar-num">I17</span>
     <span class="sidebar-title">Moyens humains et techniques</span>
     <span class="sidebar-progress" id="prog-I17">0/24</span>
   </a>
-  <a href="#I18" class="sidebar-item" data-indicator="I18" data-tags="of cfa vae">
+  <a href="#I18" class="sidebar-item" data-indicator="I18" data-tags="of cfa vae national">
     <span class="sidebar-num">I18</span>
     <span class="sidebar-title">Coordination des acteurs</span>
     <span class="sidebar-progress" id="prog-I18">0/21</span>
   </a>
-  <a href="#I19" class="sidebar-item" data-indicator="I19" data-tags="of cfa vae">
+  <a href="#I19" class="sidebar-item" data-indicator="I19" data-tags="of cfa vae national">
     <span class="sidebar-num">I19</span>
     <span class="sidebar-title">Ressources pedagogiques</span>
     <span class="sidebar-progress" id="prog-I19">0/19</span>
   </a>
-  <a href="#I20" class="sidebar-item" data-indicator="I20" data-tags="cfa nc-majeure critique">
+  <a href="#I20" class="sidebar-item" data-indicator="I20" data-tags="cfa nc-majeure critique national">
     <span class="sidebar-num">I20</span>
     <span class="sidebar-title">Personnels dedies — CFA</span>
     <span class="sidebar-progress" id="prog-I20">0/20</span>
@@ -473,12 +480,12 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C5 — Qualification des personnels</div>
-  <a href="#I21" class="sidebar-item" data-indicator="I21" data-tags="of cfa vae">
+  <a href="#I21" class="sidebar-item" data-indicator="I21" data-tags="of cfa vae national">
     <span class="sidebar-num">I21</span>
     <span class="sidebar-title">Competences des acteurs</span>
     <span class="sidebar-progress" id="prog-I21">0/19</span>
   </a>
-  <a href="#I22" class="sidebar-item" data-indicator="I22" data-tags="of cfa vae psh">
+  <a href="#I22" class="sidebar-item" data-indicator="I22" data-tags="of cfa vae psh national">
     <span class="sidebar-num">I22</span>
     <span class="sidebar-title">Gestion de la competence</span>
     <span class="sidebar-progress" id="prog-I22">0/15</span>
@@ -486,37 +493,37 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C6 — Inscription dans l'environnement</div>
-  <a href="#I23" class="sidebar-item" data-indicator="I23" data-tags="of cfa vae">
+  <a href="#I23" class="sidebar-item" data-indicator="I23" data-tags="of cfa vae national">
     <span class="sidebar-num">I23</span>
     <span class="sidebar-title">Veille legale et reglementaire</span>
     <span class="sidebar-progress" id="prog-I23">0/16</span>
   </a>
-  <a href="#I24" class="sidebar-item" data-indicator="I24" data-tags="of cfa vae">
+  <a href="#I24" class="sidebar-item" data-indicator="I24" data-tags="of cfa vae national">
     <span class="sidebar-num">I24</span>
     <span class="sidebar-title">Veille emplois et metiers</span>
     <span class="sidebar-progress" id="prog-I24">0/15</span>
   </a>
-  <a href="#I25" class="sidebar-item" data-indicator="I25" data-tags="of cfa vae">
+  <a href="#I25" class="sidebar-item" data-indicator="I25" data-tags="of cfa vae national">
     <span class="sidebar-num">I25</span>
     <span class="sidebar-title">Veille pedagogique et technologique</span>
     <span class="sidebar-progress" id="prog-I25">0/14</span>
   </a>
-  <a href="#I26" class="sidebar-item" data-indicator="I26" data-tags="of cfa vae retex psh">
+  <a href="#I26" class="sidebar-item" data-indicator="I26" data-tags="of cfa vae retex psh national">
     <span class="sidebar-num">I26</span>
     <span class="sidebar-title">Situation de Handicap</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I26">0/29</span>
   </a>
-  <a href="#I27" class="sidebar-item" data-indicator="I27" data-tags="of cfa vae nc-majeure retex">
+  <a href="#I27" class="sidebar-item" data-indicator="I27" data-tags="of cfa vae nc-majeure retex national">
     <span class="sidebar-num">I27</span>
     <span class="sidebar-title">Sous-traitance</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I27">0/27</span>
   </a>
-  <a href="#I28" class="sidebar-item" data-indicator="I28" data-tags="cfa">
+  <a href="#I28" class="sidebar-item" data-indicator="I28" data-tags="cfa national">
     <span class="sidebar-num">I28</span>
     <span class="sidebar-title">Formation en situation de travail</span>
     <span class="sidebar-progress" id="prog-I28">0/16</span>
   </a>
-  <a href="#I29" class="sidebar-item" data-indicator="I29" data-tags="cfa retex">
+  <a href="#I29" class="sidebar-item" data-indicator="I29" data-tags="cfa retex national">
     <span class="sidebar-num">I29</span>
     <span class="sidebar-title">Insertion professionnelle</span> <span class="retex-badge">RETEX</span>
     <span class="sidebar-progress" id="prog-I29">0/27</span>
@@ -524,17 +531,17 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C7 — Recueil et prise en compte des appreciations</div>
-  <a href="#I30" class="sidebar-item" data-indicator="I30" data-tags="of cfa vae">
+  <a href="#I30" class="sidebar-item" data-indicator="I30" data-tags="of cfa vae national">
     <span class="sidebar-num">I30</span>
     <span class="sidebar-title">Recueil des appreciations</span>
     <span class="sidebar-progress" id="prog-I30">0/19</span>
   </a>
-  <a href="#I31" class="sidebar-item" data-indicator="I31" data-tags="of cfa vae">
+  <a href="#I31" class="sidebar-item" data-indicator="I31" data-tags="of cfa vae national">
     <span class="sidebar-num">I31</span>
     <span class="sidebar-title">Traitement des reclamations</span>
     <span class="sidebar-progress" id="prog-I31">0/16</span>
   </a>
-  <a href="#I32" class="sidebar-item" data-indicator="I32" data-tags="of cfa vae">
+  <a href="#I32" class="sidebar-item" data-indicator="I32" data-tags="of cfa vae national">
     <span class="sidebar-num">I32</span>
     <span class="sidebar-title">Amelioration continue</span>
     <span class="sidebar-progress" id="prog-I32">0/16</span>
@@ -612,11 +619,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC | Regles transversales</div>
 </section>
 
-<section id="I01" class="fiche" data-indicator="I01" data-tags="of cfa vae" data-total="23">
+<section id="I01" class="fiche" data-indicator="I01" data-tags="of cfa vae national" data-total="23">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I01</div>
-    <div class="indicateur-title">Information du public</div>
+    <div class="indicateur-title">Information du public <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 1 — Conditions d'information du public</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -689,11 +696,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I02" class="fiche" data-indicator="I02" data-tags="of cfa vae nc-majeure" data-total="21">
+<section id="I02" class="fiche" data-indicator="I02" data-tags="of cfa vae nc-majeure national" data-total="21">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I02</div>
-    <div class="indicateur-title">Indicateurs de resultats</div>
+    <div class="indicateur-title">Indicateurs de resultats <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 1 — Conditions d'information du public</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -755,11 +762,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I03" class="fiche" data-indicator="I03" data-tags="of cfa vae nc-mineure" data-total="19">
+<section id="I03" class="fiche" data-indicator="I03" data-tags="of cfa vae nc-mineure national" data-total="19">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I03</div>
-    <div class="indicateur-title">Taux d'obtention des certifications</div>
+    <div class="indicateur-title">Taux d'obtention des certifications <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 1 — Conditions d'information du public</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -819,11 +826,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I04" class="fiche" data-indicator="I04" data-tags="of cfa vae retex critique" data-total="23">
+<section id="I04" class="fiche" data-indicator="I04" data-tags="of cfa vae retex critique local" data-total="23">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I04 <span class="priority">PRIORITE ABSOLUE</span></div>
-    <div class="indicateur-title">Analyse du besoin</div>
+    <div class="indicateur-title">Analyse du besoin <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 2 — Objectifs et adaptation</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -891,11 +898,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I05" class="fiche" data-indicator="I05" data-tags="of cfa vae retex" data-total="18">
+<section id="I05" class="fiche" data-indicator="I05" data-tags="of cfa vae retex national" data-total="18">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I05</div>
-    <div class="indicateur-title">Objectifs de la prestation</div>
+    <div class="indicateur-title">Objectifs de la prestation <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 2 — Objectifs et adaptation</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -949,11 +956,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I06" class="fiche" data-indicator="I06" data-tags="of cfa vae retex psh" data-total="21">
+<section id="I06" class="fiche" data-indicator="I06" data-tags="of cfa vae retex psh national" data-total="21">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I06</div>
-    <div class="indicateur-title">Contenus et modalites de mise en oeuvre</div>
+    <div class="indicateur-title">Contenus et modalites de mise en oeuvre <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 2 — Objectifs et adaptation</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1015,11 +1022,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I07" class="fiche" data-indicator="I07" data-tags="of cfa vae retex" data-total="17">
+<section id="I07" class="fiche" data-indicator="I07" data-tags="of cfa vae retex national" data-total="17">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I07</div>
-    <div class="indicateur-title">Contenus et exigences de la certification</div>
+    <div class="indicateur-title">Contenus et exigences de la certification <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 2 — Objectifs et adaptation</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1077,11 +1084,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I08" class="fiche" data-indicator="I08" data-tags="of cfa vae critique nc-mineure" data-total="21">
+<section id="I08" class="fiche" data-indicator="I08" data-tags="of cfa vae critique nc-mineure local" data-total="21">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I08 <span class="priority">PRIORITE ABSOLUE</span></div>
-    <div class="indicateur-title">Positionnement a l'entree</div>
+    <div class="indicateur-title">Positionnement a l'entree <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 2 — Objectifs et adaptation</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1146,11 +1153,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I09" class="fiche" data-indicator="I09" data-tags="of cfa vae" data-total="23">
+<section id="I09" class="fiche" data-indicator="I09" data-tags="of cfa vae local" data-total="23">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I09</div>
-    <div class="indicateur-title">Conditions de deroulement</div>
+    <div class="indicateur-title">Conditions de deroulement <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1214,11 +1221,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I10" class="fiche" data-indicator="I10" data-tags="of cfa vae retex psh" data-total="30">
+<section id="I10" class="fiche" data-indicator="I10" data-tags="of cfa vae retex psh national" data-total="30">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I10</div>
-    <div class="indicateur-title">Adaptation de la prestation</div>
+    <div class="indicateur-title">Adaptation de la prestation <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1291,11 +1298,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I11" class="fiche" data-indicator="I11" data-tags="of cfa vae retex" data-total="20">
+<section id="I11" class="fiche" data-indicator="I11" data-tags="of cfa vae retex national" data-total="20">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I11</div>
-    <div class="indicateur-title">Atteinte des objectifs</div>
+    <div class="indicateur-title">Atteinte des objectifs <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1356,11 +1363,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I12" class="fiche" data-indicator="I12" data-tags="of cfa psh" data-total="21">
+<section id="I12" class="fiche" data-indicator="I12" data-tags="of cfa psh local" data-total="21">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I12</div>
-    <div class="indicateur-title">Engagement des beneficiaires</div>
+    <div class="indicateur-title">Engagement des beneficiaires <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1422,11 +1429,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I13" class="fiche" data-indicator="I13" data-tags="cfa retex critique nc-majeure" data-total="38">
+<section id="I13" class="fiche" data-indicator="I13" data-tags="cfa retex critique nc-majeure local" data-total="38">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I13 <span class="critical">POINT CRITIQUE</span></div>
-    <div class="indicateur-title">Coordination alternance — Suivi entreprise</div>
+    <div class="indicateur-title">Coordination alternance — Suivi entreprise <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1517,11 +1524,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I14" class="fiche" data-indicator="I14" data-tags="cfa retex critique nc-majeure psh" data-total="38">
+<section id="I14" class="fiche" data-indicator="I14" data-tags="cfa retex critique nc-majeure psh local" data-total="38">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I14</div>
-    <div class="indicateur-title">Citoyennete — Accompagnement CFA</div>
+    <div class="indicateur-title">Citoyennete — Accompagnement CFA <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1609,11 +1616,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I15" class="fiche" data-indicator="I15" data-tags="cfa retex nc-mineure" data-total="30">
+<section id="I15" class="fiche" data-indicator="I15" data-tags="cfa retex nc-mineure local" data-total="30">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I15</div>
-    <div class="indicateur-title">Droits et devoirs des apprentis</div>
+    <div class="indicateur-title">Droits et devoirs des apprentis <span class="badge-scope local">LOCAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1681,11 +1688,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I16" class="fiche" data-indicator="I16" data-tags="of cfa vae retex nc-mineure" data-total="22">
+<section id="I16" class="fiche" data-indicator="I16" data-tags="of cfa vae retex nc-mineure national" data-total="22">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I16</div>
-    <div class="indicateur-title">Presentation a la certification</div>
+    <div class="indicateur-title">Presentation a la certification <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 3 — Adaptation prestation beneficiaires</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1736,11 +1743,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I17" class="fiche" data-indicator="I17" data-tags="of cfa vae" data-total="24">
+<section id="I17" class="fiche" data-indicator="I17" data-tags="of cfa vae national" data-total="24">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I17</div>
-    <div class="indicateur-title">Moyens humains et techniques</div>
+    <div class="indicateur-title">Moyens humains et techniques <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 4 — Adequation des moyens</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1793,11 +1800,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I18" class="fiche" data-indicator="I18" data-tags="of cfa vae" data-total="21">
+<section id="I18" class="fiche" data-indicator="I18" data-tags="of cfa vae national" data-total="21">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I18 <span class="critical">ATTENTION CONTRATS</span></div>
-    <div class="indicateur-title">Coordination des acteurs</div>
+    <div class="indicateur-title">Coordination des acteurs <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 4 — Adequation des moyens</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1847,11 +1854,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I19" class="fiche" data-indicator="I19" data-tags="of cfa vae" data-total="19">
+<section id="I19" class="fiche" data-indicator="I19" data-tags="of cfa vae national" data-total="19">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I19</div>
-    <div class="indicateur-title">Ressources pedagogiques</div>
+    <div class="indicateur-title">Ressources pedagogiques <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 4 — Adequation des moyens</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1899,11 +1906,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I20" class="fiche" data-indicator="I20" data-tags="cfa nc-majeure critique" data-total="20">
+<section id="I20" class="fiche" data-indicator="I20" data-tags="cfa nc-majeure critique national" data-total="20">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I20</div>
-    <div class="indicateur-title">Personnels dedies — CFA</div>
+    <div class="indicateur-title">Personnels dedies — CFA <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 4 — Adequation des moyens</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -1952,11 +1959,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I21" class="fiche" data-indicator="I21" data-tags="of cfa vae" data-total="19">
+<section id="I21" class="fiche" data-indicator="I21" data-tags="of cfa vae national" data-total="19">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I21</div>
-    <div class="indicateur-title">Competences des acteurs</div>
+    <div class="indicateur-title">Competences des acteurs <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 5 — Qualification des personnels</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2004,11 +2011,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I22" class="fiche" data-indicator="I22" data-tags="of cfa vae psh" data-total="15">
+<section id="I22" class="fiche" data-indicator="I22" data-tags="of cfa vae psh national" data-total="15">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I22</div>
-    <div class="indicateur-title">Gestion de la competence</div>
+    <div class="indicateur-title">Gestion de la competence <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 5 — Qualification des personnels</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2052,11 +2059,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I23" class="fiche" data-indicator="I23" data-tags="of cfa vae" data-total="16">
+<section id="I23" class="fiche" data-indicator="I23" data-tags="of cfa vae national" data-total="16">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I23</div>
-    <div class="indicateur-title">Veille legale et reglementaire</div>
+    <div class="indicateur-title">Veille legale et reglementaire <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2100,11 +2107,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I24" class="fiche" data-indicator="I24" data-tags="of cfa vae" data-total="15">
+<section id="I24" class="fiche" data-indicator="I24" data-tags="of cfa vae national" data-total="15">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I24</div>
-    <div class="indicateur-title">Veille emplois et metiers</div>
+    <div class="indicateur-title">Veille emplois et metiers <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2148,11 +2155,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I25" class="fiche" data-indicator="I25" data-tags="of cfa vae" data-total="14">
+<section id="I25" class="fiche" data-indicator="I25" data-tags="of cfa vae national" data-total="14">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I25</div>
-    <div class="indicateur-title">Veille pedagogique et technologique</div>
+    <div class="indicateur-title">Veille pedagogique et technologique <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2195,11 +2202,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I26" class="fiche" data-indicator="I26" data-tags="of cfa vae retex psh" data-total="29">
+<section id="I26" class="fiche" data-indicator="I26" data-tags="of cfa vae retex psh national" data-total="29">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I26</div>
-    <div class="indicateur-title">Situation de Handicap</div>
+    <div class="indicateur-title">Situation de Handicap <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2258,11 +2265,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I27" class="fiche" data-indicator="I27" data-tags="of cfa vae nc-majeure retex" data-total="27">
+<section id="I27" class="fiche" data-indicator="I27" data-tags="of cfa vae nc-majeure retex national" data-total="27">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I27</div>
-    <div class="indicateur-title">Sous-traitance</div>
+    <div class="indicateur-title">Sous-traitance <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2317,11 +2324,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I28" class="fiche" data-indicator="I28" data-tags="cfa" data-total="16">
+<section id="I28" class="fiche" data-indicator="I28" data-tags="cfa national" data-total="16">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I28</div>
-    <div class="indicateur-title">Formation en situation de travail</div>
+    <div class="indicateur-title">Formation en situation de travail <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2364,11 +2371,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I29" class="fiche" data-indicator="I29" data-tags="cfa retex" data-total="27">
+<section id="I29" class="fiche" data-indicator="I29" data-tags="cfa retex national" data-total="27">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I29</div>
-    <div class="indicateur-title">Insertion professionnelle</div>
+    <div class="indicateur-title">Insertion professionnelle <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 6 — Inscription dans l'environnement (specifique CFA)</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2423,11 +2430,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I30" class="fiche" data-indicator="I30" data-tags="of cfa vae" data-total="19">
+<section id="I30" class="fiche" data-indicator="I30" data-tags="of cfa vae national" data-total="19">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I30</div>
-    <div class="indicateur-title">Recueil des appreciations</div>
+    <div class="indicateur-title">Recueil des appreciations <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 7 — Recueil et prise en compte des appreciations</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2476,11 +2483,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I31" class="fiche" data-indicator="I31" data-tags="of cfa vae" data-total="16">
+<section id="I31" class="fiche" data-indicator="I31" data-tags="of cfa vae national" data-total="16">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I31</div>
-    <div class="indicateur-title">Traitement des reclamations</div>
+    <div class="indicateur-title">Traitement des reclamations <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 7 — Recueil et prise en compte des appreciations</div>
   </div>
   <div class="logo">{EPITECH}</div>
@@ -2525,11 +2532,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
-<section id="I32" class="fiche" data-indicator="I32" data-tags="of cfa vae" data-total="16">
+<section id="I32" class="fiche" data-indicator="I32" data-tags="of cfa vae national" data-total="16">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I32</div>
-    <div class="indicateur-title">Amelioration continue</div>
+    <div class="indicateur-title">Amelioration continue <span class="badge-scope national">NATIONAL</span></div>
     <div class="critere-badge">Critere 7 — Recueil et prise en compte des appreciations</div>
   </div>
   <div class="logo">{EPITECH}</div>
