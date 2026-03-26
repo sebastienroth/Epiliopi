@@ -299,6 +299,9 @@ a:hover { text-decoration: underline; }
 .badge-vae { background: #EDE9FE; color: #7C3AED; }
 .badge-cert { background: #FEF3C7; color: #92400E; }
 .badge-retex { background: var(--together); color: #fff; }
+.badge-scope { font-size:9px; padding:2px 6px; border-radius:3px; font-weight:700; font-family:'Space Mono',monospace; }
+.badge-scope.local { background:#7c3aed; color:#fff; }
+.badge-scope.national { background:#e0e7ff; color:#4338ca; border:1px solid #c7d2fe; }
 .ind-risk {
   width: 12px;
   height: 12px;
@@ -614,6 +617,10 @@ tbody tr:hover { background: #f8f8fc; }
         <div class="risk-label">Conformes</div>
       </div>
     </div>
+    <div style="display:flex;gap:8px;align-items:center;margin-top:12px;font-size:11px;color:#6b7280;">
+      <span class="badge-scope local">LOCAL</span> <span>= préparé par le campus</span>
+      <span class="badge-scope national">NATIONAL</span> <span>= préparé par la fonction centrale (Paris)</span>
+    </div>
   </div>
 </section>
 
@@ -639,6 +646,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -652,6 +660,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Taux sans volumes, incoherence site/donnees</div>
         </a>
@@ -664,6 +673,7 @@ tbody tr:hover { background: #f8f8fc; }
           </div>
           <div class="ind-badges">
             <span class="ind-badge badge-cert">Certifiantes</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Taux incomplets par titre RNCP</div>
         </a>
@@ -687,6 +697,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
           <div class="ind-note">Risque reduit post-Strasbourg</div>
         </a>
@@ -702,6 +713,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -716,6 +728,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Lien diagnostic&rarr;adaptation insuffisant</div>
         </a>
@@ -729,6 +742,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-cert">Certifiantes</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -740,6 +754,7 @@ tbody tr:hover { background: #f8f8fc; }
           </div>
           <div class="ind-badges">
             <span class="ind-badge badge-cert">Certifiantes</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
           <div class="ind-note">Risque initial eleve</div>
         </a>
@@ -762,6 +777,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
         </a>
 
@@ -776,6 +792,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Valide STG &mdash; preparer cas concrets</div>
         </a>
@@ -791,6 +808,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -803,6 +821,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
         </a>
 
@@ -815,6 +834,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
           <div class="ind-note">POINT CRITIQUE &mdash; lien evaluations/RNCP</div>
         </a>
@@ -828,6 +848,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
           <div class="ind-note">Obligations CFA, citoyennete, VSS</div>
         </a>
@@ -841,6 +862,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope local">LOCAL</span>
           </div>
           <div class="ind-note">Supports existants mais incomplets</div>
         </a>
@@ -854,6 +876,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-cert">Certifiantes</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Non documente systematiquement</div>
         </a>
@@ -876,6 +899,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -889,6 +913,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -902,6 +927,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -913,6 +939,7 @@ tbody tr:hover { background: #f8f8fc; }
           </div>
           <div class="ind-badges">
             <span class="ind-badge badge-cfa">CFA</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Matrice progressivite a produire</div>
         </a>
@@ -935,6 +962,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -948,6 +976,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Preuves non structurees</div>
         </a>
@@ -970,6 +999,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -983,6 +1013,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -996,6 +1027,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -1010,6 +1042,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Preuves existantes non structurees</div>
         </a>
@@ -1024,6 +1057,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">CV/contrat/bilan incomplets</div>
         </a>
@@ -1036,6 +1070,7 @@ tbody tr:hover { background: #f8f8fc; }
           </div>
           <div class="ind-badges">
             <span class="ind-badge badge-cfa">CFA</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -1048,6 +1083,7 @@ tbody tr:hover { background: #f8f8fc; }
           <div class="ind-badges">
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-retex">RETEX</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Valide STG &mdash; dispositif complet</div>
         </a>
@@ -1070,6 +1106,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
@@ -1083,6 +1120,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
           <div class="ind-note">Non trace formellement</div>
         </a>
@@ -1097,6 +1135,7 @@ tbody tr:hover { background: #f8f8fc; }
             <span class="ind-badge badge-of">OF</span>
             <span class="ind-badge badge-cfa">CFA</span>
             <span class="ind-badge badge-vae">VAE</span>
+            <span class="badge-scope national">NATIONAL</span>
           </div>
         </a>
 
