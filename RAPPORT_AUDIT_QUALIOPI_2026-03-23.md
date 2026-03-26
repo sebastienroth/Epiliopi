@@ -3,7 +3,7 @@
 
 **Version :** 1.2 — 25 mars 2026
 **Créateurs :** Sébastien ROTH & Luc BOURRAT
-**Périmètre :** CFA + Actions de formation + VAE | Certificateur : SOCOTEC | Référentiel V9
+**Périmètre :** CFA + Actions de formation + VAE | Certificateur : SOCOTEC | [Référentiel National Qualité — Version 9 (8 janvier 2024)](https://travail-emploi.gouv.fr/IMG/pdf/guide_de_lecture_qualiopi_v9_du_8_janvier_2024.pdf)
 
 ---
 
