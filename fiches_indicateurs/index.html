@@ -351,6 +351,14 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     </div>
   </div>
   <div class="sidebar-nav">
+<div class="sidebar-group">
+  <div class="sidebar-critere" style="color:#DC2626;">Regles transversales</div>
+  <a href="#RULES" class="sidebar-item" data-indicator="RULES" data-tags="critique" style="border-left-color:#DC2626;">
+    <span class="sidebar-num" style="color:#DC2626;">!</span>
+    <span class="sidebar-title">Regles d'audit & docs campus</span>
+    <span class="sidebar-progress" id="prog-RULES">0/15</span>
+  </a>
+</div>
     <div class="sidebar-group">
   <div class="sidebar-critere">C1 — Conditions d'information du public</div>
   <a href="#I01" class="sidebar-item" data-indicator="I01" data-tags="of cfa vae">
@@ -546,6 +554,64 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </nav>
 
 <main class="content" id="mainContent">
+<section id="RULES" class="fiche" data-indicator="RULES" data-tags="critique" data-total="15">
+<div class="header" style="background:#DC2626;">
+  <div class="header-left">
+    <div class="indicateur-num" style="font-size:36px;">REGLES</div>
+    <div class="indicateur-title">Regles de conduite d'audit & documents transversaux</div>
+    <div class="critere-badge" style="background:#fff;color:#DC2626;">OBLIGATOIRE — TOUS LES CAMPUS</div>
+  </div>
+  <div class="logo">{EPITECH}</div>
+</div>
+
+<div class="description">
+  <strong>Cette section regroupe les regles de conduite pendant l'audit et la liste des documents que CHAQUE campus doit fournir.</strong> Ces elements sont transversaux et s'appliquent a tous les indicateurs.
+</div>
+
+<div class="spec-box retex">
+  <div class="spec-title">Regle d'or</div>
+  <div class="spec-content">Si ce n'est pas ecrit, ca n'existe pas. — Pas d'extract sans source, pas de source sans verification possible.</div>
+</div>
+
+<div class="section-title">Regles de conduite pendant l'audit en visio</div>
+<div class="checklist">
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="1"> Seule la personne designee pour repondre prend la parole — les autres restent micro coupe</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="2"> Conversation Teams dediee en parallele de la visio pour se coordonner en temps reel</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="3"> Pendant qu'une personne repond, les autres cherchent les preuves demandees via Teams</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="4"> Si on ne sait pas : "Je vais verifier et vous revenir avec l'information precise." — NE JAMAIS INVENTER</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="5"> Repondre precisement a la question posee, sans digresser — chaque mot en plus ouvre une porte a une question supplementaire</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="6"> Preparer les ecrans a l'avance — ne montrer que ce qui est demande — fermer les onglets inutiles</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="7"> REGLE ABSOLUE : Aucune reponse ne doit etre "Je ne sais pas, c'est Paris qui gere."</div>
+</div>
+
+<div class="section-title">Documents que CHAQUE campus doit fournir</div>
+<div class="checklist">
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="8"> [A] Presentation de rentree — droits et devoirs de l'apprenti (emargee) — I9, I15</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="9"> [B] Livret d'accueil avec reference aux missions locales, France Travail, partenaires handicap — I9, I12, I14, I26</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="10"> [C] Listing evenements inclusion & handicap (date/evenement/public/intervenant/preuve) — I14, I26</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="11"> [D] Suivi entreprise (Excel) — 100% des apprenants, tracable dans l'outil source — I13</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="12"> [E] Commentaires bulletins de fin de semestre (nb commentaires = nb apprenants) — I11</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="13"> [F] Evaluation tuteur (nb evaluations = nb alternants) — I13</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="14"> [G] Liste des intervenants internes et externes + contrats + CV a jour — I18, I27</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="15"> Export satisfaction entreprise — I30</div>
+</div>
+
+<div class="section-title">Convention de nommage des preuves (Teams)</div>
+<div class="checklist">
+  <div class="check-item" style="font-family:'Space Mono',monospace;font-size:11px;background:#f4f4f8;padding:12px;border-radius:4px;">
+    Format : [N°indicateur]_preuveIndicateur[N°].pdf<br>
+    Exemples : 4_preuveIndicateur4.pdf | 13_preuveIndicateur13_suivi_entreprise.pdf | 14_preuveIndicateur14_evenements_inclusion.pdf
+  </div>
+</div>
+
+<div class="status-block">
+  <div class="status-item"><div class="status-label">Responsable</div><div class="status-value">Chaque directeur de campus</div></div>
+  <div class="status-item"><div class="status-label">Validation</div><div class="status-value">Anaelle, Luc, Sebastien</div></div>
+  <div class="status-item"><div class="status-label">Canal</div><div class="status-value">Conversation Teams partagee</div></div>
+</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC | Regles transversales</div>
+</section>
+
 <section id="I01" class="fiche" data-indicator="I01" data-tags="of cfa vae" data-total="23">
 <div class="header">
   <div class="header-left">
@@ -783,6 +849,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="7"> PSH : integrer la question handicap dans le processus d'admission</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="8"> VAE : formaliser l'analyse de l'experience professionnelle du candidat</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="9"> Verifier que chaque admission est tracee avec une analyse du besoin</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="50"> PRIORITE ABSOLUE : 100% des fiches missions doivent etre renseignees dans IONIS Alternance pour tous les apprenants</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="51"> Verifier la completude des preuves d'analyse par apprenant sur les formations auditees</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="52"> Preparer le listing exhaustif de tous les apprenants par formation auditee</div>
 </div>
 
 <div class="section-title">Documents a preparer / rassembler</div>
@@ -809,6 +878,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="21"> Montrez-moi le dossier de candidature de cet apprenant. Quelles etaient ses attentes ?</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="22"> Comment verifiez-vous l'adequation entre le projet du candidat et la formation proposee ?</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="23"> Ou sont tracees les motivations et le projet professionnel du candidat ?</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I04" data-index="53"> "Montrez-moi le dossier complet d'un apprenti de ce campus — de l'admission au suivi entreprise."</div>
 </div>
 
 <div class="status-block">
@@ -1036,6 +1106,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I08" data-index="6"> PSH : evaluer les besoins d'amenagement au positionnement</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I08" data-index="7"> VAE : evaluer l'experience et les acquis du candidat</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I08" data-index="8"> Verifier que chaque apprenant a un dossier de positionnement</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I08" data-index="50"> PRIORITE ABSOLUE : Verifier les diagnostics prealables, entretiens, evaluations des acquis (QCM, exercices, mises en situation)</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I08" data-index="51"> Verifier la coherence entre les prerequis affiches et la certification RNCP visee</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I08" data-index="52"> Formaliser les outils de mesure des ecarts et les procedures de positionnement</div>
 </div>
 
 <div class="section-title">Documents a preparer / rassembler</div>
@@ -1389,6 +1462,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="12"> Verifier la completude dossier par dossier AVANT l'audit (nb bulletins = nb apprenants = nb evaluations = nb lignes suivi)</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="13"> Preparer les explications pour les cas atypiques (changement d'entreprise, poursuite d'etudes, doubles lignes)</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="14"> Renommer "sondage" en "evaluation tutorale" dans l'outil de suivi</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="50"> REGLE ABSOLUE : Pas d'extract sans source, pas de source sans verification possible — l'auditeur ouvrira l'outil d'origine en direct</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="51"> Objectif 100% de conformite : chaque dossier apprenant doit etre complet sans exception</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="52"> Pour les imports de masse : ecrire a Luc, Anaelle, Baptiste et Sebastien AVANT execution</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="53"> Verifier coherence des effectifs : nb inscrits = nb evaluations tuteur = nb bulletins = nb emargements = nb soutenances = nb certifications</div>
 </div>
 
 <div class="section-title">Documents a preparer / rassembler</div>
@@ -1408,6 +1485,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="27"> PV de conseils de classe dates et signes</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="28"> Calendrier previsionnel des visites (dates prevues vs realisees)</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="29"> Note explicative de transition d'outils (si coexistence Excel / EdSquare)</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="54"> Fichier Excel consolide par campus : dates visite/contact, nom tuteur, themes, actions, progression — COMPLET et TRACABLE dans l'outil source</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="55"> Commentaires bulletins de fin de semestre (Excel) — nombre de commentaires = nombre d'apprenants inscrits</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I13" data-index="56"> Evaluation tuteur (Excel) — nom apprenant, nom tuteur, date evaluation, resultat, observations — nombre = nombre d'alternants</div>
 </div>
 
 <div class="section-title">Informations a collecter</div>
@@ -1495,6 +1575,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="26"> Presentation de rentree avec slide dediee aux contacts des partenaires regionaux</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="27"> Procedure ecrite de poursuite de formation en cas de rupture (L6231-2 mission 5)</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="28"> Nomination formalisee du referent mobilite nationale/internationale</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="50"> Listing exhaustif de TOUS les evenements campus en faveur de l'inclusion et du handicap : date / intitule / objectif / public vise / intervenant / preuve associee</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="51"> Document unique par theme : Citoyennete/Mixite/VSS = synthese action/objectif/public/preuve</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="52"> Fiche descriptive des actions d'accompagnement socio-professionnel (Programme Z, logement, aides)</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I14" data-index="53"> Preuves de conferences, ateliers, formations sensibilisation diversite (CR + emargements)</div>
 </div>
 
 <div class="section-title">Informations a collecter</div>
@@ -1557,6 +1641,8 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I15" data-index="11"> Mentionner les consequences des absences injustifiees (retenue sur salaire, signalement employeur, impact evaluation)</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I15" data-index="12"> Mentionner les conditions de presentation aux examens et d'obtention du titre RNCP</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I15" data-index="13"> Integrer les contacts des missions locales et partenaires handicap de la region dans la presentation de rentree</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I15" data-index="50"> Preparer une presentation de rentree dediee couvrant : statut salarie, remuneration, conges, temps de travail, protection sociale, obligations, cadre du contrat, procedure de mediation</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I15" data-index="51"> La presentation de rentree doit etre PRESENTEE et EMARGEE a chaque rentree — conserver la preuve d'emargement</div>
 </div>
 <div class="section-title">Documents a preparer / rassembler</div>
 <div class="checklist">
@@ -2148,6 +2234,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I26" data-index="20"> Fichier des partenaires PSH par region avec coordonnees a jour</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I26" data-index="21"> Livret d'accueil avec section dediee handicap et contacts locaux</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I26" data-index="22"> Presentation de rentree avec slide referent handicap + partenaires</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I26" data-index="50"> Listing exhaustif des evenements inclusion et handicap par campus : conferences, sensibilisations, ateliers, interventions partenaires (Agefiph, MDPH, Cap emploi), journees thematiques</div>
 </div>
 <div class="section-title">Informations a collecter</div>
 <div class="checklist">
@@ -2356,6 +2443,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="6"> Analyser et traiter les retours recueillis</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="7"> Distinguer clairement les categories (reclamation, difficulte, amelioration) dans l'outil de recueil</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="8"> Verifier que la saisie locale remonte correctement dans la consolidation nationale</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="50"> CRITIQUE : Verifier que des entrees recentes existent dans EdSquare (https://app.edsquare.fr/admin/apps/claim_tickets) — un outil vide = NC immediate</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="51"> Verifier que chaque entree a un traitement documente : accuse reception, reponse, cloture</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I30" data-index="52"> Verifier l'existence d'une analyse des tendances (causes, actions correctives)</div>
 </div>
 <div class="section-title">Documents a preparer / rassembler</div>
 <div class="checklist">
@@ -2403,6 +2493,8 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I31" data-index="3"> Organiser la mediation en cas de conflit</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I31" data-index="4"> Mettre en place un dialogue interne sur les reclamations</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="I31" data-index="5"> Tenir a jour un tableau de suivi des reclamations</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I31" data-index="50"> CRITIQUE : EdSquare doit contenir des reclamations recentes avec traitement coherent et dans les delais</div>
+<div class="check-item"><input type="checkbox" class="check-input" data-indicator="I31" data-index="51"> L'auditeur ouvrira EdSquare en direct — preparer l'acces et verifier les donnees AVANT l'audit</div>
 </div>
 <div class="section-title">Documents a preparer / rassembler</div>
 <div class="checklist">
@@ -2487,7 +2579,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <script>
 (function() {
   // === DATA ===
-  const INDICATORS = {'I01': 23, 'I02': 21, 'I03': 19, 'I04': 23, 'I05': 18, 'I06': 21, 'I07': 17, 'I08': 21, 'I09': 23, 'I10': 30, 'I11': 20, 'I12': 21, 'I13': 38, 'I14': 38, 'I15': 30, 'I16': 22, 'I17': 24, 'I18': 21, 'I19': 19, 'I20': 20, 'I21': 19, 'I22': 15, 'I23': 16, 'I24': 15, 'I25': 14, 'I26': 29, 'I27': 27, 'I28': 16, 'I29': 27, 'I30': 19, 'I31': 16, 'I32': 16};
+  const INDICATORS = {"RULES": 15, 'I01': 23, 'I02': 21, 'I03': 19, 'I04': 23, 'I05': 18, 'I06': 21, 'I07': 17, 'I08': 21, 'I09': 23, 'I10': 30, 'I11': 20, 'I12': 21, 'I13': 38, 'I14': 38, 'I15': 30, 'I16': 22, 'I17': 24, 'I18': 21, 'I19': 19, 'I20': 20, 'I21': 19, 'I22': 15, 'I23': 16, 'I24': 15, 'I25': 14, 'I26': 29, 'I27': 27, 'I28': 16, 'I29': 27, 'I30': 19, 'I31': 16, 'I32': 16};
   let activeIndicator = 'I01';
   
   // === DOM REFS ===
