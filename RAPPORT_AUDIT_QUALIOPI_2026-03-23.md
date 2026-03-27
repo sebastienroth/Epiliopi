@@ -575,6 +575,170 @@ CONSOLIDATION ANNUELLE ──► REVUE DE DIRECTION
 
 ---
 
+# PARTIE 14 — RETEX AUDIT NANTES (27 mars 2026)
+
+## Contexte de l'audit
+
+**Type :** Audit de surveillance — Version 9 du référentiel — Focale CFA
+**Site :** Nantes (première fois audité)
+**Périmètre formations audité :**
+- Titre RNCP 38114 uniquement
+- M1 en apprentissage (26 apprenants)
+- M2 en contrat de professionnalisation (2 apprenants)
+- Pas de VAE sur le périmètre Nantes
+
+**Méthode :** Échantillonnage nominatif, vérification dossier par dossier, démonstration en direct dans les outils.
+
+---
+
+## 14.1 — Ouverture et cadrage
+
+### Règles rappelées par l'auditeur
+
+- Confidentialité de l'audit (pas d'enregistrement)
+- Fonctionnement par échantillonnage (même méthode qu'à Strasbourg)
+- NC mineure : plan d'action sous 3 mois
+- NC majeure : action corrective rédigée et mise en oeuvre dans les délais
+- En surveillance, tous les indicateurs ne sont pas nécessairement audités — certains déjà vus au niveau central
+
+### Participants identifiés
+
+| Nom | Rôle |
+|---|---|
+| Sébastien | Équipe nationale qualité |
+| Anaëlle | Équipe nationale qualité |
+| Tom | Responsable des programmes Nantes |
+| Clémence | Accompagnatrice pédagogique et administrative |
+| Éléonore | Directrice régionale développement et administration |
+| Baptiste | Équipe nationale |
+| + observateur en stage | |
+
+### Échantillon retenu
+
+- **M1 apprentissage 2024-2025** : 26 apprenants
+- **M2 contrat pro 2024-2025** : 2 apprenants
+- Titre RNCP 38114 uniquement
+
+---
+
+## 14.2 — Discussion stratégique : avenir des contrats pro
+
+L'auditeur a ouvert une **réflexion stratégique majeure** sur la pérennité des contrats de professionnalisation :
+
+| Constat | Implication |
+|---|---|
+| Les contrats pro diminuent fortement (moins de financements, moins de prises en charge) | Réduction mécanique du nombre de bénéficiaires |
+| Le contexte est politique et réglementaire, pas seulement technique | Choix de l'État sur les dispositifs d'alternance |
+| **Risque certificatif** : sans activité en contrat pro, impossible de faire auditer cette partie | Maintien de la certification sur ce périmètre menacé à terme |
+| À court terme, Nantes reste auditable (facturation 2025, quelques contrats en cours) | Tranquillité relative jusqu'aux prochains audits |
+| À long terme, possible bascule totale vers l'apprentissage | Question de modèle à anticiper pour horizon 2030 |
+
+**→ Point de veille stratégique** : suivre l'évolution des volumes contrats pro année par année. Si le volume tombe à zéro, il faudra réévaluer le périmètre certifié.
+
+---
+
+## 14.3 — Indicateur 4 : Analyse du besoin ✅ CONFORME
+
+**Verdict : conforme.**
+
+L'auditeur a vérifié dossier par dossier sur la liste de la promotion apprentissage :
+- Existence du dossier pour chaque apprenant
+- Cohérence des informations (mission, entreprise, contractualisation)
+- **Motivations et attentes dans Salesforce** — lecture nominative profil par profil
+
+**Ce qui a fonctionné :**
+- Liste des apprenants présentée par ordre alphabétique (facilite le travail)
+- Salesforce accessible avec les champs motivation visibles
+- L'auditeur a lu les textes de motivation et commenté positivement leur cohérence
+- L'équipe a su naviguer rapidement dans l'outil
+
+**Enseignement clé :** La préparation de la war room a porté ses fruits — les champs motivation avaient été complétés/vérifiés en amont (cf. action N1 de la Partie 13).
+
+---
+
+## 14.4 — Indicateur 10 : Adaptation de la prestation ✅ CONFORME
+
+**Verdict : conforme.**
+
+Revue systématique dans HeadSquare :
+- Émargement vérifié apprenant par apprenant
+- Relevés de notes disponibles
+- Absences visibles (l'auditeur a relevé "beaucoup d'absences" pour un étudiant — signal qu'il regarde aussi la cohérence)
+
+**Ce qui a été démontré avec succès :**
+
+| Type d'adaptation | Exemples présentés |
+|---|---|
+| **Spécialisations modulables** | IA + data, cloud + cybersécurité, IA + projet d'ouverture IoT |
+| **Projets d'ouverture** | VR/réalité augmentée pour un étudiant en IA, IoT pour un étudiant en IA |
+| **Coaching individualisé** | Valeurs et interactions, coresponsabilité, travail en équipe, aide décisionnelle, coaching professionnel |
+| **Recadrages** | Suivi individualisé documenté dans les outils |
+
+**Points clés de l'argumentation :**
+- Le coaching est **facultatif mais accessible** — dispositif d'accompagnement modulable
+- Les adaptations sont **visibles dans les outils** (HeadSquare/Gandalf) et pas seulement déclaratives
+- La distinction **adaptation pédagogique (I10/I11) vs handicap (I26)** a été bien gérée
+
+---
+
+## 14.5 — Indicateur 11 : Atteinte des objectifs ✅ (en cours de validation)
+
+L'auditeur a enchaîné sur l'indicateur 11 après la validation de I10. Éléments présentés :
+- Possibilité de refaire des projets
+- Follow-up pendant les projets
+- Recadrages spécifiques
+- Soutien individualisé
+
+**→ L'indicateur 11 semble en bonne voie, la validation formelle interviendra après la suite de l'audit.**
+
+---
+
+## 14.6 — Indicateur 13 : Suivi entreprise (en cours)
+
+Le passage à l'indicateur 13 a démarré en fin de première partie avec :
+- Navigation dans RedSquare pour le suivi entreprise
+- Évaluation des compétences
+- Croisement avec les documents centraux
+
+**→ La suite de l'I13 sera couverte dans la Partie 2 de l'audit Nantes.**
+
+---
+
+## 14.7 — Observations transversales sur le déroulement
+
+### Points positifs
+
+1. **L'équipe maîtrise ses outils** — navigation rapide dans HeadSquare, Salesforce, RedSquare
+2. **La préparation war room a fonctionné** — les champs motivation étaient prêts, les dossiers filtrables
+3. **Le discours est calibré** — réponses précises, pas de digressions inutiles
+4. **L'ambiance reste fluide** — relation constructive avec l'auditeur malgré la pression
+5. **La nomenclature documentaire est respectée** — l'auditeur note les noms de fichiers dans son rapport
+
+### Incidents
+
+- **Coupure de courant** pendant la démonstration HeadSquare — reprise sans impact sur la conformité
+- Quelques lenteurs outils (zoom, filtrage)
+
+### Points de vigilance
+
+1. L'auditeur a relevé des **absences nombreuses** pour un étudiant — signal qu'il croise émargement et suivi
+2. La **composition de l'échantillon** reste sensible — l'équipe doit éviter d'exposer des cas mal alignés
+3. Les **CV des intervenants** ont été évoqués — l'auditeur demandera probablement les dossiers prestataires (I27)
+4. La **qualité de la nomenclature** des fichiers est un enjeu — l'auditeur note quel fichier sert pour quel indicateur
+
+---
+
+## 14.8 — Indicateurs validés à ce stade
+
+| Indicateur | Verdict | Commentaire |
+|---|---|---|
+| I04 | ✅ Conforme | Motivations et dossiers Salesforce validés |
+| I10 | ✅ Conforme | Adaptations, spécialisations, coaching démontrés |
+| I11 | 🔄 En cours | En bonne voie, validation attendue |
+| I13 | 🔄 En cours | Démarré, suite à venir |
+
+---
+
 # PRIORISATION FINALE
 
 ## 🔴 IMMÉDIAT (cette semaine)
