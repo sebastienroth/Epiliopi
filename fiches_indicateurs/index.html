@@ -224,6 +224,56 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 .surveillance-badge { background:linear-gradient(135deg,#2B3CFC,#7c3aed); color:#fff; padding:10px 16px; margin:0 24px 16px; border-radius:6px; font-size:11px; line-height:1.5; }
 .surveillance-badge strong { color:#00FF85; }
 
+/* AUDIT BLANC SCORING */
+.audit-scoring { margin:16px 24px; padding:16px; background:#1e1b4b; border-radius:8px; border:2px solid var(--blue); }
+.audit-scoring-title { font-family:'Anton',sans-serif; font-size:13px; color:var(--tech); text-transform:uppercase; margin-bottom:10px; letter-spacing:.5px; }
+.scoring-radios { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+.scoring-radio { display:none; }
+.scoring-label { font-family:'Space Mono',monospace; font-size:11px; padding:8px 14px; border-radius:6px; cursor:pointer; border:2px solid #333; color:#aaa; transition:all .15s; user-select:none; text-align:center; min-width:60px; }
+.scoring-label:hover { border-color:#666; color:#fff; }
+.scoring-radio:checked + .scoring-label.score-c { background:#16A34A; border-color:#16A34A; color:#fff; }
+.scoring-radio:checked + .scoring-label.score-obs { background:var(--blue); border-color:var(--blue); color:#fff; }
+.scoring-radio:checked + .scoring-label.score-ncm { background:#F59E0B; border-color:#F59E0B; color:#000; }
+.scoring-radio:checked + .scoring-label.score-ncM { background:#DC2626; border-color:#DC2626; color:#fff; }
+.audit-textarea { width:100%; padding:8px 10px; border:1px solid #333; border-radius:6px; background:#0f0a2e; color:#e0e7ff; font-family:'IBM Plex Sans',sans-serif; font-size:11px; resize:vertical; min-height:50px; margin-bottom:8px; }
+.audit-textarea:focus { outline:none; border-color:var(--blue); }
+.audit-textarea::placeholder { color:#555; }
+.audit-timer { font-family:'Space Mono',monospace; font-size:13px; color:var(--tech); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.audit-timer .timer-dot { width:8px; height:8px; border-radius:50%; background:var(--tech); animation:pulse 1s infinite; }
+.audit-timer.warning .timer-dot { background:#F59E0B; }
+.audit-timer.warning { color:#F59E0B; }
+.audit-timer.danger .timer-dot { background:#DC2626; }
+.audit-timer.danger { color:#DC2626; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+.audit-scoring .field-label { font-size:10px; color:#888; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; font-family:'Space Mono',monospace; }
+
+/* HEATMAP */
+.heatmap-overlay { display:none; position:fixed; top:0; left:var(--sidebar-w); right:0; bottom:0; background:#fff; z-index:50; overflow-y:auto; padding:32px; }
+.heatmap-overlay.show { display:block; }
+.heatmap-title { font-family:'Anton',sans-serif; font-size:28px; color:var(--dark); margin-bottom:8px; }
+.heatmap-subtitle { font-size:13px; color:#6b7280; margin-bottom:24px; }
+.heatmap-counters { display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; }
+.heatmap-counter { padding:12px 20px; border-radius:8px; font-family:'Anton',sans-serif; text-align:center; min-width:100px; }
+.heatmap-counter .hc-num { font-size:32px; }
+.heatmap-counter .hc-label { font-size:10px; text-transform:uppercase; letter-spacing:.5px; opacity:.8; }
+.heatmap-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); gap:8px; margin-bottom:24px; }
+.heatmap-cell { padding:12px 8px; border-radius:6px; text-align:center; cursor:pointer; transition:all .15s; border:2px solid transparent; }
+.heatmap-cell:hover { transform:scale(1.05); box-shadow:0 4px 12px rgba(0,0,0,.15); }
+.heatmap-cell .hc-ind { font-family:'Anton',sans-serif; font-size:18px; }
+.heatmap-cell .hc-time { font-family:'Space Mono',monospace; font-size:9px; margin-top:4px; opacity:.7; }
+.heatmap-cell.score-c { background:#f0fdf4; color:#16A34A; border-color:#bbf7d0; }
+.heatmap-cell.score-obs { background:#eff6ff; color:#2B3CFC; border-color:#bfdbfe; }
+.heatmap-cell.score-ncm { background:#fffbeb; color:#92400e; border-color:#fde68a; }
+.heatmap-cell.score-ncM { background:#fef2f2; color:#DC2626; border-color:#fecaca; }
+.heatmap-cell.score-none { background:#f3f4f6; color:#9ca3af; border-color:#e5e7eb; }
+.heatmap-actions { margin-top:24px; padding:20px; background:#f9fafb; border-radius:8px; border:1px solid #e5e7eb; }
+.heatmap-actions h3 { font-family:'Anton',sans-serif; font-size:16px; color:var(--dark); margin-bottom:12px; }
+.heatmap-action-row { display:flex; gap:8px; align-items:center; padding:6px 0; border-bottom:1px solid #f0f0f0; font-size:12px; }
+.heatmap-action-badge { font-family:'Space Mono',monospace; font-size:9px; padding:2px 6px; border-radius:3px; font-weight:700; min-width:40px; text-align:center; }
+@media (max-width:1023px) { .heatmap-overlay { left:0; } }
+@media (max-width:768px) { .heatmap-grid { grid-template-columns:repeat(auto-fill,minmax(70px,1fr)); } }
+@media print { .heatmap-overlay { position:static; display:block !important; } }
+
 /* RESPONSIVE: Tablet */
 @media (max-width:1023px) {
   .sidebar { transform:translateX(-100%); }
@@ -560,9 +610,25 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     <button class="btn-print btn-print-all" onclick="printAll()">Imprimer tout</button>
     <button class="btn-print btn-print-single" onclick="exportChecks()" style="margin-top:8px;background:var(--dark);border:1px solid var(--tech);">Exporter progression</button>
     <button class="btn-print btn-print-all" onclick="document.getElementById('importFile').click()">Importer progression</button>
+    <button class="btn-print btn-print-single" onclick="toggleHeatmap()" id="btnHeatmap" style="margin-top:8px;background:#1e1b4b;border:1px solid var(--blue);">Vue Audit Blanc</button>
     <input type="file" id="importFile" accept=".json" style="display:none">
   </div>
 </nav>
+
+<div class="heatmap-overlay" id="heatmapOverlay">
+  <div class="heatmap-title">Tableau de bord — Audit Blanc</div>
+  <div class="heatmap-subtitle">Vue d'ensemble des 33 indicateurs avec scoring, temps et actions correctives</div>
+  <div class="heatmap-counters" id="heatmapCounters"></div>
+  <div class="heatmap-grid" id="heatmapGrid"></div>
+  <div class="heatmap-actions" id="heatmapActions">
+    <h3>Actions correctives</h3>
+    <div id="heatmapActionsList"></div>
+  </div>
+  <div style="margin-top:20px;text-align:center;">
+    <button class="btn-print btn-print-all" onclick="toggleHeatmap()" style="display:inline-block;width:auto;padding:10px 30px;">Retour aux fiches</button>
+    <button class="btn-print btn-print-single" onclick="printHeatmap()" style="display:inline-block;width:auto;padding:10px 30px;margin-left:8px;">Imprimer le rapport</button>
+  </div>
+</div>
 
 <main class="content" id="mainContent">
 <section id="RULES" class="fiche" data-indicator="RULES" data-tags="critique" data-total="15">
@@ -654,6 +720,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Validation</div><div class="status-value">Anaelle, Luc, Sebastien</div></div>
   <div class="status-item"><div class="status-label">Canal</div><div class="status-value">Conversation Teams partagee</div></div>
 </div>
+<div class="audit-scoring" id="scoring-RULES">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-RULES"><span class="timer-dot"></span> <span id="timer-display-RULES">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-RULES" id="score-RULES-c" value="C" onchange="saveScoring('RULES')">
+    <label for="score-RULES-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-RULES" id="score-RULES-obs" value="OBS" onchange="saveScoring('RULES')">
+    <label for="score-RULES-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-RULES" id="score-RULES-ncm" value="NCm" onchange="saveScoring('RULES')">
+    <label for="score-RULES-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-RULES" id="score-RULES-ncM" value="NCM" onchange="saveScoring('RULES')">
+    <label for="score-RULES-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-RULES" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('RULES')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-RULES" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('RULES')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC | Regles transversales</div>
 </section>
 
@@ -741,6 +825,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I01">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I01"><span class="timer-dot"></span> <span id="timer-display-I01">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I01" id="score-I01-c" value="C" onchange="saveScoring('I01')">
+    <label for="score-I01-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I01" id="score-I01-obs" value="OBS" onchange="saveScoring('I01')">
+    <label for="score-I01-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I01" id="score-I01-ncm" value="NCm" onchange="saveScoring('I01')">
+    <label for="score-I01-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I01" id="score-I01-ncM" value="NCM" onchange="saveScoring('I01')">
+    <label for="score-I01-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I01" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I01')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I01" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I01')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -831,6 +933,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I02">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I02"><span class="timer-dot"></span> <span id="timer-display-I02">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I02" id="score-I02-c" value="C" onchange="saveScoring('I02')">
+    <label for="score-I02-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I02" id="score-I02-obs" value="OBS" onchange="saveScoring('I02')">
+    <label for="score-I02-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I02" id="score-I02-ncm" value="NCm" onchange="saveScoring('I02')">
+    <label for="score-I02-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I02" id="score-I02-ncM" value="NCM" onchange="saveScoring('I02')">
+    <label for="score-I02-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I02" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I02')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I02" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I02')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -905,6 +1025,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I03">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I03"><span class="timer-dot"></span> <span id="timer-display-I03">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I03" id="score-I03-c" value="C" onchange="saveScoring('I03')">
+    <label for="score-I03-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I03" id="score-I03-obs" value="OBS" onchange="saveScoring('I03')">
+    <label for="score-I03-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I03" id="score-I03-ncm" value="NCm" onchange="saveScoring('I03')">
+    <label for="score-I03-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I03" id="score-I03-ncM" value="NCM" onchange="saveScoring('I03')">
+    <label for="score-I03-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I03" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I03')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I03" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I03')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -993,6 +1131,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I04">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I04"><span class="timer-dot"></span> <span id="timer-display-I04">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I04" id="score-I04-c" value="C" onchange="saveScoring('I04')">
+    <label for="score-I04-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I04" id="score-I04-obs" value="OBS" onchange="saveScoring('I04')">
+    <label for="score-I04-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I04" id="score-I04-ncm" value="NCm" onchange="saveScoring('I04')">
+    <label for="score-I04-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I04" id="score-I04-ncM" value="NCM" onchange="saveScoring('I04')">
+    <label for="score-I04-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I04" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I04')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I04" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I04')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1061,6 +1217,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I05">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I05"><span class="timer-dot"></span> <span id="timer-display-I05">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I05" id="score-I05-c" value="C" onchange="saveScoring('I05')">
+    <label for="score-I05-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I05" id="score-I05-obs" value="OBS" onchange="saveScoring('I05')">
+    <label for="score-I05-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I05" id="score-I05-ncm" value="NCm" onchange="saveScoring('I05')">
+    <label for="score-I05-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I05" id="score-I05-ncM" value="NCM" onchange="saveScoring('I05')">
+    <label for="score-I05-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I05" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I05')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I05" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I05')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1137,6 +1311,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I06">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I06"><span class="timer-dot"></span> <span id="timer-display-I06">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I06" id="score-I06-c" value="C" onchange="saveScoring('I06')">
+    <label for="score-I06-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I06" id="score-I06-obs" value="OBS" onchange="saveScoring('I06')">
+    <label for="score-I06-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I06" id="score-I06-ncm" value="NCm" onchange="saveScoring('I06')">
+    <label for="score-I06-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I06" id="score-I06-ncM" value="NCM" onchange="saveScoring('I06')">
+    <label for="score-I06-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I06" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I06')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I06" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I06')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1209,6 +1401,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I07">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I07"><span class="timer-dot"></span> <span id="timer-display-I07">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I07" id="score-I07-c" value="C" onchange="saveScoring('I07')">
+    <label for="score-I07-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I07" id="score-I07-obs" value="OBS" onchange="saveScoring('I07')">
+    <label for="score-I07-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I07" id="score-I07-ncm" value="NCm" onchange="saveScoring('I07')">
+    <label for="score-I07-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I07" id="score-I07-ncM" value="NCM" onchange="saveScoring('I07')">
+    <label for="score-I07-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I07" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I07')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I07" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I07')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1288,6 +1498,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I08">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I08"><span class="timer-dot"></span> <span id="timer-display-I08">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I08" id="score-I08-c" value="C" onchange="saveScoring('I08')">
+    <label for="score-I08-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I08" id="score-I08-obs" value="OBS" onchange="saveScoring('I08')">
+    <label for="score-I08-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I08" id="score-I08-ncm" value="NCm" onchange="saveScoring('I08')">
+    <label for="score-I08-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I08" id="score-I08-ncM" value="NCM" onchange="saveScoring('I08')">
+    <label for="score-I08-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I08" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I08')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I08" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I08')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1366,6 +1594,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I09">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I09"><span class="timer-dot"></span> <span id="timer-display-I09">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I09" id="score-I09-c" value="C" onchange="saveScoring('I09')">
+    <label for="score-I09-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I09" id="score-I09-obs" value="OBS" onchange="saveScoring('I09')">
+    <label for="score-I09-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I09" id="score-I09-ncm" value="NCm" onchange="saveScoring('I09')">
+    <label for="score-I09-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I09" id="score-I09-ncM" value="NCM" onchange="saveScoring('I09')">
+    <label for="score-I09-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I09" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I09')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I09" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I09')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1458,6 +1704,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I10">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I10"><span class="timer-dot"></span> <span id="timer-display-I10">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I10" id="score-I10-c" value="C" onchange="saveScoring('I10')">
+    <label for="score-I10-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I10" id="score-I10-obs" value="OBS" onchange="saveScoring('I10')">
+    <label for="score-I10-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I10" id="score-I10-ncm" value="NCm" onchange="saveScoring('I10')">
+    <label for="score-I10-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I10" id="score-I10-ncM" value="NCM" onchange="saveScoring('I10')">
+    <label for="score-I10-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I10" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I10')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I10" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I10')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1552,6 +1816,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I11">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I11"><span class="timer-dot"></span> <span id="timer-display-I11">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I11" id="score-I11-c" value="C" onchange="saveScoring('I11')">
+    <label for="score-I11-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I11" id="score-I11-obs" value="OBS" onchange="saveScoring('I11')">
+    <label for="score-I11-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I11" id="score-I11-ncm" value="NCm" onchange="saveScoring('I11')">
+    <label for="score-I11-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I11" id="score-I11-ncM" value="NCM" onchange="saveScoring('I11')">
+    <label for="score-I11-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I11" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I11')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I11" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I11')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1628,6 +1910,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I12">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I12"><span class="timer-dot"></span> <span id="timer-display-I12">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I12" id="score-I12-c" value="C" onchange="saveScoring('I12')">
+    <label for="score-I12-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I12" id="score-I12-obs" value="OBS" onchange="saveScoring('I12')">
+    <label for="score-I12-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I12" id="score-I12-ncm" value="NCm" onchange="saveScoring('I12')">
+    <label for="score-I12-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I12" id="score-I12-ncM" value="NCM" onchange="saveScoring('I12')">
+    <label for="score-I12-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I12" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I12')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I12" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I12')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1755,6 +2055,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I13">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I13"><span class="timer-dot"></span> <span id="timer-display-I13">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I13" id="score-I13-c" value="C" onchange="saveScoring('I13')">
+    <label for="score-I13-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I13" id="score-I13-obs" value="OBS" onchange="saveScoring('I13')">
+    <label for="score-I13-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I13" id="score-I13-ncm" value="NCm" onchange="saveScoring('I13')">
+    <label for="score-I13-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I13" id="score-I13-ncM" value="NCM" onchange="saveScoring('I13')">
+    <label for="score-I13-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I13" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I13')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I13" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I13')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1865,6 +2183,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 
 
+<div class="audit-scoring" id="scoring-I14">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I14"><span class="timer-dot"></span> <span id="timer-display-I14">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I14" id="score-I14-c" value="C" onchange="saveScoring('I14')">
+    <label for="score-I14-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I14" id="score-I14-obs" value="OBS" onchange="saveScoring('I14')">
+    <label for="score-I14-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I14" id="score-I14-ncm" value="NCm" onchange="saveScoring('I14')">
+    <label for="score-I14-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I14" id="score-I14-ncM" value="NCM" onchange="saveScoring('I14')">
+    <label for="score-I14-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I14" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I14')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I14" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I14')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -1958,6 +2294,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I15">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I15"><span class="timer-dot"></span> <span id="timer-display-I15">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I15" id="score-I15-c" value="C" onchange="saveScoring('I15')">
+    <label for="score-I15-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I15" id="score-I15-obs" value="OBS" onchange="saveScoring('I15')">
+    <label for="score-I15-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I15" id="score-I15-ncm" value="NCm" onchange="saveScoring('I15')">
+    <label for="score-I15-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I15" id="score-I15-ncM" value="NCM" onchange="saveScoring('I15')">
+    <label for="score-I15-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I15" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I15')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I15" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I15')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2035,6 +2389,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I16">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I16"><span class="timer-dot"></span> <span id="timer-display-I16">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I16" id="score-I16-c" value="C" onchange="saveScoring('I16')">
+    <label for="score-I16-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I16" id="score-I16-obs" value="OBS" onchange="saveScoring('I16')">
+    <label for="score-I16-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I16" id="score-I16-ncm" value="NCm" onchange="saveScoring('I16')">
+    <label for="score-I16-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I16" id="score-I16-ncM" value="NCM" onchange="saveScoring('I16')">
+    <label for="score-I16-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I16" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I16')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I16" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I16')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2118,6 +2490,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I17">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I17"><span class="timer-dot"></span> <span id="timer-display-I17">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I17" id="score-I17-c" value="C" onchange="saveScoring('I17')">
+    <label for="score-I17-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I17" id="score-I17-obs" value="OBS" onchange="saveScoring('I17')">
+    <label for="score-I17-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I17" id="score-I17-ncm" value="NCm" onchange="saveScoring('I17')">
+    <label for="score-I17-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I17" id="score-I17-ncM" value="NCM" onchange="saveScoring('I17')">
+    <label for="score-I17-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I17" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I17')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I17" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I17')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2183,6 +2573,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I18">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I18"><span class="timer-dot"></span> <span id="timer-display-I18">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I18" id="score-I18-c" value="C" onchange="saveScoring('I18')">
+    <label for="score-I18-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I18" id="score-I18-obs" value="OBS" onchange="saveScoring('I18')">
+    <label for="score-I18-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I18" id="score-I18-ncm" value="NCm" onchange="saveScoring('I18')">
+    <label for="score-I18-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I18" id="score-I18-ncM" value="NCM" onchange="saveScoring('I18')">
+    <label for="score-I18-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I18" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I18')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I18" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I18')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2246,6 +2654,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I19">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I19"><span class="timer-dot"></span> <span id="timer-display-I19">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I19" id="score-I19-c" value="C" onchange="saveScoring('I19')">
+    <label for="score-I19-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I19" id="score-I19-obs" value="OBS" onchange="saveScoring('I19')">
+    <label for="score-I19-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I19" id="score-I19-ncm" value="NCm" onchange="saveScoring('I19')">
+    <label for="score-I19-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I19" id="score-I19-ncM" value="NCM" onchange="saveScoring('I19')">
+    <label for="score-I19-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I19" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I19')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I19" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I19')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2317,6 +2743,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I20">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I20"><span class="timer-dot"></span> <span id="timer-display-I20">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I20" id="score-I20-c" value="C" onchange="saveScoring('I20')">
+    <label for="score-I20-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I20" id="score-I20-obs" value="OBS" onchange="saveScoring('I20')">
+    <label for="score-I20-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I20" id="score-I20-ncm" value="NCm" onchange="saveScoring('I20')">
+    <label for="score-I20-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I20" id="score-I20-ncM" value="NCM" onchange="saveScoring('I20')">
+    <label for="score-I20-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I20" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I20')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I20" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I20')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2380,6 +2824,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I21">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I21"><span class="timer-dot"></span> <span id="timer-display-I21">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I21" id="score-I21-c" value="C" onchange="saveScoring('I21')">
+    <label for="score-I21-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I21" id="score-I21-obs" value="OBS" onchange="saveScoring('I21')">
+    <label for="score-I21-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I21" id="score-I21-ncm" value="NCm" onchange="saveScoring('I21')">
+    <label for="score-I21-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I21" id="score-I21-ncM" value="NCM" onchange="saveScoring('I21')">
+    <label for="score-I21-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I21" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I21')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I21" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I21')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2439,6 +2901,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I22">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I22"><span class="timer-dot"></span> <span id="timer-display-I22">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I22" id="score-I22-c" value="C" onchange="saveScoring('I22')">
+    <label for="score-I22-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I22" id="score-I22-obs" value="OBS" onchange="saveScoring('I22')">
+    <label for="score-I22-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I22" id="score-I22-ncm" value="NCm" onchange="saveScoring('I22')">
+    <label for="score-I22-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I22" id="score-I22-ncM" value="NCM" onchange="saveScoring('I22')">
+    <label for="score-I22-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I22" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I22')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I22" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I22')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2498,6 +2978,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I23">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I23"><span class="timer-dot"></span> <span id="timer-display-I23">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I23" id="score-I23-c" value="C" onchange="saveScoring('I23')">
+    <label for="score-I23-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I23" id="score-I23-obs" value="OBS" onchange="saveScoring('I23')">
+    <label for="score-I23-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I23" id="score-I23-ncm" value="NCm" onchange="saveScoring('I23')">
+    <label for="score-I23-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I23" id="score-I23-ncM" value="NCM" onchange="saveScoring('I23')">
+    <label for="score-I23-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I23" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I23')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I23" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I23')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2557,6 +3055,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I24">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I24"><span class="timer-dot"></span> <span id="timer-display-I24">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I24" id="score-I24-c" value="C" onchange="saveScoring('I24')">
+    <label for="score-I24-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I24" id="score-I24-obs" value="OBS" onchange="saveScoring('I24')">
+    <label for="score-I24-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I24" id="score-I24-ncm" value="NCm" onchange="saveScoring('I24')">
+    <label for="score-I24-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I24" id="score-I24-ncM" value="NCM" onchange="saveScoring('I24')">
+    <label for="score-I24-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I24" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I24')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I24" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I24')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2615,6 +3131,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I25">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I25"><span class="timer-dot"></span> <span id="timer-display-I25">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I25" id="score-I25-c" value="C" onchange="saveScoring('I25')">
+    <label for="score-I25-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I25" id="score-I25-obs" value="OBS" onchange="saveScoring('I25')">
+    <label for="score-I25-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I25" id="score-I25-ncm" value="NCm" onchange="saveScoring('I25')">
+    <label for="score-I25-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I25" id="score-I25-ncM" value="NCM" onchange="saveScoring('I25')">
+    <label for="score-I25-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I25" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I25')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I25" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I25')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2710,6 +3244,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I26">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I26"><span class="timer-dot"></span> <span id="timer-display-I26">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I26" id="score-I26-c" value="C" onchange="saveScoring('I26')">
+    <label for="score-I26-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I26" id="score-I26-obs" value="OBS" onchange="saveScoring('I26')">
+    <label for="score-I26-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I26" id="score-I26-ncm" value="NCm" onchange="saveScoring('I26')">
+    <label for="score-I26-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I26" id="score-I26-ncM" value="NCM" onchange="saveScoring('I26')">
+    <label for="score-I26-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I26" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I26')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I26" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I26')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2802,6 +3354,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I27">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I27"><span class="timer-dot"></span> <span id="timer-display-I27">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I27" id="score-I27-c" value="C" onchange="saveScoring('I27')">
+    <label for="score-I27-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I27" id="score-I27-obs" value="OBS" onchange="saveScoring('I27')">
+    <label for="score-I27-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I27" id="score-I27-ncm" value="NCm" onchange="saveScoring('I27')">
+    <label for="score-I27-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I27" id="score-I27-ncM" value="NCM" onchange="saveScoring('I27')">
+    <label for="score-I27-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I27" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I27')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I27" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I27')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2860,6 +3430,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I28">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I28"><span class="timer-dot"></span> <span id="timer-display-I28">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I28" id="score-I28-c" value="C" onchange="saveScoring('I28')">
+    <label for="score-I28-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I28" id="score-I28-obs" value="OBS" onchange="saveScoring('I28')">
+    <label for="score-I28-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I28" id="score-I28-ncm" value="NCm" onchange="saveScoring('I28')">
+    <label for="score-I28-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I28" id="score-I28-ncM" value="NCM" onchange="saveScoring('I28')">
+    <label for="score-I28-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I28" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I28')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I28" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I28')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2930,6 +3518,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I29">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I29"><span class="timer-dot"></span> <span id="timer-display-I29">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I29" id="score-I29-c" value="C" onchange="saveScoring('I29')">
+    <label for="score-I29-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I29" id="score-I29-obs" value="OBS" onchange="saveScoring('I29')">
+    <label for="score-I29-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I29" id="score-I29-ncm" value="NCm" onchange="saveScoring('I29')">
+    <label for="score-I29-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I29" id="score-I29-ncM" value="NCM" onchange="saveScoring('I29')">
+    <label for="score-I29-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I29" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I29')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I29" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I29')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -2994,6 +3600,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I30">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I30"><span class="timer-dot"></span> <span id="timer-display-I30">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I30" id="score-I30-c" value="C" onchange="saveScoring('I30')">
+    <label for="score-I30-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I30" id="score-I30-obs" value="OBS" onchange="saveScoring('I30')">
+    <label for="score-I30-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I30" id="score-I30-ncm" value="NCm" onchange="saveScoring('I30')">
+    <label for="score-I30-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I30" id="score-I30-ncM" value="NCM" onchange="saveScoring('I30')">
+    <label for="score-I30-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I30" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I30')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I30" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I30')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -3054,6 +3678,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I31">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I31"><span class="timer-dot"></span> <span id="timer-display-I31">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I31" id="score-I31-c" value="C" onchange="saveScoring('I31')">
+    <label for="score-I31-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I31" id="score-I31-obs" value="OBS" onchange="saveScoring('I31')">
+    <label for="score-I31-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I31" id="score-I31-ncm" value="NCm" onchange="saveScoring('I31')">
+    <label for="score-I31-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I31" id="score-I31-ncM" value="NCM" onchange="saveScoring('I31')">
+    <label for="score-I31-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I31" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I31')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I31" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I31')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -3113,6 +3755,24 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="status-item"><div class="status-label">Date de mise a jour</div><div class="status-value">__ / __ / 2026</div></div>
 </div>
 
+<div class="audit-scoring" id="scoring-I32">
+  <div class="audit-scoring-title">Constat audit blanc</div>
+  <div class="audit-timer" id="timer-I32"><span class="timer-dot"></span> <span id="timer-display-I32">00:00</span></div>
+  <div class="scoring-radios">
+    <input type="radio" class="scoring-radio" name="score-I32" id="score-I32-c" value="C" onchange="saveScoring('I32')">
+    <label for="score-I32-c" class="scoring-label score-c">C Conforme</label>
+    <input type="radio" class="scoring-radio" name="score-I32" id="score-I32-obs" value="OBS" onchange="saveScoring('I32')">
+    <label for="score-I32-obs" class="scoring-label score-obs">OBS Observation</label>
+    <input type="radio" class="scoring-radio" name="score-I32" id="score-I32-ncm" value="NCm" onchange="saveScoring('I32')">
+    <label for="score-I32-ncm" class="scoring-label score-ncm">NCm Mineure</label>
+    <input type="radio" class="scoring-radio" name="score-I32" id="score-I32-ncM" value="NCM" onchange="saveScoring('I32')">
+    <label for="score-I32-ncM" class="scoring-label score-ncM">NCM Majeure</label>
+  </div>
+  <div class="field-label">Commentaire auditeur</div>
+  <textarea class="audit-textarea" id="comment-I32" placeholder="Decrivez le constat, les preuves examinees et les ecarts constates..." onchange="saveScoring('I32')"></textarea>
+  <div class="field-label">Preuve presentee</div>
+  <textarea class="audit-textarea" id="proof-I32" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I32')" style="min-height:30px;"></textarea>
+</div>
 <div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
 </section>
 
@@ -3199,6 +3859,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     document.querySelectorAll('.sidebar-item').forEach(el => {
       el.classList.toggle('active', el.dataset.indicator === id);
     });
+    // Timer management
+    Object.keys(timers).forEach(k => stopTimer(k));
+    startTimer(id);
     const activeEl = document.querySelector('.sidebar-item.active');
     if (activeEl) activeEl.scrollIntoView({ block:'nearest', behavior:'smooth' });
     const btn = document.getElementById('btnPrintSingle');
@@ -3403,8 +4066,173 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     e.target.value = '';
   });
 
+  // === HEATMAP ===
+function toggleHeatmap() {
+  const overlay = document.getElementById('heatmapOverlay');
+  const main = document.getElementById('mainContent');
+  const isShowing = overlay.classList.toggle('show');
+  main.style.display = isShowing ? 'none' : 'block';
+  document.getElementById('btnHeatmap').textContent = isShowing ? 'Retour aux fiches' : 'Vue Audit Blanc';
+  if (isShowing) renderHeatmap();
+}
+
+function renderHeatmap() {
+  const allInds = ['RULES'].concat(Object.keys(INDICATORS).filter(k => k !== 'RULES'));
+  const grid = document.getElementById('heatmapGrid');
+  const counters = document.getElementById('heatmapCounters');
+  const actionsList = document.getElementById('heatmapActionsList');
+  let counts = { C:0, OBS:0, NCm:0, NCM:0, none:0 };
+  let actions = [];
+  let html = '';
+
+  allInds.forEach(ind => {
+    const raw = localStorage.getItem('audit_scoring_' + ind);
+    const data = raw ? JSON.parse(raw) : {};
+    const score = data.score || null;
+    const elapsed = parseInt(localStorage.getItem('audit_timer_' + ind)) || 0;
+    const min = Math.floor(elapsed / 60000);
+    const sec = Math.floor((elapsed % 60000) / 1000);
+    const timeStr = min > 0 ? min + 'min ' + sec + 's' : sec + 's';
+
+    if (score) counts[score]++; else counts.none++;
+    const cls = score ? 'score-' + score : 'score-none';
+    html += '<div class="heatmap-cell ' + cls + '" onclick="toggleHeatmap();location.hash=\'#' + ind + '\';">';
+    html += '<div class="hc-ind">' + ind + '</div>';
+    html += '<div class="hc-time">' + (elapsed > 0 ? timeStr : '--') + '</div>';
+    html += '</div>';
+
+    if (score === 'NCm' || score === 'NCM' || score === 'OBS') {
+      actions.push({ ind: ind, score: score, comment: data.comment || '' });
+    }
+  });
+
+  grid.innerHTML = html;
+
+  const colors = { C:'#16A34A', OBS:'#2B3CFC', NCm:'#F59E0B', NCM:'#DC2626', none:'#9ca3af' };
+  const labels = { C:'Conformes', OBS:'Observations', NCm:'NC Mineures', NCM:'NC Majeures', none:'Non evalues' };
+  let chtml = '';
+  for (const [k,v] of Object.entries(counts)) {
+    chtml += '<div class="heatmap-counter" style="background:' + colors[k] + '20;color:' + colors[k] + ';">';
+    chtml += '<div class="hc-num">' + v + '</div>';
+    chtml += '<div class="hc-label">' + labels[k] + '</div>';
+    chtml += '</div>';
+  }
+  counters.innerHTML = chtml;
+
+  let ahtml = '';
+  if (actions.length === 0) {
+    ahtml = '<p style="color:#9ca3af;font-size:12px;">Aucune action corrective — tous les indicateurs sont conformes ou non encore evalues.</p>';
+  } else {
+    actions.forEach(a => {
+      const bgc = a.score === 'NCM' ? '#DC2626' : a.score === 'NCm' ? '#F59E0B' : '#2B3CFC';
+      const txtc = a.score === 'NCm' ? '#000' : '#fff';
+      ahtml += '<div class="heatmap-action-row">';
+      ahtml += '<span class="heatmap-action-badge" style="background:' + bgc + ';color:' + txtc + ';">' + a.score + '</span>';
+      ahtml += '<strong>' + a.ind + '</strong>';
+      ahtml += '<span style="flex:1;color:#6b7280;">' + (a.comment ? a.comment.substring(0, 100) + (a.comment.length > 100 ? '...' : '') : 'Pas de commentaire') + '</span>';
+      ahtml += '</div>';
+    });
+  }
+  actionsList.innerHTML = ahtml;
+}
+
+function printHeatmap() {
+  window.print();
+}
+
+// === AUDIT BLANC SCORING ===
+function saveScoring(ind) {
+  try {
+    const scoreEl = document.querySelector('input[name="score-' + ind + '"]:checked');
+    const comment = document.getElementById('comment-' + ind);
+    const proof = document.getElementById('proof-' + ind);
+    const data = {
+      score: scoreEl ? scoreEl.value : null,
+      comment: comment ? comment.value : '',
+      proof: proof ? proof.value : '',
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('audit_scoring_' + ind, JSON.stringify(data));
+    updateScoringBadges();
+  } catch(e) { console.warn('Scoring save error:', e); }
+}
+
+function restoreScoring() {
+  const allInds = ['RULES'].concat(Object.keys(INDICATORS).filter(k => k !== 'RULES'));
+  allInds.forEach(ind => {
+    try {
+      const raw = localStorage.getItem('audit_scoring_' + ind);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      if (data.score) {
+        const radio = document.getElementById('score-' + ind + '-' + data.score.toLowerCase());
+        if (radio) radio.checked = true;
+      }
+      if (data.comment) { const el = document.getElementById('comment-' + ind); if (el) el.value = data.comment; }
+      if (data.proof) { const el = document.getElementById('proof-' + ind); if (el) el.value = data.proof; }
+    } catch(e) {}
+  });
+  updateScoringBadges();
+}
+
+function updateScoringBadges() {
+  const allInds = ['RULES'].concat(Object.keys(INDICATORS).filter(k => k !== 'RULES'));
+  let counts = { C:0, OBS:0, NCm:0, NCM:0, none:0 };
+  allInds.forEach(ind => {
+    try {
+      const raw = localStorage.getItem('audit_scoring_' + ind);
+      const data = raw ? JSON.parse(raw) : null;
+      const score = data && data.score ? data.score : null;
+      if (score) counts[score]++; else counts.none++;
+      // Update sidebar badge color
+      const sideItem = document.querySelector('.sidebar-item[data-indicator="' + ind + '"]');
+      if (sideItem) {
+        sideItem.style.borderRightWidth = '4px';
+        sideItem.style.borderRightStyle = 'solid';
+        if (!score) sideItem.style.borderRightColor = 'transparent';
+        else if (score === 'C') sideItem.style.borderRightColor = '#16A34A';
+        else if (score === 'OBS') sideItem.style.borderRightColor = '#2B3CFC';
+        else if (score === 'NCm') sideItem.style.borderRightColor = '#F59E0B';
+        else if (score === 'NCM') sideItem.style.borderRightColor = '#DC2626';
+      }
+    } catch(e) {}
+  });
+}
+
+// === TIMERS ===
+const timers = {};
+function startTimer(ind) {
+  if (timers[ind]) return;
+  const display = document.getElementById('timer-display-' + ind);
+  const container = document.getElementById('timer-' + ind);
+  if (!display || !container) return;
+  const start = Date.now() - (getTimerElapsed(ind) || 0);
+  timers[ind] = setInterval(() => {
+    const elapsed = Date.now() - start;
+    const min = Math.floor(elapsed / 60000);
+    const sec = Math.floor((elapsed % 60000) / 1000);
+    display.textContent = String(min).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+    container.classList.remove('warning','danger');
+    if (min >= 5) container.classList.add('danger');
+    else if (min >= 2) container.classList.add('warning');
+    saveTimerElapsed(ind, elapsed);
+  }, 1000);
+}
+function stopTimer(ind) {
+  if (timers[ind]) { clearInterval(timers[ind]); delete timers[ind]; }
+}
+function getTimerElapsed(ind) {
+  try { return parseInt(localStorage.getItem('audit_timer_' + ind)) || 0; } catch(e) { return 0; }
+}
+function saveTimerElapsed(ind, ms) {
+  try { localStorage.setItem('audit_timer_' + ind, String(ms)); } catch(e) {}
+}
+
   // === INIT ===
   restoreAll();
+  restoreScoring();
+  // Start timer for active indicator
+  if (activeIndicator) startTimer(activeIndicator);
   updateProgress();
   loadHash();
   if (!location.hash) setActive('I01');
