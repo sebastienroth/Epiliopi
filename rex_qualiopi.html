@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REX Audit Qualiopi EPITECH 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --blue: #2B3CFC;
+    --tech: #00FF85;
+    --together: #FF5A5F;
+    --dark: #181818;
+    --white: #FFFFFF;
+    --grey: #F2F2F2;
+    --orange: #FF9F43;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--dark);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  section {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  section.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Dark slides */
+  section.dark {
+    background: var(--dark);
+    color: var(--white);
+  }
+
+  /* Light slides */
+  section.light {
+    background: var(--white);
+    color: var(--dark);
+  }
+
+  h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  p, li {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--tech);
+    letter-spacing: 0.05em;
+  }
+
+  .logo-small {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--tech);
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 6px;
+  }
+
+  .tag-green { background: var(--tech); color: var(--dark); }
+  .tag-blue { background: var(--blue); color: var(--white); }
+  .tag-red { background: var(--together); color: var(--white); }
+  .tag-orange { background: var(--orange); color: var(--dark); }
+
+  /* Grid layouts */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 24px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .card {
+    padding: 28px 24px;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .dark .card { background: rgba(255,255,255,0.06); }
+  .light .card { background: var(--grey); }
+
+  .card h3 { margin-bottom: 16px; }
+
+  .card-campus {
+    border-top: 4px solid var(--tech);
+  }
+
+  /* Lists */
+  ul.checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.checklist li {
+    padding: 8px 0;
+    padding-left: 32px;
+    position: relative;
+    font-size: 1rem;
+  }
+
+  ul.checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--tech);
+  }
+
+  ul.alert-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.alert-list li {
+    padding: 10px 0 10px 32px;
+    position: relative;
+    font-size: 1rem;
+  }
+
+  ul.alert-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background: var(--orange);
+  }
+
+  ul.alert-list li.red::before {
+    background: var(--together);
+  }
+
+  /* KPI */
+  .kpi-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--tech);
+  }
+
+  .kpi-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.7;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Hero number */
+  .hero-number {
+    font-family: 'Anton', sans-serif;
+    font-size: 200px;
+    line-height: 1;
+    color: var(--tech);
+    text-align: center;
+  }
+
+  .hero-label {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    text-align: center;
+    opacity: 0.7;
+    margin-top: 8px;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 32px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--tech));
+    border-radius: 2px;
+    z-index: 0;
+  }
+
+  .timeline-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 12px;
+  }
+
+  .timeline-dot {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    border: 4px solid var(--white);
+  }
+
+  .timeline-step:last-child .timeline-dot {
+    background: var(--tech);
+    color: var(--dark);
+  }
+
+  .timeline-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 0.85rem;
+    opacity: 0.65;
+    line-height: 1.4;
+  }
+
+  /* Rules */
+  .rule {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.15rem;
+    padding: 16px 24px;
+    border-left: 4px solid var(--tech);
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .rule span {
+    color: var(--tech);
+    font-weight: 700;
+  }
+
+  /* Actions table */
+  .action-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    gap: 16px;
+  }
+
+  .light .action-row { border-color: rgba(0,0,0,0.08); }
+
+  .action-id {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  .action-content { flex: 1; }
+  .action-content strong { font-weight: 600; }
+  .action-owner {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--blue);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* BON/MAUVAIS comparison */
+  .compare-bad {
+    background: rgba(255,90,95,0.08);
+    border: 2px solid var(--together);
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .compare-good {
+    background: rgba(0,255,133,0.06);
+    border: 2px solid var(--tech);
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .compare-bad h3 { color: var(--together); }
+  .compare-good h3 { color: #00b85e; }
+
+  blockquote {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-top: 12px;
+  }
+
+  .compare-bad blockquote { background: rgba(255,90,95,0.06); }
+  .compare-good blockquote { background: rgba(0,255,133,0.04); }
+
+  /* Progress bar */
+  .progress-bar-container {
+    background: rgba(0,0,0,0.1);
+    border-radius: 12px;
+    height: 32px;
+    overflow: hidden;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--tech));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  /* Epiliopi card */
+  .tool-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+  }
+
+  .tool-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .tool-feature p { font-size: 0.95rem; }
+  .tool-feature strong { font-weight: 600; }
+
+  /* Link */
+  a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .dark a { color: var(--tech); }
+
+  /* Progress indicator */
+  #progress {
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .light.active ~ #progress,
+  section.light.active ~ #progress-fix { color: rgba(0,0,0,0.3); }
+
+  /* Slide accent line */
+  .accent-line {
+    width: 64px;
+    height: 4px;
+    background: var(--tech);
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .dark .accent-line { background: var(--tech); }
+  .light .accent-line { background: var(--blue); }
+
+  /* I13 big text */
+  .i13-big {
+    font-family: 'Anton', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .i13-sub {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    section { padding: 40px 40px; }
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.6rem; }
+    .hero-number { font-size: 140px; }
+    .grid-3 { grid-template-columns: 1fr; gap: 16px; }
+    .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .kpi-number { font-size: 3rem; }
+    .timeline { flex-direction: column; gap: 16px; }
+    .timeline::before { display: none; }
+    .i13-big { font-size: 3rem; }
+  }
+
+  /* Print / PDF: 1 slide par page */
+  @media print {
+    body { overflow: visible; }
+    section {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      page-break-after: always;
+      page-break-inside: avoid;
+      height: 100vh;
+      width: 100vw;
+    }
+    section.dark { background: var(--dark) !important; color: var(--white) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section.light { background: var(--white) !important; color: var(--dark) !important; }
+    #progress { display: none; }
+    .hero-number, .kpi-number, .tag, .timeline-dot, .progress-bar-fill, .accent-line, .action-id, .tool-icon, .rule {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- SLIDE 1 — COUVERTURE                        -->
+<!-- ============================================ -->
+<section class="dark" id="s1">
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+    <div class="logo" style="font-size:3.2rem; margin-bottom:40px;">{EPITECH}</div>
+    <h1 style="font-size:2.8rem; margin-bottom:16px;">Retour d'experience<br>Audit Qualiopi 2026</h1>
+    <p class="subtitle" style="margin-bottom:24px;">Surveillance | CFA + Actions de formation + VAE</p>
+    <div style="margin-bottom:32px;">
+      <span class="tag tag-green">RNQ V9</span>
+      <span class="tag tag-blue">SOCOTEC</span>
+      <span class="tag tag-red">3 CAMPUS</span>
+    </div>
+    <p style="font-weight:300; font-size:1.1rem; opacity:0.6;">Sebastien ROTH & Luc BOURRAT — Mars 2026</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 2 — CONTEXTE                          -->
+<!-- ============================================ -->
+<section class="light" id="s2">
+  <div class="accent-line"></div>
+  <h2>Contexte de l'audit</h2>
+  <div class="grid-2">
+    <div>
+      <div class="card" style="margin-bottom:20px;">
+        <h3>Referentiel</h3>
+        <p><strong>RNQ Version 9</strong> (8 janvier 2024)</p>
+        <p style="margin-top:8px;"><span class="tag tag-blue">7 criteres</span> <span class="tag tag-blue">32 indicateurs</span></p>
+      </div>
+      <div class="card">
+        <h3>Titres certifies</h3>
+        <p><strong>RNCP 37985</strong> — PGE Expert en ingenierie logicielle</p>
+        <p><strong>RNCP 38114</strong> — MSc</p>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:20px;">
+        <h3>Perimetre</h3>
+        <p><strong>15 campus</strong> sur le territoire national</p>
+        <p>CFA + Organisme de formation + VAE</p>
+        <p style="margin-top:8px;"><strong>Certificateur :</strong> SOCOTEC</p>
+      </div>
+      <div class="card">
+        <h3>3 audits realises</h3>
+        <p style="font-size:0.95rem;">
+          <strong style="color:var(--blue);">Paris</strong> — Audit initial du cycle<br>
+          <strong style="color:var(--blue);">Strasbourg</strong> — 25 mars 2026<br>
+          <strong style="color:var(--blue);">Nantes</strong> — 27 mars 2026
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 3 — RESULTAT GLOBAL                   -->
+<!-- ============================================ -->
+<section class="dark" id="s3">
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+    <div class="hero-number">0</div>
+    <div class="hero-label" style="margin-top:8px;">Non-conformite</div>
+    <div class="hero-sub">sur 3 campus audites — Paris, Strasbourg, Nantes</div>
+    <div style="margin-top:40px;">
+      <span class="tag tag-green" style="font-size:0.9rem; padding:8px 20px;">CERTIFICATION MAINTENUE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 4 — BILAN PAR CAMPUS                  -->
+<!-- ============================================ -->
+<section class="light" id="s4">
+  <div class="accent-line"></div>
+  <h2>Bilan par campus</h2>
+  <div class="grid-3">
+    <div class="card card-campus">
+      <h3>Paris</h3>
+      <p style="font-size:0.9rem; opacity:0.6; margin-bottom:12px;">Audit initial du cycle</p>
+      <p><strong>Perimetre :</strong> PGE + MSc + VAE</p>
+      <p><strong>Verdict :</strong> <span class="tag tag-green" style="font-size:0.75rem;">CONFORME</span></p>
+      <p style="margin-top:12px; font-size:0.9rem;"><strong>Point fort :</strong> Reference nationale, structuration des contenus et outils pedagogiques</p>
+    </div>
+    <div class="card card-campus">
+      <h3>Strasbourg</h3>
+      <p style="font-size:0.9rem; opacity:0.6; margin-bottom:12px;">25 mars 2026 — 12 indicateurs audites</p>
+      <p><strong>Echantillon :</strong> 36 apprentis + 2 contrats pro</p>
+      <p><strong>Verdict :</strong> <span class="tag tag-green" style="font-size:0.75rem;">0 NC</span></p>
+      <p style="margin-top:12px; font-size:0.9rem;"><strong>Point fort :</strong> Organisation centrale/locale claire, inventaire documentaire modele (Kevin)</p>
+    </div>
+    <div class="card card-campus">
+      <h3>Nantes</h3>
+      <p style="font-size:0.9rem; opacity:0.6; margin-bottom:12px;">27 mars 2026 — 8 indicateurs audites</p>
+      <p><strong>Echantillon :</strong> 26 apprentis M1 + 2 contrats pro M2</p>
+      <p><strong>Verdict :</strong> <span class="tag tag-green" style="font-size:0.75rem;">0 NC</span></p>
+      <p style="margin-top:12px; font-size:0.9rem;"><strong>Point fort :</strong> Preparation war room efficace, outils maitrises, discours calibre</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 5 — CE QUI A FONCTIONNE              -->
+<!-- ============================================ -->
+<section class="light" id="s5">
+  <div class="accent-line"></div>
+  <h2>Ce qui a fonctionne</h2>
+  <div class="grid-2">
+    <div>
+      <ul class="checklist">
+        <li><strong>Fiches de discours harmonisees</strong> entre campus — meme langage, memes messages cles</li>
+        <li><strong>Simulation d'audit blanc</strong> avant le jour J — detection des incoherences en amont</li>
+        <li><strong>Kit de preuves standardise</strong> base sur Paris — declinable par campus</li>
+      </ul>
+    </div>
+    <div>
+      <ul class="checklist">
+        <li><strong>Reactivite documentaire collective</strong> — "mode commando" pendant les audits</li>
+        <li><strong>Outils maitrises</strong> — Gandalf, EdSquare, Salesforce, navigation rapide en demo</li>
+        <li><strong>Inventaire documentaire modele</strong> — Strasbourg (Kevin) comme trame nationale</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 6 — INDICATEUR 13                     -->
+<!-- ============================================ -->
+<section class="dark" id="s6">
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+    <div style="text-align:center; margin-bottom:32px;">
+      <span class="tag tag-red" style="font-size:0.9rem; padding:6px 16px;">INDICATEUR 13 — LE JUGE DE PAIX</span>
+    </div>
+    <div class="i13-big" style="color:var(--tech);">60 minutes d'audit</div>
+    <div class="i13-sub">L'indicateur le plus scrute, le plus exigeant</div>
+    <div class="grid-2" style="max-width:900px; margin:0 auto;">
+      <div class="card">
+        <h3 style="color:var(--tech);">Ce que l'auditeur verifie</h3>
+        <ul style="list-style:none; padding:0; font-size:0.9rem;">
+          <li style="padding:6px 0;">Suivi de 100% des alternants</li>
+          <li style="padding:6px 0;">Evaluations techniques (pas comportementales)</li>
+          <li style="padding:6px 0;">Progressivite S1 / S2 des missions</li>
+          <li style="padding:6px 0;">Coherence des chiffres dossier par dossier</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--together);">Ce qu'il critique</h3>
+        <ul style="list-style:none; padding:0; font-size:0.9rem;">
+          <li style="padding:6px 0;">Commentaires trop generiques</li>
+          <li style="padding:6px 0;">"Sondage" au lieu d'"evaluation tutorale"</li>
+          <li style="padding:6px 0;">Evaluations deconnectees du RNCP</li>
+          <li style="padding:6px 0;">Absence de lien mission / competences</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 7 — BON vs MAUVAIS (I13)              -->
+<!-- ============================================ -->
+<section class="dark" id="s7">
+  <div class="accent-line" style="background:var(--together);"></div>
+  <h2>Indicateur 13 — Exemples concrets</h2>
+  <p style="opacity:0.6; margin-bottom:32px; font-size:0.95rem;">Commentaires de suivi entreprise : ce qui passe vs ce qui coince</p>
+  <div class="grid-2">
+    <div class="compare-bad">
+      <h3>MAUVAIS</h3>
+      <blockquote>"L'etudiant est ponctuel et s'investit bien dans ses missions."</blockquote>
+      <blockquote style="margin-top:12px;">"Bonne integration dans l'equipe. Attitude professionnelle."</blockquote>
+      <blockquote style="margin-top:12px;">"Il prend ses missions a coeur."</blockquote>
+      <p style="margin-top:16px; font-size:0.85rem; color:var(--together); font-weight:600;">Purement comportemental. Aucun lien avec le RNCP ni les missions techniques.</p>
+    </div>
+    <div class="compare-good">
+      <h3>BON</h3>
+      <blockquote>"L'apprenti assure l'administration des serveurs Linux et gere la virtualisation VMware. Au S2, missions evoluees vers le cloud AWS."</blockquote>
+      <blockquote style="margin-top:12px;">"Developpement full stack (Angular/Node.js). Autonomie sur le deploiement CI/CD. Progression du back-end vers l'architecture micro-services."</blockquote>
+      <p style="margin-top:16px; font-size:0.85rem; color:#00b85e; font-weight:600;">Technologies, stacks, progressivite, lien competences RNCP. C'est ce style qui est attendu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 8 — OBLIGATIONS CFA                   -->
+<!-- ============================================ -->
+<section class="light" id="s8">
+  <div class="accent-line"></div>
+  <h2>Obligations CFA — Article L6231-2</h2>
+  <p style="margin-bottom:16px;">14 missions legales du CFA. Couverture documentaire post-audit :</p>
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" style="width:79%;">11 / 14 — 79%</div>
+  </div>
+  <div class="grid-2" style="margin-top:16px;">
+    <div>
+      <h3 style="color:#00b85e;">11 missions couvertes</h3>
+      <ul style="list-style:none; padding:0; font-size:0.85rem; columns:2; column-gap:24px;">
+        <li style="padding:3px 0;">1. Accompagnement handicap</li>
+        <li style="padding:3px 0;">2. Appui recherche employeur</li>
+        <li style="padding:3px 0;">3. Coherence CFA/entreprise</li>
+        <li style="padding:3px 0;">4. Info droits et devoirs</li>
+        <li style="padding:3px 0;">6. Accompagnement social</li>
+        <li style="padding:3px 0;">7. Mixite / prevention harcelement</li>
+        <li style="padding:3px 0;">8. Actions mixite metiers</li>
+        <li style="padding:3px 0;">9. Diversite / discriminations</li>
+        <li style="padding:3px 0;">11. Suivi formation a distance</li>
+        <li style="padding:3px 0;">12. Evaluation des competences</li>
+        <li style="padding:3px 0;">14. Acces aux aides</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--together);">3 missions a formaliser</h3>
+      <div class="card" style="margin-bottom:12px;">
+        <p><strong>5.</strong> Poursuite de formation en cas de rupture (6 mois)</p>
+        <p style="font-size:0.85rem; opacity:0.6; margin-top:4px;">Procedure a documenter formellement</p>
+      </div>
+      <div class="card" style="margin-bottom:12px;">
+        <p><strong>10.</strong> Referent mobilite nationale et internationale</p>
+        <p style="font-size:0.85rem; opacity:0.6; margin-top:4px;">Personnel dedie a identifier/formaliser</p>
+      </div>
+      <div class="card">
+        <p><strong>13.</strong> Accompagnement post-formation sans diplome</p>
+        <p style="font-size:0.85rem; opacity:0.6; margin-top:4px;">Procedure a documenter</p>
+      </div>
+      <p style="margin-top:12px; font-size:0.8rem;">
+        <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037386088" target="_blank">Legifrance — Article L6231-2</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 9 — POINTS DE VIGILANCE               -->
+<!-- ============================================ -->
+<section class="light" id="s9">
+  <div class="accent-line"></div>
+  <h2>Points de vigilance identifies</h2>
+  <div class="grid-2" style="margin-top:16px;">
+    <div>
+      <ul class="alert-list">
+        <li class="red"><strong>Evaluations tuteurs trop comportementales</strong><br><span style="font-size:0.85rem; opacity:0.7;">Relier systematiquement aux competences RNCP et aux missions techniques reelles</span></li>
+        <li class="red"><strong>NDA des prestataires</strong><br><span style="font-size:0.85rem; opacity:0.7;">L'auditeur est ferme : montrer une demarche active de mise en conformite</span></li>
+        <li><strong>Transition d'outils Excel &rarr; EdSquare</strong><br><span style="font-size:0.85rem; opacity:0.7;">Coexistence de formats entre promotions — harmoniser et documenter la transition</span></li>
+      </ul>
+    </div>
+    <div>
+      <ul class="alert-list">
+        <li><strong>DUERP</strong><br><span style="font-size:0.85rem; opacity:0.7;">Formaliser l'historique des mises a jour (date creation / modification / objet)</span></li>
+        <li><strong>Fichier PSH inter-campus</strong><br><span style="font-size:0.85rem; opacity:0.7;">Harmoniser le fichier recapitulatif centralise entre campus</span></li>
+        <li><strong>Contrats pro en diminution</strong><br><span style="font-size:0.85rem; opacity:0.7;">Question strategique horizon 2030 — si volume tombe a zero, reevaluer le perimetre certifie</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 10 — LA METHODE                       -->
+<!-- ============================================ -->
+<section class="light" id="s10">
+  <div class="accent-line"></div>
+  <h2>La methode qui a marche</h2>
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="timeline-dot">J-30</div>
+      <div class="timeline-title">Cadrage</div>
+      <div class="timeline-desc">Kit de preuves standardise base sur Paris. Mail de cadrage aux campus. Nomination des referents locaux.</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot">J-7</div>
+      <div class="timeline-title">Simulation</div>
+      <div class="timeline-desc">Audit blanc en visio (60-90 min). Questions types sur les indicateurs critiques. Detection des failles.</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot">J-1</div>
+      <div class="timeline-title">Gel</div>
+      <div class="timeline-desc">Gel des dossiers. Mallette de survie : index des preuves, 3-5 dossiers exemplaires, organigramme, onglets pre-ouverts.</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-dot">Jour J</div>
+      <div class="timeline-title">Audit</div>
+      <div class="timeline-desc">Teams en parallele pour coordination temps reel. Reponses calibrees. Mode commando documentaire.</div>
+    </div>
+  </div>
+  <div style="margin-top:40px; text-align:center;">
+    <span class="tag tag-green" style="padding:8px 20px; font-size:0.85rem;">RESULTAT : 0 NC SUR 3 CAMPUS</span>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 11 — REGLES D'OR                      -->
+<!-- ============================================ -->
+<section class="dark" id="s11">
+  <div class="accent-line"></div>
+  <h2>Les regles d'or en audit</h2>
+  <div style="max-width:800px; margin-top:24px;">
+    <div class="rule"><span>01</span> &mdash; Si ce n'est pas ecrit, ca n'existe pas.</div>
+    <div class="rule"><span>02</span> &mdash; Pas d'extract sans source verifiable.</div>
+    <div class="rule"><span>03</span> &mdash; Repondre precisement, sans digresser.</div>
+    <div class="rule"><span>04</span> &mdash; Ne jamais dire : "c'est Paris qui gere."</div>
+    <div class="rule"><span>05</span> &mdash; Chaque mot en plus ouvre une porte a une question.</div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 12 — CHIFFRES CLES                    -->
+<!-- ============================================ -->
+<section class="light" id="s12">
+  <div class="accent-line"></div>
+  <h2>Chiffres cles</h2>
+  <div class="grid-4" style="margin-top:48px;">
+    <div style="text-align:center;">
+      <div class="kpi-number">32</div>
+      <div class="kpi-label">Indicateurs audites</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="kpi-number">698</div>
+      <div class="kpi-label">Items de checklist</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="kpi-number" style="color:var(--blue);">3</div>
+      <div class="kpi-label">Campus conformes</div>
+    </div>
+    <div style="text-align:center;">
+      <div class="kpi-number" style="color:var(--together);">0</div>
+      <div class="kpi-label">Non-conformite</div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:56px;">
+    <p style="font-size:1.1rem; font-weight:300; opacity:0.6;">Paris + Strasbourg + Nantes — Audit de surveillance SOCOTEC — Mars 2026</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 13 — ACTIONS POST-AUDIT               -->
+<!-- ============================================ -->
+<section class="light" id="s13">
+  <div class="accent-line"></div>
+  <h2>Actions post-audit</h2>
+  <p style="margin-bottom:20px; font-size:0.9rem; opacity:0.6;">6 actions prioritaires identifiees lors des audits Strasbourg et Nantes</p>
+  <div class="action-row">
+    <div class="action-id">NA1</div>
+    <div class="action-content"><strong>Techniciser les evaluations I13</strong> — Relier chaque critere d'evaluation aux competences RNCP, mentionner technologies et stacks</div>
+    <div class="action-owner">Pedagogie</div>
+  </div>
+  <div class="action-row">
+    <div class="action-id">NA2</div>
+    <div class="action-content"><strong>Obtenir les NDA prestataires</strong> — Relancer tous les sous-traitants, documenter les demarches de mise en conformite</div>
+    <div class="action-owner">Campus</div>
+  </div>
+  <div class="action-row">
+    <div class="action-id">NA3</div>
+    <div class="action-content"><strong>Harmoniser fichier PSH inter-campus</strong> — Creer un fichier recapitulatif centralise et standardise</div>
+    <div class="action-owner">Ref. handicap</div>
+  </div>
+  <div class="action-row">
+    <div class="action-id">NA4</div>
+    <div class="action-content"><strong>Formaliser 3 missions L6231-2 manquantes</strong> — Rupture (6 mois), referent mobilite, accompagnement post-formation</div>
+    <div class="action-owner">Sebastien</div>
+  </div>
+  <div class="action-row">
+    <div class="action-id">NA5</div>
+    <div class="action-content"><strong>Renommer "sondage" en "evaluation tutorale"</strong> — Modifier l'interface EdSquare et la communication associee</div>
+    <div class="action-owner">IT</div>
+  </div>
+  <div class="action-row">
+    <div class="action-id">NA6</div>
+    <div class="action-content"><strong>Note de transition d'outils</strong> — Document d'1 page expliquant le passage Excel &rarr; EdSquare/RedSquare</div>
+    <div class="action-owner">Sebastien</div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 14 — EPILIOPI                         -->
+<!-- ============================================ -->
+<section class="light" id="s14">
+  <div class="accent-line"></div>
+  <h2>L'outil Epiliopi</h2>
+  <p style="margin-bottom:24px; font-size:0.95rem;">Plateforme de suivi Qualiopi pour EPITECH — pilotage, preuves, audit blanc</p>
+  <div class="grid-2">
+    <div>
+      <div class="tool-feature">
+        <div class="tool-icon">D</div>
+        <div>
+          <p><strong>Dashboard</strong></p>
+          <p style="opacity:0.7;">Vue macro des 3 campus + 32 indicateurs. Statut de conformite en temps reel.</p>
+        </div>
+      </div>
+      <div class="tool-feature">
+        <div class="tool-icon">F</div>
+        <div>
+          <p><strong>Fiches indicateurs</strong></p>
+          <p style="opacity:0.7;">700+ items cochables, filtres par campus/critere, RETEX integres, chemins vers les outils.</p>
+        </div>
+      </div>
+      <div class="tool-feature">
+        <div class="tool-icon">A</div>
+        <div>
+          <p><strong>Mode audit blanc</strong></p>
+          <p style="opacity:0.7;">Scoring automatique, timer, heatmap des zones de risque.</p>
+        </div>
+      </div>
+      <div class="tool-feature">
+        <div class="tool-icon">E</div>
+        <div>
+          <p><strong>Export / Import</strong></p>
+          <p style="opacity:0.7;">Sauvegarde et restauration JSON. Partage entre equipes.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="background:var(--dark); color:var(--white); padding:32px; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; border-radius:16px;">
+        <div class="logo-small" style="margin-bottom:16px;">{ EPILIOPI }</div>
+        <p style="font-size:0.9rem; opacity:0.6; margin-bottom:24px;">Interface de pilotage conformite Qualiopi</p>
+        <div style="background:rgba(255,255,255,0.06); border-radius:8px; padding:20px; width:100%; text-align:left; font-family:'Space Mono', monospace; font-size:0.75rem; line-height:1.8; color:var(--tech);">
+          <span style="opacity:0.4;">[</span> Dashboard <span style="opacity:0.4;">]</span> 3/3 campus conformes<br>
+          <span style="opacity:0.4;">[</span> Checklist <span style="opacity:0.4;">]</span> 698 items / 32 indicateurs<br>
+          <span style="opacity:0.4;">[</span> Heatmap <span style="opacity:0.4;">]</span> I13 rouge &rarr; orange<br>
+          <span style="opacity:0.4;">[</span> Timer <span style="opacity:0.4;">]</span> Audit blanc 01:30:00
+        </div>
+        <a href="https://sebastienroth.github.io/Epiliopi" target="_blank" style="margin-top:20px; display:inline-block; padding:10px 24px; background:var(--tech); color:var(--dark); border-radius:8px; font-weight:700; font-size:0.85rem; text-decoration:none;">sebastienroth.github.io/Epiliopi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SLIDE 15 — MERCI                            -->
+<!-- ============================================ -->
+<section class="dark" id="s15">
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+    <div class="logo" style="font-size:3.6rem; margin-bottom:48px;">{EPITECH}</div>
+    <p style="font-family:'Space Mono', monospace; font-size:1.3rem; color:var(--tech); margin-bottom:40px;">{ &lt;TECH TOGETHER TOMORROW&gt; }</p>
+    <h1 style="font-size:2rem; margin-bottom:16px;">Merci</h1>
+    <p style="font-weight:300; font-size:1.1rem; opacity:0.6; margin-bottom:8px;">Sebastien ROTH — Responsable conformite Qualiopi</p>
+    <p style="font-weight:300; font-size:1.1rem; opacity:0.6;">Luc BOURRAT</p>
+    <div style="margin-top:48px; opacity:0.3; font-size:0.8rem;">
+      Mars 2026 — Audit de surveillance SOCOTEC — RNQ V9
+    </div>
+  </div>
+</section>
+
+<!-- Progress indicator -->
+<div id="progress"></div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('section');
+
+  function show(n) {
+    slides.forEach(function(s) { s.classList.remove('active'); });
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    slides[current].classList.add('active');
+    document.getElementById('progress').textContent = (current + 1) + ' / ' + slides.length;
+
+    // Adapt progress indicator color based on slide background
+    var prog = document.getElementById('progress');
+    if (slides[current].classList.contains('light')) {
+      prog.style.color = 'rgba(0,0,0,0.3)';
+    } else {
+      prog.style.color = 'rgba(255,255,255,0.4)';
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); show(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+
+  // Click advances, but not on links
+  document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') return;
+    show(current + 1);
+  });
+
+  // Touch swipe support
+  var touchStartX = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  document.addEventListener('touchend', function(e) {
+    var diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) show(current + 1);
+      else show(current - 1);
+    }
+  });
+
+  show(0);
+</script>
+
+</body>
+</html>
