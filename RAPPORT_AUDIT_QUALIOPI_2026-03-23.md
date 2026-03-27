@@ -728,14 +728,148 @@ Le passage à l'indicateur 13 a démarré en fin de première partie avec :
 
 ---
 
-## 14.8 — Indicateurs validés à ce stade
+## 14.8 — Indicateur 13 : Suivi entreprise ⚠️ CONFORME AVEC RECOMMANDATIONS
+
+**Verdict : conforme, mais recommandation forte sur la technicité des évaluations.**
+
+C'est le sujet le plus long et le plus central de l'audit Nantes (après-midi entier).
+
+### Ce que l'auditeur a exigé
+
+- Suivi de **100% des alternants**, régulièrement, **au moins 2 fois par an**
+- Évaluations les plus **techniques possible** — pas seulement savoir-être
+- L'outil n'est pas le sujet — la rigueur de l'usage l'est
+
+### Deux systèmes de suivi présentés
+
+| Système | Promotion | Constat auditeur |
+|---|---|---|
+| Excel | Ancienne promo | Traçabilité parfois plus riche techniquement (Jonathan : design système, architectures, front/back ; Mélodie : automatisation déploiement, Angular, full stack) |
+| HeadSquare / EdgeSquare | Nouvelles promos | Suivi centralisé, visites tracées, historique 2024-2026 visible |
+
+**Citation implicite de l'auditeur :** "La plateforme ressemble à un Excel amélioré — la vraie valeur n'est pas technologique mais dans la rigueur de l'usage."
+
+### Critique principale : commentaires trop génériques
+
+| Commentaire insuffisant | Ce que l'auditeur attend |
+|---|---|
+| "Ça se passe bien" | Technologies réellement manipulées |
+| "Bonne intégration" | Niveau d'autonomie observé |
+| "Attitude professionnelle" | Nature des missions confiées |
+| "Apprenant sérieux" | Progression observée + articulation mission/compétences RNCP |
+
+**Exemples de bons commentaires repérés par l'auditeur :** mentions de stacks (Angular, React, Unity), architectures, automatisation, full stack, back-end/front-end → c'est ce style qui est attendu.
+
+### Point sur les coachs vs pédagogie technique
+
+L'auditeur a noté que les coachs (développement personnel, employabilité) alimentent une partie du suivi, mais recommande que la **visite entreprise / évaluation compétences métier soit portée ou enrichie par quelqu'un de technique**.
+
+### Bilan I13 Nantes
+
+> Le sujet est globalement tenu. Le travail est conséquent. Le point le plus dur est documenté. Mais il faut consolider l'évaluation technique et la façon de prouver la montée en compétences en entreprise.
+
+---
+
+## 14.9 — Indicateur 16 : Conditions de présentation aux examens ✅ CONFORME
+
+Règlement pédagogique vérifié : règles, absences, triche/fraude, conditions de validation. Pas de tension.
+
+---
+
+## 14.10 — Indicateur 17 : Moyens techniques et sécurité ✅ CONFORME
+
+| Document | Statut | Commentaire auditeur |
+|---|---|---|
+| DUERP | ✅ Présent | Remarque : mieux formaliser l'historique des mises à jour (date création / modification / objet) |
+| Commission de sécurité | ✅ Avis favorable | Validé |
+| Photos des locaux | ✅ Présentées | Façade, salles, équipements |
+| Assurance | ✅ | |
+| Microsoft Learn / plateformes | ✅ Mentionnées | |
+
+---
+
+## 14.11 — Indicateur 26 : Handicap ✅ CONFORME
+
+L'auditeur a vérifié :
+- Liste de partenaires handicap ✅
+- Livret d'accueil mentionnant les acteurs ✅
+- Trame de dossier PSH commune (similaire Paris/Strasbourg) ✅
+
+**Cas concret présenté : Antoine**
+- Situation : TDAH / difficulté en environnement bruyant
+- Aménagements : casque anti-bruit, réservation de petite salle, conditions de travail calmes, prise en compte côté entreprise
+- **Validé par l'auditeur** : preuve, partenaire, trace, aménagement effectif
+
+**Recommandation :** Harmonisation supplémentaire avec les autres campus (fichier récapitulatif centralisé).
+
+---
+
+## 14.12 — Indicateur 27 : Sous-traitants ⚠️ CONFORME AVEC POINTS DE VIGILANCE
+
+### Cadre rappelé
+
+- Salarié CDI/CDD = pas sous-traitant
+- Personne facturant via société/prestation = sous-traitant → triptyque obligatoire
+
+### Prestataires examinés
+
+| Prestataire | CV | Contrat | Bilan | Profil | NDA |
+|---|---|---|---|---|---|
+| **Jocelyn** | ✅ | ✅ | ✅ | Expérience technique, ancienneté EPITECH | ⚠️ À demander |
+| **Morgane** | ✅ | ✅ | ✅ | Développement Unity, game design, univers immersifs | ⚠️ À demander |
+| **Lionel** | ✅ | ✅ | ✅ | IT, management, réseaux, communication numérique | ⚠️ À demander |
+
+### Point majeur : le NDA (Numéro de Déclaration d'Activité)
+
+L'auditeur a insisté **avec fermeté** :
+- Les sous-traitants formateurs doivent avoir un NDA
+- Obligation ancienne et structurante
+- Il reconnaît que c'est compliqué (beaucoup de prestataires ne veulent pas)
+- **Ligne pragmatique :** montrer qu'on les relance et qu'on pousse le sujet activement
+- Il demande à voir une **démarche active de mise en conformité**, pas seulement la théorie
+
+**→ Action : relancer tous les prestataires pour obtenir leur NDA. Documenter les relances.**
+
+---
+
+## 14.13 — Indicateurs validés — Bilan complet Nantes
 
 | Indicateur | Verdict | Commentaire |
 |---|---|---|
-| I04 | ✅ Conforme | Motivations et dossiers Salesforce validés |
-| I10 | ✅ Conforme | Adaptations, spécialisations, coaching démontrés |
-| I11 | 🔄 En cours | En bonne voie, validation attendue |
-| I13 | 🔄 En cours | Démarré, suite à venir |
+| I04 | ✅ Conforme | Motivations Salesforce validées |
+| I10 | ✅ Conforme | Adaptations et coaching démontrés |
+| I11 | ✅ Conforme | Recadrages, follow-up, soutien individualisé |
+| I13 | ⚠️ Conforme avec recommandations | Techniciser les évaluations entreprise |
+| I16 | ✅ Conforme | Règlement pédagogique vérifié |
+| I17 | ✅ Conforme | DUERP, commission sécurité, photos locaux |
+| I26 | ✅ Conforme | Cas Antoine (TDAH), partenaires, aménagements |
+| I27 | ⚠️ Conforme avec vigilance | Triptyque OK mais NDA à obtenir pour tous les prestataires |
+
+**Verdict global Nantes : CONFORME — aucune non-conformité prononcée.**
+
+---
+
+## 14.14 — Actions correctives post-audit Nantes
+
+| # | Action | Indicateur | Priorité |
+|---|---|---|---|
+| NA1 | Techniciser les commentaires de suivi entreprise : mentionner technologies, stacks, niveau d'autonomie, missions concrètes | I13 | **Critique** |
+| NA2 | S'assurer que les visites entreprise soient portées ou enrichies par un profil technique (pas uniquement coaching) | I13 | **Important** |
+| NA3 | Relancer TOUS les prestataires pour obtenir leur NDA, documenter les relances | I27 | **Important** |
+| NA4 | Formaliser l'historique des mises à jour du DUERP (date création / modification / objet) | I17 | **Mineur** |
+| NA5 | Harmoniser le fichier PSH avec les autres campus (fichier récapitulatif centralisé) | I26 | **Mineur** |
+| NA6 | Maintenir la rigueur de saisie dans HeadSquare/EdgeSquare — la plateforme ne vaut que par la qualité des données | I13 | **Continu** |
+
+---
+
+## 14.15 — Ce que Nantes confirme pour la stratégie globale
+
+1. **L'indicateur 13 est le juge de paix** — c'est le sujet le plus long, le plus scruté, et le plus exigeant
+2. **La technicité des évaluations est le vrai différenciateur** — l'existence des traces ne suffit pas, leur contenu doit être relié aux compétences RNCP
+3. **Excel ou plateforme, peu importe** — l'auditeur juge la rigueur, pas l'outil
+4. **Le NDA des prestataires est un sujet montant** — l'auditeur est pragmatique mais ferme, il faut montrer une démarche active
+5. **La préparation war room a porté ses fruits** — I04 conforme du premier coup, outils maîtrisés, discours calibré
+6. **Nantes rejoint Strasbourg : 0 non-conformité** — la méthode de préparation est validée
 
 ---
 
