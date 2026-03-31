@@ -57,7 +57,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 .filter-tag.active { background:var(--blue); border-color:var(--blue); color:#fff; }
 .filter-tag.active-red { background:#DC2626; border-color:#DC2626; color:#fff; }
 .filter-tag.active-orange { background:#F59E0B; border-color:#F59E0B; color:#000; }
-.filter-tag.active-retex { background:var(--together); border-color:var(--together); color:#fff; }
 .filter-tag.active-psh { background:#8b5cf6; border-color:#8b5cf6; color:#fff; }
 .filter-reset {
   font-family:'Space Mono',monospace; font-size:9px; padding:3px 8px;
@@ -101,11 +100,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   white-space:nowrap; flex-shrink:0;
 }
 .sidebar-progress.complete { color:var(--tech); }
-.retex-badge {
-  background:var(--together); color:#fff; font-family:'Anton',sans-serif;
-  font-size:8px; padding:1px 5px; text-transform:uppercase;
-  letter-spacing:.3px; flex-shrink:0; border-radius:2px;
-}
 .sidebar-footer {
   padding:12px 16px; border-top:2px solid var(--blue); flex-shrink:0;
 }
@@ -177,8 +171,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 /* BODY sections inside fiche */
 .fiche .description { background:#f4f4f8; border-left:4px solid var(--blue); padding:12px 16px; margin:0 24px 16px; font-size:12px; line-height:1.6; }
 .fiche .spec-box { background:var(--dark); color:var(--tech); padding:10px 16px; margin:0 24px 16px; font-size:11px; }
-.fiche .spec-box.retex { background:#b91c1c; color:#fff; }
-.fiche .spec-box.retex .spec-content { color:#fecaca; }
 .fiche div[style*="b91c1c"] { margin:0 24px 16px; border-radius:4px; }
 .fiche .spec-title { font-family:'Anton',sans-serif; font-size:12px; text-transform:uppercase; margin-bottom:4px; color:#fff; }
 .fiche .spec-content { line-height:1.5; }
@@ -400,7 +392,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
       <button class="filter-tag" data-filter="critique" data-active-class="active-red">Critiques</button>
       <button class="filter-tag" data-filter="nc-majeure" data-active-class="active-red">NC Maj.</button>
       <button class="filter-tag" data-filter="nc-mineure" data-active-class="active-orange">NC Min.</button>
-      <button class="filter-tag" data-filter="retex" data-active-class="active-retex">RETEX</button>
+
       <button class="filter-tag" data-filter="cfa" data-active-class="active">CFA</button>
       <button class="filter-tag" data-filter="vae" data-active-class="active">VAE</button>
       <button class="filter-tag" data-filter="psh" data-active-class="active-psh">PSH</button>
@@ -440,22 +432,22 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="sidebar-group">
   <div class="sidebar-critere">C2 — Objectifs et adaptation</div>
-  <a href="#I04" class="sidebar-item" data-indicator="I04" data-tags="of cfa vae retex critique local">
+  <a href="#I04" class="sidebar-item" data-indicator="I04" data-tags="of cfa vae critique local">
     <span class="sidebar-num">I04</span>
     <span class="sidebar-title">Analyse du besoin</span>
     <span class="sidebar-progress" id="prog-I04">0/23</span>
   </a>
-  <a href="#I05" class="sidebar-item" data-indicator="I05" data-tags="of cfa vae retex national">
+  <a href="#I05" class="sidebar-item" data-indicator="I05" data-tags="of cfa vae national">
     <span class="sidebar-num">I05</span>
     <span class="sidebar-title">Objectifs de la prestation</span>
     <span class="sidebar-progress" id="prog-I05">0/18</span>
   </a>
-  <a href="#I06" class="sidebar-item" data-indicator="I06" data-tags="of cfa vae retex psh national">
+  <a href="#I06" class="sidebar-item" data-indicator="I06" data-tags="of cfa vae psh national">
     <span class="sidebar-num">I06</span>
     <span class="sidebar-title">Contenus et modalites de mise en oeuvre</span>
     <span class="sidebar-progress" id="prog-I06">0/21</span>
   </a>
-  <a href="#I07" class="sidebar-item" data-indicator="I07" data-tags="of cfa vae retex national">
+  <a href="#I07" class="sidebar-item" data-indicator="I07" data-tags="of cfa vae national">
     <span class="sidebar-num">I07</span>
     <span class="sidebar-title">Contenus et exigences de la certification</span>
     <span class="sidebar-progress" id="prog-I07">0/17</span>
@@ -473,12 +465,11 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     <span class="sidebar-title">Conditions de deroulement</span>
     <span class="sidebar-progress" id="prog-I09">0/23</span>
   </a>
-  <a href="#I10" class="sidebar-item" data-indicator="I10" data-tags="of cfa vae retex psh national">
+  <a href="#I10" class="sidebar-item" data-indicator="I10" data-tags="of cfa vae psh national">
     <span class="sidebar-num">I10</span>
-    <span class="sidebar-title">Adaptation de la prestation</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I10">0/30</span>
+    <span class="sidebar-title">Adaptation de la prestation</span>    <span class="sidebar-progress" id="prog-I10">0/30</span>
   </a>
-  <a href="#I11" class="sidebar-item" data-indicator="I11" data-tags="of cfa vae retex national">
+  <a href="#I11" class="sidebar-item" data-indicator="I11" data-tags="of cfa vae national">
     <span class="sidebar-num">I11</span>
     <span class="sidebar-title">Atteinte des objectifs</span>
     <span class="sidebar-progress" id="prog-I11">0/20</span>
@@ -488,22 +479,19 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     <span class="sidebar-title">Engagement des beneficiaires</span>
     <span class="sidebar-progress" id="prog-I12">0/21</span>
   </a>
-  <a href="#I13" class="sidebar-item" data-indicator="I13" data-tags="cfa retex critique nc-majeure local">
+  <a href="#I13" class="sidebar-item" data-indicator="I13" data-tags="cfa critique nc-majeure local">
     <span class="sidebar-num">I13</span>
-    <span class="sidebar-title">Coordination alternance — Suivi entreprise</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I13">0/38</span>
+    <span class="sidebar-title">Coordination alternance — Suivi entreprise</span>    <span class="sidebar-progress" id="prog-I13">0/38</span>
   </a>
-  <a href="#I14" class="sidebar-item" data-indicator="I14" data-tags="cfa retex critique nc-majeure psh local">
+  <a href="#I14" class="sidebar-item" data-indicator="I14" data-tags="cfa critique nc-majeure psh local">
     <span class="sidebar-num">I14</span>
-    <span class="sidebar-title">Citoyennete — Accompagnement CFA</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I14">0/38</span>
+    <span class="sidebar-title">Citoyennete — Accompagnement CFA</span>    <span class="sidebar-progress" id="prog-I14">0/38</span>
   </a>
-  <a href="#I15" class="sidebar-item" data-indicator="I15" data-tags="cfa retex nc-mineure local">
+  <a href="#I15" class="sidebar-item" data-indicator="I15" data-tags="cfa nc-mineure local">
     <span class="sidebar-num">I15</span>
-    <span class="sidebar-title">Droits et devoirs des apprentis</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I15">0/30</span>
+    <span class="sidebar-title">Droits et devoirs des apprentis</span>    <span class="sidebar-progress" id="prog-I15">0/30</span>
   </a>
-  <a href="#I16" class="sidebar-item" data-indicator="I16" data-tags="of cfa vae retex nc-mineure national">
+  <a href="#I16" class="sidebar-item" data-indicator="I16" data-tags="of cfa vae nc-mineure national">
     <span class="sidebar-num">I16</span>
     <span class="sidebar-title">Presentation a la certification</span>
     <span class="sidebar-progress" id="prog-I16">0/22</span>
@@ -562,25 +550,22 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     <span class="sidebar-title">Veille pedagogique et technologique</span>
     <span class="sidebar-progress" id="prog-I25">0/14</span>
   </a>
-  <a href="#I26" class="sidebar-item" data-indicator="I26" data-tags="of cfa vae retex psh national">
+  <a href="#I26" class="sidebar-item" data-indicator="I26" data-tags="of cfa vae psh national">
     <span class="sidebar-num">I26</span>
-    <span class="sidebar-title">Situation de Handicap</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I26">0/29</span>
+    <span class="sidebar-title">Situation de Handicap</span>    <span class="sidebar-progress" id="prog-I26">0/29</span>
   </a>
-  <a href="#I27" class="sidebar-item" data-indicator="I27" data-tags="of cfa vae nc-majeure retex national">
+  <a href="#I27" class="sidebar-item" data-indicator="I27" data-tags="of cfa vae nc-majeure national">
     <span class="sidebar-num">I27</span>
-    <span class="sidebar-title">Sous-traitance</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I27">0/27</span>
+    <span class="sidebar-title">Sous-traitance</span>    <span class="sidebar-progress" id="prog-I27">0/27</span>
   </a>
   <a href="#I28" class="sidebar-item" data-indicator="I28" data-tags="cfa national">
     <span class="sidebar-num">I28</span>
     <span class="sidebar-title">Formation en situation de travail</span>
     <span class="sidebar-progress" id="prog-I28">0/16</span>
   </a>
-  <a href="#I29" class="sidebar-item" data-indicator="I29" data-tags="cfa retex national">
+  <a href="#I29" class="sidebar-item" data-indicator="I29" data-tags="cfa national">
     <span class="sidebar-num">I29</span>
-    <span class="sidebar-title">Insertion professionnelle</span> <span class="retex-badge">RETEX</span>
-    <span class="sidebar-progress" id="prog-I29">0/27</span>
+    <span class="sidebar-title">Insertion professionnelle</span>    <span class="sidebar-progress" id="prog-I29">0/27</span>
   </a>
 </div>
 <div class="sidebar-group">
@@ -649,9 +634,9 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <strong>AUDIT DE SURVEILLANCE (pas initial)</strong> — L'auditeur verifie que le systeme <strong>FONCTIONNE</strong>, pas seulement qu'il existe. Il attend des <strong>RESULTATS</strong> (pas des processus decrits), la <strong>CONTINUITE</strong> d'application sur la periode, et les <strong>ACTIONS CORRECTIVES</strong> de l'audit initial effectivement mises en oeuvre.
 </div>
 
-<div class="spec-box retex">
+<div class="spec-box" style="background:#b91c1c;color:#fff;">
   <div class="spec-title">Regle d'or</div>
-  <div class="spec-content">Si ce n'est pas ecrit, ca n'existe pas. — Pas d'extract sans source, pas de source sans verification possible.</div>
+  <div class="spec-content" style="color:#fecaca;">Si ce n'est pas ecrit, ca n'existe pas. — Pas d'extract sans source, pas de source sans verification possible.</div>
 </div>
 
 <div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
@@ -672,7 +657,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="4"> Si on ne sait pas : "Je vais verifier et vous revenir avec l'information precise." — NE JAMAIS INVENTER</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="5"> Repondre precisement a la question posee, sans digresser — chaque mot en plus ouvre une porte a une question supplementaire</div>
   <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="6"> Preparer les ecrans a l'avance — ne montrer que ce qui est demande — fermer les onglets inutiles</div>
-  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="7"> REGLE ABSOLUE : Aucune reponse ne doit etre "Je ne sais pas, c'est Paris qui gere."</div>
+  <div class="check-item"><input type="checkbox" class="check-input" data-indicator="RULES" data-index="7"> REGLE ABSOLUE : Aucune reponse ne doit etre "Je ne sais pas, c'est le siege qui gere." — Chaque campus doit maitriser ses sujets.</div>
 </div>
 
 <div class="section-title">Documents que CHAQUE campus doit fournir</div>
@@ -738,7 +723,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-RULES" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('RULES')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC | Regles transversales</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Regles transversales</div>
 </section>
 
 <section id="I01" class="fiche" data-indicator="I01" data-tags="of cfa vae national" data-total="23">
@@ -843,7 +828,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I01" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I01')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I02" class="fiche" data-indicator="I02" data-tags="of cfa vae nc-majeure national" data-total="21">
@@ -951,7 +936,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I02" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I02')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I03" class="fiche" data-indicator="I03" data-tags="of cfa vae nc-mineure national" data-total="19">
@@ -1043,10 +1028,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I03" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I03')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I04" class="fiche" data-indicator="I04" data-tags="of cfa vae retex critique local" data-total="23">
+<section id="I04" class="fiche" data-indicator="I04" data-tags="of cfa vae critique local" data-total="23">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I04 <span class="priority">PRIORITE ABSOLUE</span></div>
@@ -1065,10 +1050,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">CFA : analyse du besoin en amont de la contractualisation avec l'entreprise, adequation poste/formation. PSH : prise en compte systematique du handicap des l'analyse du besoin. VAE : analyse de l'experience professionnelle du candidat.</div>
 </div>
 
-<div style="background:#2B3CFC;color:#fff;padding:10px 16px;margin:0 24px 16px;border-radius:6px;font-size:11px;line-height:1.5;">
-  <strong style="color:#00FF85;">RETEX AUDIT NANTES — I04 CONFORME</strong><br>
-  L'auditeur a verifie dossier par dossier sur Salesforce : motivations, attentes, coherence parcours. La preparation war room a paye — les champs motivation etaient completes. Cle du succes : liste alphabetique prete, navigation rapide, textes exploitables.
-</div>
 
 <div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
   <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
@@ -1149,10 +1130,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I04" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I04')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I05" class="fiche" data-indicator="I05" data-tags="of cfa vae retex national" data-total="18">
+<section id="I05" class="fiche" data-indicator="I05" data-tags="of cfa vae national" data-total="18">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I05</div>
@@ -1235,10 +1216,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I05" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I05')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I06" class="fiche" data-indicator="I06" data-tags="of cfa vae retex psh national" data-total="21">
+<section id="I06" class="fiche" data-indicator="I06" data-tags="of cfa vae psh national" data-total="21">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I06</div>
@@ -1329,10 +1310,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I06" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I06')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I07" class="fiche" data-indicator="I07" data-tags="of cfa vae retex national" data-total="17">
+<section id="I07" class="fiche" data-indicator="I07" data-tags="of cfa vae national" data-total="17">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I07</div>
@@ -1419,7 +1400,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I07" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I07')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I08" class="fiche" data-indicator="I08" data-tags="of cfa vae critique nc-mineure local" data-total="21">
@@ -1516,7 +1497,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I08" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I08')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I09" class="fiche" data-indicator="I09" data-tags="of cfa vae local" data-total="23">
@@ -1612,10 +1593,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I09" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I09')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I10" class="fiche" data-indicator="I10" data-tags="of cfa vae retex psh national" data-total="30">
+<section id="I10" class="fiche" data-indicator="I10" data-tags="of cfa vae psh national" data-total="30">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I10</div>
@@ -1634,12 +1615,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">CFA : accompagnement a la recherche d'employeur, adaptation de la duree. PSH : amenagements, plans de compensation, suivi individualise. VAE : accompagnement specifique du candidat.</div>
 </div>
 
-<div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Pas de NC. L'auditeur veut des exemples CONCRETS d'adaptation, pas un discours general. Il a demande : des cas de recadrages, de projets refaits, de decisions pedagogiques individualisees. L'adaptation par specialisation (cloud, IA, data, VR, IoT, cybersecurite) est un axe fort.</div>
-
-<div style="background:#2B3CFC;color:#fff;padding:10px 16px;margin:0 24px 16px;border-radius:6px;font-size:11px;line-height:1.5;">
-  <strong style="color:#00FF85;">RETEX AUDIT NANTES — I10 CONFORME</strong><br>
-  Revue systematique dans HeadSquare : emargement, notes, absences verifies apprenant par apprenant. Adaptations demontrees : specialisations modulables (IA+data, cloud+cyber), projets d'ouverture (VR, IoT), coaching individualise (facultatif mais accessible). L'auditeur a releve "beaucoup d'absences" pour un etudiant — il croise emargement et suivi.
-</div>
 
 <div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
   <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
@@ -1722,10 +1697,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I10" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I10')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I11" class="fiche" data-indicator="I11" data-tags="of cfa vae retex national" data-total="20">
+<section id="I11" class="fiche" data-indicator="I11" data-tags="of cfa vae national" data-total="20">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I11</div>
@@ -1834,7 +1809,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I11" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I11')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I12" class="fiche" data-indicator="I12" data-tags="of cfa psh local" data-total="21">
@@ -1928,10 +1903,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I12" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I12')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I13" class="fiche" data-indicator="I13" data-tags="cfa retex critique nc-majeure local" data-total="38">
+<section id="I13" class="fiche" data-indicator="I13" data-tags="cfa critique nc-majeure local" data-total="38">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I13 <span class="critical">POINT CRITIQUE</span></div>
@@ -1950,15 +1925,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">CFA : indicateur specifique alternance. Verification de la coherence des chiffres d'apprenants entre les differentes bases. Suivi rigoureux des visites/entretiens entreprise.</div>
 </div>
 
-<div class="spec-box retex">
-  <div class="spec-title">RETEX Audit Strasbourg</div>
-  <div class="spec-content">L'auditeur considere l'I13 comme l'indicateur coeur de metier pour l'alternance. Pas de NC prononcee a Strasbourg mais recommandations fortes. L'auditeur a verifie dossier par dossier (36 apprentis + 2 contrats pro), a croise bulletins/PV/fichiers de suivi, et a critique les evaluations trop generiques non reliees aux competences RNCP.</div>
-</div>
-
-<div style="background:#2B3CFC;color:#fff;padding:10px 16px;margin:0 24px 16px;border-radius:6px;font-size:11px;line-height:1.5;">
-  <strong style="color:#00FF85;">RETEX AUDIT NANTES — I13 CONFORME AVEC RECOMMANDATIONS</strong><br>
-  Suivi entreprise valide sur 100% des alternants. Critique principale : les commentaires doivent etre plus techniques (technologies, stacks, niveau d'autonomie, progression). L'auditeur a dit : "la plateforme ressemble a un Excel ameliore — la vraie valeur est dans la rigueur de l'usage." Les visites entreprise doivent etre portees par un profil technique, pas uniquement coaching.
-</div>
 
 <div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
   <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
@@ -2073,10 +2039,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I13" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I13')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I14" class="fiche" data-indicator="I14" data-tags="cfa retex critique nc-majeure psh local" data-total="38">
+<section id="I14" class="fiche" data-indicator="I14" data-tags="cfa critique nc-majeure psh local" data-total="38">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I14</div>
@@ -2095,10 +2061,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="spec-content">CFA uniquement. Couvre : projets sportifs, culturels, citoyennete, mixite, diversite, lutte contre le harcelement et les VSS, aides financieres, intervenants sociaux.</div>
 </div>
 
-<div class="spec-box retex">
-  <div class="spec-title">RETEX Audit Strasbourg</div>
-  <div class="spec-content">Conforme. L'auditeur a valide la demarche a condition de bien categoriser et documenter les actions existantes. Le vrai travail n'est pas de creer des actions mais de les identifier, classer par theme, documenter et relier aux indicateurs. Meme les evenements "conviviaux" peuvent alimenter l'I14 sous l'angle prevention de l'isolement.</div>
-</div>
 
 <div style="background:#4c1d95;color:#e9d5ff;padding:14px 20px;margin:0 24px 16px;border-radius:8px;font-size:12px;line-height:1.6;">
   <strong style="color:#fff;font-size:13px;">DOCUMENT SOURCE : Conference Handicap THransition &mdash; Epitech Paris</strong><br>
@@ -2201,10 +2163,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I14" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I14')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I15" class="fiche" data-indicator="I15" data-tags="cfa retex nc-mineure local" data-total="30">
+<section id="I15" class="fiche" data-indicator="I15" data-tags="cfa nc-mineure local" data-total="30">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I15</div>
@@ -2216,10 +2178,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le CFA informe les apprentis de leurs droits et devoirs en tant qu'apprentis et salaries, ainsi que des regles applicables en matiere de sante et securite en milieu professionnel.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">CFA uniquement. Information sur le statut salarie, droits syndicaux, sante/securite au travail, protection sociale.</div></div>
 
-<div class="spec-box retex">
-  <div class="spec-title">RETEX Audit Strasbourg</div>
-  <div class="spec-content">Conforme. L'auditeur a verifie les slides de presentation de rentree et le livret d'accueil. Il a insiste sur le fait que la presence en formation est une obligation contractuelle, pas un choix.</div>
-</div>
 
 <div style="background:#065f46;color:#d1fae5;padding:12px 20px;margin:0 24px 16px;border-radius:8px;font-size:12px;line-height:1.6;">
   <strong style="color:#fff;font-size:13px;">DOCUMENT SOURCE : Presentation de rentree MSC1 2025</strong><br>
@@ -2312,10 +2270,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I15" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I15')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I16" class="fiche" data-indicator="I16" data-tags="of cfa vae retex nc-mineure national" data-total="22">
+<section id="I16" class="fiche" data-indicator="I16" data-tags="of cfa vae nc-mineure national" data-total="22">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I16</div>
@@ -2407,7 +2365,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I16" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I16')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I17" class="fiche" data-indicator="I17" data-tags="of cfa vae national" data-total="24">
@@ -2508,7 +2466,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I17" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I17')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I18" class="fiche" data-indicator="I18" data-tags="of cfa vae national" data-total="21">
@@ -2591,7 +2549,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I18" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I18')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I19" class="fiche" data-indicator="I19" data-tags="of cfa vae national" data-total="19">
@@ -2672,7 +2630,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I19" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I19')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I20" class="fiche" data-indicator="I20" data-tags="cfa nc-majeure critique national" data-total="20">
@@ -2761,7 +2719,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I20" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I20')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I21" class="fiche" data-indicator="I21" data-tags="of cfa vae national" data-total="19">
@@ -2842,7 +2800,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I21" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I21')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I22" class="fiche" data-indicator="I22" data-tags="of cfa vae psh national" data-total="15">
@@ -2919,7 +2877,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I22" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I22')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I23" class="fiche" data-indicator="I23" data-tags="of cfa vae national" data-total="16">
@@ -2996,7 +2954,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I23" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I23')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I24" class="fiche" data-indicator="I24" data-tags="of cfa vae national" data-total="15">
@@ -3073,7 +3031,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I24" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I24')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I25" class="fiche" data-indicator="I25" data-tags="of cfa vae national" data-total="14">
@@ -3149,10 +3107,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I25" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I25')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I26" class="fiche" data-indicator="I26" data-tags="of cfa vae retex psh national" data-total="29">
+<section id="I26" class="fiche" data-indicator="I26" data-tags="of cfa vae psh national" data-total="29">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I26</div>
@@ -3163,12 +3121,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Mobilisation des expertises, outils et reseaux necessaires pour accueillir, accompagner, former ou orienter les publics en situation de handicap.</div>
 <div class="spec-box"><div class="spec-title">Specificites applicables</div><div class="spec-content">IMPORTANT : Lister TOUS les evenements campus en faveur de l'inclusion et du handicap (date / evenement / public / intervenant / preuve). Nouveaux entrants : Audite en surveillance.</div></div>
-<div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Conforme. L'auditeur a verifie le livret d'accueil, le referent handicap, le fichier de tracabilite. Cas concrets examines : Colette (fragilites cognitives, pas d'adaptation formelle) et Dorian (deficience motrice, acces ascenseur personnel). L'auditeur veut la chaine complete : information partenaires &rarr; identification besoins &rarr; adaptation &rarr; preuve tracee.</div>
-
-<div style="background:#2B3CFC;color:#fff;padding:10px 16px;margin:0 24px 16px;border-radius:6px;font-size:11px;line-height:1.5;">
-  <strong style="color:#00FF85;">RETEX AUDIT NANTES — I26 CONFORME</strong><br>
-  Cas concret presente : Antoine (TDAH) — casque anti-bruit, petite salle, conditions calmes, prise en compte entreprise. Partenaires, livret d'accueil et trame PSH valides. Recommandation : harmoniser le fichier PSH avec les autres campus.
-</div>
 
 <div style="background:#4c1d95;color:#e9d5ff;padding:16px 20px;margin:0 24px 16px;border-radius:8px;font-size:12px;line-height:1.7;">
   <strong style="color:#fff;font-size:14px;">DOCUMENT SOURCE : Conference Handicap THransition &mdash; Epitech Paris</strong><br><br>
@@ -3262,10 +3214,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I26" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I26')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I27" class="fiche" data-indicator="I27" data-tags="of cfa vae nc-majeure retex national" data-total="27">
+<section id="I27" class="fiche" data-indicator="I27" data-tags="of cfa vae nc-majeure national" data-total="27">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I27</div>
@@ -3275,12 +3227,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="logo">{EPITECH}</div>
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Lorsque le prestataire fait appel a la sous-traitance ou au portage salarial, il s'assure du respect de la conformite de la prestation au present referentiel.</div>
-<div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Conforme. L'auditeur a verifie la chaine complete : competence &rarr; contrat &rarr; intervention &rarr; evaluation. Profils examines : Colombert (IA/data), Bozouklian (cybersecurite), Marsala (ingenieur). Absence de bilan acceptee si demarrage recent. Le NDA (numero de declaration d'activite) est un plus mais pas bloquant.</div>
-
-<div style="background:#2B3CFC;color:#fff;padding:10px 16px;margin:0 24px 16px;border-radius:6px;font-size:11px;line-height:1.5;">
-  <strong style="color:#00FF85;">RETEX AUDIT NANTES — I27 CONFORME AVEC VIGILANCE</strong><br>
-  Triptyque CV+contrat+bilan valide pour Jocelyn, Morgane et Lionel. Point majeur : l'auditeur insiste fermement sur le NDA (numero de declaration d'activite) — obligation legale ancienne. Il faut relancer les prestataires et documenter les relances. Ligne pragmatique : montrer une demarche active de mise en conformite.
-</div>
 
 <div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
   <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
@@ -3372,7 +3318,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I27" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I27')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I28" class="fiche" data-indicator="I28" data-tags="cfa national" data-total="16">
@@ -3448,10 +3394,10 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I28" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I28')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
-<section id="I29" class="fiche" data-indicator="I29" data-tags="cfa retex national" data-total="27">
+<section id="I29" class="fiche" data-indicator="I29" data-tags="cfa national" data-total="27">
 <div class="header">
   <div class="header-left">
     <div class="indicateur-num">I29</div>
@@ -3461,7 +3407,6 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="logo">{EPITECH}</div>
 </div>
 <div class="description"><strong>Description (Referentiel V9) :</strong> Le prestataire met en oeuvre des actions favorisant l'insertion professionnelle ou la poursuite d'etudes par voie de l'apprentissage ou par toute autre voie.</div>
-<div style="background:#b91c1c;color:#fff;padding:10px 16px;margin-bottom:16px;font-size:11px"><strong>RETEX Audit Strasbourg :</strong> Conforme. Dispositif juge complet et bien anime. Canaux presents : Teams, Discord, JobTeaser, career meetings, job datings, ateliers CV, simulations d'entretien, photos professionnelles, partenariats entreprises.</div>
 
 <div style="display:flex;gap:12px;margin:0 24px 16px;flex-wrap:wrap;">
   <div style="background:#1e1b4b;color:#c7d2fe;padding:8px 14px;border-radius:6px;font-family:'Space Mono',monospace;font-size:11px;flex-shrink:0;">
@@ -3536,7 +3481,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I29" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I29')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I30" class="fiche" data-indicator="I30" data-tags="of cfa vae national" data-total="19">
@@ -3618,7 +3563,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I30" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I30')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I31" class="fiche" data-indicator="I31" data-tags="of cfa vae national" data-total="16">
@@ -3696,7 +3641,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I31" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I31')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 <section id="I32" class="fiche" data-indicator="I32" data-tags="of cfa vae national" data-total="16">
@@ -3773,7 +3718,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   <div class="field-label">Preuve presentee</div>
   <textarea class="audit-textarea" id="proof-I32" placeholder="Chemin document ou nom du fichier presente..." onchange="saveScoring('I32')" style="min-height:30px;"></textarea>
 </div>
-<div class="fiche-footer">{EPITECH} | Qualiopi V9 | Audit de surveillance 2026 | SOCOTEC</div>
+<div class="fiche-footer">{EPITECH} | Qualiopi V9</div>
 </section>
 
 
@@ -3977,7 +3922,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
     if (activeFilter === tag) { clearFilter(); return; }
     activeFilter = tag;
     filterTags.forEach(ft => {
-      ft.classList.remove('active','active-red','active-orange','active-retex','active-psh');
+      ft.classList.remove('active','active-red','active-orange','active-psh');
       if (ft.dataset.filter === tag) ft.classList.add(ft.dataset.activeClass);
     });
     filterReset.classList.add('visible');
@@ -4026,7 +3971,7 @@ body { font-family:'IBM Plex Sans',sans-serif; color:var(--dark); background:#f5
   }
   function clearFilter() {
     activeFilter = null;
-    filterTags.forEach(ft => ft.classList.remove('active','active-red','active-orange','active-retex','active-psh'));
+    filterTags.forEach(ft => ft.classList.remove('active','active-red','active-orange','active-psh'));
     filterReset.classList.remove('visible');
     allFiches.forEach(f => f.classList.remove('filtered-out'));
     allSidebarItems.forEach(si => si.classList.remove('filtered-out'));
